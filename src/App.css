@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+.Board {
+    height: 180px;
+}
+
+.blue {
+    background-color: blue;
+    font-weight: bold;
+    color: white;
+}
+
+.black {
+    background-color: black;
+    font-weight: bold;
+    color: white;
+}
+
+.yellow {
+    background-color: #c6b900;
+    font-weight: bold;
+    color: white;
+}
+
+.red {
+    background-color: red;
+    font-weight: bold;
+    color: white;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body {
+    color: #fff
+}
+
+#header, #board, #footer {
+    position: absolute;
+    width: 100%
+}
+
+#header {
+    height: 100px;
+    background: red;
+
+    top: 0;
+}
+#board {
+    background: #000;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 100px;
+    bottom: 100px;
+    text-align: center;
+}
+#footer {
+    height: 100px;
+    background: blue;
+
+    bottom: 0
+}
+
+.leaflet-container {
+    height: 100%;
+    width: 1000px;
+    display: inline-block;
+}
+.leaflet-popup-content-wrapper {
+    background-color:rgba(0,0,0,0); 
+    border-radius: 0px;
+}
