@@ -25,7 +25,6 @@ export default class CityMarker extends Component{
 
     handleClick(e) {
         console.log(`Clicked ${this.state.name}`);
-        this.addBlackCube();
     }
 
     addRedCube(){
