@@ -6,11 +6,14 @@ export function citiesReducer( state = cities, action){
         case CREATE_CITY:
             return [...state, action.state]
         case UPDATE_CITY:
-            return state.forEach( city => {
-                if(city === action.city) {
-                    return Object.assign({}, state, city)
+            state.forEach( (city, index) => {
+                if(city.name === action.city.name) {
+                    let newState = state;
+                    newState[index] = action.city;
+                    return newState;
                 }
             })
+            break;
         default:
             return state
     }
