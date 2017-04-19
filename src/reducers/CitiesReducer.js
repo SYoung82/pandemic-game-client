@@ -1,6 +1,6 @@
 import { UPDATE_CITY, CREATE_CITY } from '../actions/Actions'
 
-export default function cities( state = [], action){
+export default function citiesReducer( state = [], action){
     switch(action.type){
         case CREATE_CITY:
             return [...state, action.state]
