@@ -1,6 +1,7 @@
 import { UPDATE_CITY, CREATE_CITY } from '../actions/Actions'
+import { cities } from '../constants/Cities'
 
-export function citiesReducer( state = [], action){
+export function citiesReducer( state = cities, action){
     switch(action.type){
         case CREATE_CITY:
             return [...state, action.state]
