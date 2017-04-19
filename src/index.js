@@ -2,10 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import { createStore } from 'redux'
-import rootReducer from './reducers/RootReducer'
+import { createStore, combineReducers } from 'redux'
+import { playersReducer } from './reducers/PlayersReducer'
+import { citiesReducer } from './reducers/CitiesReducer'
 
-let store = createStore(rootReducer)
+const rootReducer = combineReducers({
+  citiesReducer,
+  playersReducer
+})
+
+const store = createStore(rootReducer)
+console.log(store.getState())
 
 ReactDOM.render(
   <App />,
