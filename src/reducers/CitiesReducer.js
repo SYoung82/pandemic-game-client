@@ -1,6 +1,6 @@
 import { UPDATE_CITY, CREATE_CITY } from '../actions/Actions'
 
-export default function citiesReducer( state = [], action){
+export function citiesReducer( state = [], action){
     switch(action.type){
         case CREATE_CITY:
             return [...state, action.state]
@@ -10,5 +10,7 @@ export default function citiesReducer( state = [], action){
                     return Object.assign({}, state, city)
                 }
             })
+        default:
+            return state
     }
 }

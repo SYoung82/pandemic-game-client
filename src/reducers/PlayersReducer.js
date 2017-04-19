@@ -1,6 +1,6 @@
-import { UPDATE_USER, CREATE_USER } from '../actions/Actions'
+import { UPDATE_PLAYER, CREATE_PLAYER } from '../actions/Actions'
 
-export default function playersReducer(state=[], action){
+export function playersReducer(state=[], action){
     switch(action.type){
         case CREATE_PLAYER:
             return [...state, action.state];
