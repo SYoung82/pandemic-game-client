@@ -1,27 +1,27 @@
 import { UPDATE_CITY, CREATE_CITY, UPDATE_PLAYER, CREATE_PLAYER } from '../actions/Actions'
 
-export default function updateCity(city){
+export function updateCity(city){
     return {
         type: UPDATE_CITY,
         city
     }
 }
 
-export default function createCity(city){
+export function createCity(city){
     return {
         type: CREATE_CITY,
         city
     }
 }
 
-export default function updatePlayer(player){
+export function updatePlayer(player){
     return {
         type: UPDATE_PLAYER,
         player
     }
 }
 
-export default function createPlayer(player){
+export function createPlayer(player){
     return {
         type: CREATE_PLAYER,
         player
