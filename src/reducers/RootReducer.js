@@ -1,9 +1,10 @@
 import { playersReducer } from '../reducers/PlayersReducer'
 import { citiesReducer } from '../reducers/CitiesReducer'
+import { combineReducers } from 'redux'
 
-function rootReducer(state = {}, action) {
-    return {
-        players: playersReducer(state.players, action),
-        cities: citiesReducer(state.cities, action)
-    }
-}
+const rootReducer = combineReducers({
+    citiesReducer,
+    playersReducer
+})
+
+export constant rootReducer
