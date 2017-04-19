@@ -1,0 +1,4 @@
+export const UPDATE_CITY = 'UPDATE_CITY'
+export const CREATE_CITY = 'CREATE_CITY'
+export const UPDATE_PLAYER = 'UPDATE_PLAYER'
+export const CREATE_PLAYER = 'CREATE_PLAYER'
