@@ -7,4 +7,4 @@ const rootReducer = combineReducers({
     playersReducer
 })
 
-export constant rootReducer
+export default rootReducer
