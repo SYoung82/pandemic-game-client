@@ -5,6 +5,7 @@ import './index.css';
 import { createStore, combineReducers } from 'redux'
 import { playersReducer } from './reducers/PlayersReducer'
 import { citiesReducer } from './reducers/CitiesReducer'
+import { Provider } from 'react-redux'
 
 const rootReducer = combineReducers({
   citiesReducer,
@@ -12,9 +13,10 @@ const rootReducer = combineReducers({
 })
 
 const store = createStore(rootReducer)
-console.log(store.getState())
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  <Provider>,
   document.getElementById('root')
 );
