@@ -16,7 +16,6 @@ export default class CurrentPlayerContainer extends Component{
     }
     
     render() {
-        debugger;
         return (
             <Player player={this.state.player} />
         );
