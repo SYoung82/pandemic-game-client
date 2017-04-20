@@ -49,7 +49,6 @@ export default class Card extends Component{
             <div>
                 <ul style={style} onClick={this.handleClick.bind(this)}>
                     <li><h3>{this.state.name}</h3></li>
-                    <li>Card Type: {this.state.type}</li>
                     {pop && <li>Population: {pop}</li>}
                     {this.state.description && <li><a style={{color: 'white'}} href='#' onClick={this.handleDescriptionClick.bind(this)}>Description</a></li>}
                 </ul>
