@@ -3,8 +3,9 @@ import { Marker, CircleMarker } from 'react-leaflet';
 import { divIcon } from 'leaflet'
 import { Popup } from 'react-leaflet';
 import update from 'react-addons-update';
+import { connect } from 'react-redux';
 
-export default class CityMarker extends Component{
+class CityMarker extends Component{
     constructor(props){
         super(props);
 
@@ -13,24 +14,29 @@ export default class CityMarker extends Component{
             lat: this.props.city.lat,
             lng: this.props.city.lng,
             color: this.props.city.color,
-            players: [],
-            cubes: {
-                black: 0,
-                red: 0,
-                yellow: 0,
-                blue: 0
-            }
+            players: this.props.city.players,
+            cubes: this.props.city.cubes,
+            adjacentCities: this.props.city.adjacentCities
         }
     }
 
     handleClick(e) {
         console.log(`Clicked ${this.state.name}`);
+        this.addRedCube();
+    }
+
+    dispatchUpdate() {
+        this.props.dispatch({
+            type: 'UPDATE_CITY',
+            city: this.state
+        })
     }
 
     addRedCube(){
         this.setState(update(this.state, {
             cubes: {red: {$set: this.state.cubes.red+1}}
         }))
+        this.dispatchUpdate();
     }
 
     addBlackCube(){
@@ -78,3 +84,5 @@ export default class CityMarker extends Component{
         )
     }
 }
+
+export default connect()(CityMarker)
