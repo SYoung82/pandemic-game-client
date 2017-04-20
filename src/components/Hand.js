@@ -10,11 +10,20 @@ export default class Hand extends Component{
         }
     }
     render() {
+        var ulStyle = {
+            padding: 0,
+            display: "inline-block", /*needed so that bottom border clears floats*/
+            width: "100%"
+        }
+        var liStyle = {
+            width: '25%',
+            float: 'left', 
+        }
         var currentHand = this.state.hand
         return(
-            <ul className={'card'}>
+            <ul style={ulStyle} className={'card'}>
                 {currentHand.map( (card, index) => {
-                    return <Card key={index} card={card} /> 
+                    return <li style={liStyle} key={index}><Card card={card} /></li> 
                 })}
             </ul>
         )

@@ -45,7 +45,7 @@ body {
 }
 
 #header {
-    height: 100px;
+    height: 15px;
     background: red;
 
     top: 0;
@@ -55,12 +55,12 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    top: 100px;
-    bottom: 100px;
+    top: 15px;
+    bottom: 200px;
     text-align: center;
 }
 #footer {
-    height: 100px;
+    height: 200px;
     background: blue;
     text-align: center;
     vertical-align: middle;
