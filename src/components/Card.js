@@ -27,7 +27,7 @@ export default class Card extends Component{
             backgroundColor: this.state.color,
             height: '154px',
             fontSize: 'small',
-            lineHeight: '22px',
+            lineHeight: '15px',
             listStyleType: 'none',
             padding: '0.2em',
             margin: '0'    

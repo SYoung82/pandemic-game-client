@@ -5,7 +5,7 @@ export default class Player extends Component{
     render() {
         return(
             <div style={{display: 'inline-flex'}}>
-                <div style={{width: '25%', lineHeight: '22px'}}>
+                <div style={{width: '25%', lineHeight: '15px'}}>
                     <h3>Current Player: {this.props.player.role}</h3>
                     <p>{this.props.player.currentCity}</p>
                 </div>

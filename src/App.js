@@ -6,8 +6,8 @@ import CurrentPlayerContainer from './containers/CurrentPlayerContainer'
 
 class App extends Component {
   render() {
-    return (
-      <div>
+    return ( 
+      <div id='app'>
         <div id='header' />
         <div id='board'>
           <Board />

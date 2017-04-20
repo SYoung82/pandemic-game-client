@@ -34,9 +34,11 @@ html, body {
     margin: 0;
     padding: 0;
     border: 0;
+    height: 100%;
 }
 body {
-    color: #fff
+    color: #fff;
+    min-height: 100%
 }
 
 #header, #board, #footer {

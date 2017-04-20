@@ -16,8 +16,15 @@ export default class CurrentPlayerContainer extends Component{
     }
     
     render() {
+        const style = {
+            border: '0',
+            padding: '0',
+            backgroundColor: 'black' 
+        }
         return (
-            <Player player={this.state.player} />
+            <div style={style}>
+                <Player player={this.state.player} />
+            </div>
         );
     }
 }
