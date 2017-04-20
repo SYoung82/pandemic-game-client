@@ -11,6 +11,7 @@ export default class Hand extends Component{
     }
     render() {
         var ulStyle = {
+            backgroundColor: 'white',
             listStyleType: 'none',
             padding: 0,
             display: "inline-block", /*needed so that bottom border clears floats*/
@@ -20,7 +21,8 @@ export default class Hand extends Component{
             border: 'solid',
             padding: 0,
             width: '10%',
-            float: 'left', 
+            float: 'left',
+            position: 'static'
         }
         var currentHand = this.state.hand
 
