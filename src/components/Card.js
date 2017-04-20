@@ -23,17 +23,18 @@ export default class Card extends Component{
             fontSize: 'small',
             lineHeight: '22px',
             listStyleType: 'none',
-            padding: 0,
-            margin: 0    
+            padding: '0.2em',
+            margin: '0'    
         }
         if(style.backgroundColor === 'yellow'){
             style.backgroundColor = '#c6b900'
         }
 
         return(
-            <div style={style}>
-                <ul style={style}>
-                    <li><h3 style={style} onClick={this.handleClick.bind(this)}>{this.state.name}</h3></li>
+            <div>
+                <ul style={style} onClick={this.handleClick.bind(this)}>
+                    <li><h3>{this.state.name}</h3></li>
+                    <li>Card Type: {this.state.type}</li>
                 </ul>
             </div>
         )
