@@ -18,9 +18,7 @@ export default class CurrentPlayerContainer extends Component{
     render() {
         debugger;
         return (
-            <div>
-                <Player player={this.state.player} />
-            </div>
+            <Player player={this.state.player} />
         );
     }
 }
