@@ -8,7 +8,7 @@ import CityMarker from '../components/CityMarker'
 export default class Board extends Component{
     state = {
         lat: 15,
-        lng: 0,
+        lng: 20,
         zoom: 2
     }
 
