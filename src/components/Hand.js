@@ -11,7 +11,7 @@ export default class Hand extends Component{
     }
     render() {
         var ulStyle = {
-            backgroundColor: 'white',
+            backgroundColor: 'black',
             listStyleType: 'none',
             padding: 0,
             display: "inline-block", /*needed so that bottom border clears floats*/

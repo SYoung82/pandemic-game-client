@@ -24,7 +24,7 @@ class App extends Component {
                                                     {name: 'Riyadh', color: 'black', population: 5037000, type: 'city'},
                                                     {name: 'Chicago', color: 'blue', population: 9121000, type: 'city'},
                                                     {name: 'Chennai', color: 'black', population: 8865000, type: 'city'},
-                                                    {name: 'Buenos Aires', color: 'yellow', population: 13639000, type: 'city'}]
+                                                    {name: 'Airlift', description: "Move any 1 pawn to any city. Get permssion before moving another player's pawn.", type: 'event'}]
                                              }]}/>
         </div>
       </div>
