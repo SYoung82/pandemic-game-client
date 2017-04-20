@@ -22,7 +22,6 @@ class CityMarker extends Component{
 
     handleClick(e) {
         console.log(`Clicked ${this.state.name}`);
-        this.addRedCube();
     }
 
     dispatchUpdate() {
@@ -43,18 +42,21 @@ class CityMarker extends Component{
         this.setState(update(this.state, {
             cubes: {black: {$set: this.state.cubes.black+1}}
         }))
+        this.dispatchUpdate();
     }
 
     addYellowCube(){
         this.setState(update(this.state, {
             cubes: {yellow: {$set: this.state.cubes.yellow+1}}
         }))
+        this.dispatchUpdate();
     }
 
     addBlueCube(){
         this.setState(update(this.state, {
             cubes: {blue: {$set: this.state.cubes.blue+1}}
         }))
+        this.dispatchUpdate();
     }
 
     render(){
