@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Board from './containers/Board'
+import CurrentPlayerContainer from './containers/CurrentPlayerContainer'
 
 class App extends Component {
   render() {
@@ -11,7 +12,12 @@ class App extends Component {
         <div id='board'>
           <Board />
         </div>
-        <div id='footer' />
+        <div id='footer'>
+          <CurrentPlayerContainer players={[{role: 'Medic',
+                                             currentPlayer: true,
+                                             currentCity: 'Atlanta'
+                                             }]}/>
+        </div>
       </div>
     );
   }
