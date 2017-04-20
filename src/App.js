@@ -15,7 +15,14 @@ class App extends Component {
         <div id='footer'>
           <CurrentPlayerContainer players={[{role: 'Medic',
                                              currentPlayer: true,
-                                             currentCity: 'Atlanta'
+                                             currentCity: 'Atlanta',
+                                             hand: [{name: 'Lagos', color: 'yellow', population: 11547000, type: 'city'},
+                                                    {name: 'Washington', color: 'blue', population: 4679000, type: 'city'},
+                                                    {name: 'Santiago', color: 'yellow', population: 6015000, type: 'city'},
+                                                    {name: 'Milan', color: 'blue', population: 5232000, type: 'city'},
+                                                    {name: 'Ho Chi Minh City', color: 'red', population: 8314000, type: 'city'},
+                                                    {name: 'Riyadh', color: 'black', population: 5037000, type: 'city'},
+                                                    {name: 'Chicago', color: 'blue', population: 9121000, type: 'city'}]
                                              }]}/>
         </div>
       </div>
