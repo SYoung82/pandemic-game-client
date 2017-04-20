@@ -22,7 +22,9 @@ class App extends Component {
                                                     {name: 'Milan', color: 'blue', population: 5232000, type: 'city'},
                                                     {name: 'Ho Chi Minh City', color: 'red', population: 8314000, type: 'city'},
                                                     {name: 'Riyadh', color: 'black', population: 5037000, type: 'city'},
-                                                    {name: 'Chicago', color: 'blue', population: 9121000, type: 'city'}]
+                                                    {name: 'Chicago', color: 'blue', population: 9121000, type: 'city'},
+                                                    {name: 'Chennai', color: 'black', population: 8865000, type: 'city'},
+                                                    {name: 'Buenos Aires', color: 'yellow', population: 13639000, type: 'city'}]
                                              }]}/>
         </div>
       </div>

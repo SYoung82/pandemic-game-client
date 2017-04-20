@@ -18,7 +18,8 @@ export default class Hand extends Component{
         }
         var liStyle = {
             border: 'solid',
-            width: '13%',
+            padding: 0,
+            width: '10%',
             float: 'left', 
         }
         var currentHand = this.state.hand
@@ -26,7 +27,6 @@ export default class Hand extends Component{
         return(
             <ul style={ulStyle} className={'card'}>
                 {currentHand.map( (card, index) => {
-                    liStyle.backgroundColor = card.color
                     return <li style={liStyle} key={index}><Card card={card} /></li> 
                 })}
             </ul>
