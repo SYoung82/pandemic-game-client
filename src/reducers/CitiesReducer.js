@@ -4,15 +4,16 @@ import { cities } from '../constants/Cities'
 export function citiesReducer( state = cities, action){
 
     switch(action.type){
+
         case UPDATE_CITY:
+        var newState = state;
             state.forEach( (city, index) => {
                 if(city.name === action.city.name) {;
-                    var newState = state;
                     newState[index] = action.city;
-                    return newState;
-                    debugger;
                 }
             })
+            return newState;
+
         default:
             return state
     }
