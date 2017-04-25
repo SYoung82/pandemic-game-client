@@ -1,6 +1,8 @@
 import { UPDATE_PLAYER, CREATE_PLAYER } from '../actions/Actions'
+import { players } from '../constants/Players'
 
-export function playersReducer(state=[], action){
+export function playersReducer(state=players, action){
+    debugger;
     switch(action.type){
         case CREATE_PLAYER:
             return [...state, action.state];
