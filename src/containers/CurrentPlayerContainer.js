@@ -25,4 +25,11 @@ class CurrentPlayerContainer extends Component{
     }
 }
 
-export default connect()(CurrentPlayerContainer)
+function mapStateToProps(state) {
+    debugger;
+    return {
+        player: state.playersReducer.find(p => p.currentPlayer === true)
+    }
+}
+
+export default connect(mapStateToProps)(CurrentPlayerContainer)
