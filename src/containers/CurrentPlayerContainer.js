@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Player from '../components/Player'
+import Player from '../components/Player';
+import { connect } from 'react-redux';
 
-export default class CurrentPlayerContainer extends Component{
+class CurrentPlayerContainer extends Component{
     constructor(props){
         super(props);
 
@@ -28,3 +29,5 @@ export default class CurrentPlayerContainer extends Component{
         );
     }
 }
+
+export default connect()(CurrentPlayerContainer)
