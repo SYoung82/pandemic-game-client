@@ -14,7 +14,7 @@ class App extends Component {
         </div>
         <div id='footer'>
           <CurrentPlayerContainer players={[{role: 'Medic',
-                                             currentPlayer: true,
+                                             currentPlayer: false,
                                              currentCity: 'Atlanta',
                                              hand: [{name: 'Lagos', color: 'yellow', population: 11547000, type: 'city'},
                                                     {name: 'Washington', color: 'blue', population: 4679000, type: 'city'},
@@ -25,7 +25,19 @@ class App extends Component {
                                                     {name: 'Chicago', color: 'blue', population: 9121000, type: 'city'},
                                                     {name: 'Chennai', color: 'black', population: 8865000, type: 'city'},
                                                     {name: 'Airlift', description: "Move any 1 pawn to any city. Get permssion before moving another player's pawn.", type: 'event'}]
-                                             }]}/>
+                                             },
+                                             {role: 'Contingency Planner',
+                                             currentPlayer: true,
+                                             currentCity: 'Atlanta',
+                                             hand: [{name: 'Sao Paulo', color: 'yellow', population: 20186000, type: 'city'},
+                                                    {name: 'Manila', color: 'red', population: 20767000, type: 'city'},
+                                                    {name: 'Moscow', color: 'black', population: 15512000, type: 'city'},
+                                                    {name: 'Osaka', color: 'red', population: 2871000, type: 'city'},
+                                                    {name: 'St. Petersburg', color: 'blue', population: 4879000, type: 'city'},
+                                                    {name: 'Cairo', color: 'black', population: 14718000, type: 'city'},
+                                                    {name: 'Montreal', color: 'blue', population: 3429000, type: 'city'}]
+                                             }
+                                             ]}/>
         </div>
       </div>
     );
