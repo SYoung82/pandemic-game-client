@@ -7,12 +7,7 @@ class CurrentPlayerContainer extends Component{
         super(props);
 
         this.state = {
-            player: this.props.players.find( player => {
-                        if(player.currentPlayer === true) {
-                            return player
-                        }
-                        return null;   
-                     })                  
+            player: props.players.find(p => p.currentPlayer === true)                  
         }
     }
     
