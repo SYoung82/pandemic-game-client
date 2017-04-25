@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Card extends Component{
+class Card extends Component{
     constructor(props){
         super(props);
 
@@ -16,6 +17,12 @@ export default class Card extends Component{
 
     handleClick(e){
         console.log(`Clicked ${this.state.name} card. Color is ${this.state.color}`)
+        
+        this.props.dispatch({
+            type: 'NEXT_PLAYER',
+            card: this.state
+        })
+
     }
 
     handleDescriptionClick(e){
@@ -56,3 +63,5 @@ export default class Card extends Component{
         )
     }
 }
+
+export default connect()(Card)
