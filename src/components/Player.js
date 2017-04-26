@@ -10,8 +10,8 @@ class Player extends Component{
             type: 'NEXT_PLAYER'
         })
     }
+
     render() {
-        debugger
         return(
             <div style={{display: 'inline-flex'}}>
                 <div style={{width: '25%', lineHeight: '15px'}}>
