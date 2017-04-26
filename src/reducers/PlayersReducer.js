@@ -5,12 +5,21 @@ export function playersReducer(state=players, action){
     switch(action.type){
         case CREATE_PLAYER:
             return [...state, action.state];
+        
         case UPDATE_PLAYER:
             return state.forEach( player => {
                 if(player === action.player){
                     return Object.assign({}, state, player)
                 }
             })
+        
+        case 'NEXT_PLAYER':
+            var returnState = state
+            returnState.forEach( player =>
+                player.currentPlayer = !player.currentPlayer
+            )
+            return returnState
+        
         default:
             return state;
     }
