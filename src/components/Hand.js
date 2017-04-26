@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Card from '../components/Card'
+import Card from '../components/Card';
+import { connect } from 'react-redux';
 
-export default class Hand extends Component{
+class Hand extends Component{
     constructor(props){
         super(props);
-        
+        debugger
         this.state = {
             hand: this.props.hand
         }
@@ -35,3 +36,5 @@ export default class Hand extends Component{
         )
     }
 }
+
+export default connect()(Hand)
