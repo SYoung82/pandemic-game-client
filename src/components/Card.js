@@ -17,12 +17,6 @@ class Card extends Component{
 
     handleClick(e){
         console.log(`Clicked ${this.state.name} card. Color is ${this.state.color}`)
-        
-        this.props.dispatch({
-            type: 'NEXT_PLAYER',
-            card: this.state
-        })
-
     }
 
     handleDescriptionClick(e){
