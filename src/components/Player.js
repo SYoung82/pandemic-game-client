@@ -11,6 +11,7 @@ class Player extends Component{
         })
     }
     render() {
+        debugger
         return(
             <div style={{display: 'inline-flex'}}>
                 <div style={{width: '25%', lineHeight: '15px'}}>

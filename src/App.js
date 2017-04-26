@@ -14,7 +14,7 @@ class App extends Component {
         </div>
         <div id='footer'>
           <CurrentPlayerContainer players={[{role: 'Medic',
-                                             currentPlayer: false,
+                                             currentPlayer: true,
                                              currentCity: 'Atlanta',
                                              hand: [{name: 'Lagos', color: 'yellow', population: 11547000, type: 'city'},
                                                     {name: 'Washington', color: 'blue', population: 4679000, type: 'city'},
@@ -27,7 +27,7 @@ class App extends Component {
                                                     {name: 'Airlift', description: "Move any 1 pawn to any city. Get permssion before moving another player's pawn.", type: 'event'}]
                                              },
                                              {role: 'Contingency Planner',
-                                             currentPlayer: true,
+                                             currentPlayer: false,
                                              currentCity: 'Atlanta',
                                              hand: [{name: 'Sao Paulo', color: 'yellow', population: 20186000, type: 'city'},
                                                     {name: 'Manila', color: 'red', population: 20767000, type: 'city'},
