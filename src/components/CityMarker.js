@@ -18,6 +18,7 @@ class CityMarker extends Component{
             cubes: this.props.city.cubes,
             adjacentCities: this.props.city.adjacentCities
         }
+
     }
 
     handleClick(e) {
@@ -74,7 +75,8 @@ class CityMarker extends Component{
                             Black Cubes: {this.state.cubes.black}<br />
                             Red Cubes: {this.state.cubes.red}<br />
                             Blue Cubes: {this.state.cubes.blue}<br />
-                            Yellow Cubes: {this.state.cubes.yellow}
+                            Yellow Cubes: {this.state.cubes.yellow}<br />
+                            Players: {this.state.players ? this.state.players.join(", ") : 'None'}
                         </span>
                     </Popup>
                 </Marker>
