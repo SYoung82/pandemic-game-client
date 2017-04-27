@@ -7,7 +7,8 @@ class CurrentPlayerContainer extends Component{
         super(props);
 
         this.state = {
-            players: props.players                  
+            player: props.players.find(p => p.currentPlayer === true),
+            hand: props.players.find(p => p.currentPlayer === true).hand
         }
     }
     
@@ -19,7 +20,7 @@ class CurrentPlayerContainer extends Component{
         }
         return (
             <div style={style}>
-                <Player player={this.state.players.find(p => p.currentPlayer === true)} />
+                <Player player={this.state.player} />
             </div>
         );
     }
@@ -27,7 +28,8 @@ class CurrentPlayerContainer extends Component{
 
 function mapStateToProps(state) {
     return {
-        players: state.playersReducer
+        player: state.currentPlayerReducer,
+        hand: state.currentHandReducer
     }
 }
 
