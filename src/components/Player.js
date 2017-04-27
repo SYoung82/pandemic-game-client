@@ -27,4 +27,10 @@ class Player extends Component{
     }
 }
 
-export default connect()(Player)
+function mapStateToProps(state) {
+    return {
+        player: state.currentPlayerReducer
+    }
+}
+
+export default connect(mapStateToProps)(Player)
