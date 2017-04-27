@@ -5,11 +5,14 @@ import { connect } from 'react-redux';
 class Hand extends Component{
     constructor(props){
         super(props);
-        debugger
+
         this.state = {
             hand: this.props.hand
         }
     }
+
+
+
     render() {
         var ulStyle = {
             backgroundColor: 'black',
@@ -25,16 +28,22 @@ class Hand extends Component{
             float: 'left',
             position: 'static'
         }
-        var currentHand = this.state.hand
+        var currentHand = this.props.hand
 
         return(
             <ul style={ulStyle} className={'card'}>
                 {currentHand.map( (card, index) => {
-                    return <li style={liStyle} key={index}><Card card={card} /></li> 
+                    return <li style={liStyle} key={card.name}><Card card={card} /></li> 
                 })}
             </ul>
         )
     }
 }
 
-export default connect()(Hand)
+function mapStateToProps(state) {
+    return {
+        hand: state.currentHandReducer
+    }
+}
+
+export default connect(mapStateToProps)(Hand)
