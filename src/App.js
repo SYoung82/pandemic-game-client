@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Board from './containers/Board'
 import CurrentPlayerContainer from './containers/CurrentPlayerContainer'
+import MovesList from './containers/MovesList'
 
 class App extends Component {
   render() {
@@ -11,6 +12,9 @@ class App extends Component {
         <div id='header' />
         <div id='board'>
           <Board />
+          <div id='moves' >
+            <MovesList />
+          </div>
         </div>
         <div id='footer'>
           <CurrentPlayerContainer players={[{role: 'Medic',
