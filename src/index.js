@@ -5,11 +5,13 @@ import './index.css';
 import { createStore, combineReducers } from 'redux'
 import { playersReducer } from './reducers/PlayersReducer'
 import { citiesReducer } from './reducers/CitiesReducer'
+import { currentHandReducer } from './reducers/CurrentHandReducer'
 import { Provider } from 'react-redux'
 
 const rootReducer = combineReducers({
   citiesReducer,
-  playersReducer
+  playersReducer,
+  currentHandReducer
 })
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
