@@ -21,7 +21,9 @@ export function citiesReducer( state = cities, action){
                     city.players.splice(city.players.indexOf(action.currentPlayer.id), 1)
                 }
                 if (city.name === action.city) {
-                    city.players ? city.players.push(action.currentPlayer.id) : city.players = [action.currentPlayer.id]
+                    debugger
+                    if (city.players) { city.players.push(action.currentPlayer.id) }
+                    else { city.players = [action.currentPlayer.id]}
                 }
             })
             return newState
