@@ -10,8 +10,16 @@ class MovesList extends Component {
         }
     }
 
+    handleAdjacentCityClick(e) {
+        e.preventDefault();
+        console.log('City ' + e.target.innerText + ' clicked in AdjacentCities list' );
+    }
+
     render() {
-        const listItems = this.props.adjacentCities.map( city => <li key={city}>{city}</li>)
+        const listItems = this.props.adjacentCities.map( city => 
+            <li key={city}><a key={city} style={{color: 'white'}} href='#' onClick={this.handleAdjacentCityClick.bind(this)}>Move to {city}</a></li>
+        )
+
         return (
             <div>
                 <h3>Adjacent Cities:</h3>
