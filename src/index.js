@@ -11,8 +11,8 @@ import { adjacentCitiesReducer } from './reducers/AdjacentCitiesReducer'
 import { Provider } from 'react-redux'
 
 const rootReducer = combineReducers({
-  citiesReducer,
   playersReducer,
+  citiesReducer,
   currentPlayerReducer,
   currentHandReducer,
   adjacentCitiesReducer
