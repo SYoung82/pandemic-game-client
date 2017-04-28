@@ -1,11 +1,11 @@
 
 import React, { Component } from 'react';
-import { Map, TileLayer, Polyline } from 'react-leaflet';;
-import { cities } from '../constants/Cities'
+import { Map, TileLayer, Polyline } from 'react-leaflet';
 import { paths } from '../constants/Paths'
 import CityMarker from '../components/CityMarker'
+import { connect } from 'react-redux'
 
-export default class Board extends Component{
+class Board extends Component{
     state = {
         lat: 15,
         lng: 20,
@@ -25,7 +25,7 @@ export default class Board extends Component{
                     minZoom={this.state.zoom}
                     maxZoom={this.state.zoom}
                 />
-                {cities.map( (city) => {
+                {this.props.cities.map( (city) => {
                     return (
                         <CityMarker city={city} key={city.name} />
                     )
@@ -39,3 +39,11 @@ export default class Board extends Component{
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        cities: state.citiesReducer
+    }
+}
+
+export default connect(mapStateToProps)(Board)

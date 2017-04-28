@@ -76,7 +76,7 @@ class CityMarker extends Component{
                             Red Cubes: {this.state.cubes.red}<br />
                             Blue Cubes: {this.state.cubes.blue}<br />
                             Yellow Cubes: {this.state.cubes.yellow}<br />
-                            Players: {this.state.players ? this.state.players.join(", ") : 'None'}
+                            Players: {this.props.city.players ? this.props.city.players.join(", ") : 'None'}
                         </span>
                     </Popup>
                 </Marker>
@@ -89,4 +89,10 @@ class CityMarker extends Component{
     }
 }
 
-export default connect()(CityMarker)
+function mapStateToProps(state, wrapperProps) {
+    return {
+        city: state.citiesReducer.find(city => city.name === wrapperProps.city.name)
+    }
+}
+
+export default connect(mapStateToProps)(CityMarker)
