@@ -19,7 +19,7 @@ export default class Board extends Component{
             <Map center={position} zoom={this.state.zoom} zoomControl={false} dragging={false}>
                 <TileLayer
                     attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-                    url='http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+                    url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
                     tileSize={512}
                     zoomOffset={-1}
                     minZoom={this.state.zoom}
