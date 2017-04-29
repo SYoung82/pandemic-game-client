@@ -3,16 +3,6 @@ import Card from '../components/Card';
 import { connect } from 'react-redux';
 
 class Hand extends Component{
-    constructor(props){
-        super(props);
-
-        this.state = {
-            hand: this.props.hand
-        }
-    }
-
-
-
     render() {
         var ulStyle = {
             backgroundColor: 'black',
