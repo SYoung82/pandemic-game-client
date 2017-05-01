@@ -1,5 +1,6 @@
 
 import { cities } from '../constants/Cities'
+import update from 'react-addons-update';
 
 export function citiesReducer( state = cities, action){
 
@@ -18,10 +19,9 @@ export function citiesReducer( state = cities, action){
             newState = state;
             newState.forEach( city => {
                 if (city.name === action.currentCity) {
-                    city.players.splice(city.players.indexOf(action.currentPlayer.id), 1)
+                    update(city, {players: {$splice: [[city.players.indexOf(action.currentPlayer.id), 1]]}})
                 }
                 if (city.name === action.city) {
-                    debugger
                     if (city.players) { city.players.push(action.currentPlayer.id) }
                     else { city.players = [action.currentPlayer.id]}
                 }
