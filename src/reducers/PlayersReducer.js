@@ -32,6 +32,15 @@ export function playersReducer(state=players, action){
             })
             return stateToReturn
         
+        case 'RESET_TURN_COUNT':
+            stateToReturn = state
+            stateToReturn.forEach( (player, index) => {
+                if(player === action.currentPlayer) {
+                    stateToReturn[index].movesLeft = 4
+                }
+            })
+            return stateToReturn
+
         default:
             return state;
     }

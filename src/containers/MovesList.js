@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { checkTurnOver } from '../Game/Logic'
 
 class MovesList extends Component {
     handleAdjacentCityClick(e) {
@@ -30,6 +31,17 @@ class MovesList extends Component {
             currentPlayer: this.props.currentPlayer,
             card: e.target.innerText
         })
+        
+        if(checkTurnOver()){
+            this.props.dispatch({
+                type: 'RESET_TURN_COUNT',
+                currentPlayer: this.props.currentPlayer
+            })
+
+            this.props.dispatch({
+                type: 'NEXT_PLAYER',
+            })
+        }
     }
 
     render() {
