@@ -1,5 +1,8 @@
 export function checkTurnOver(state) {
-    state.movesLeft === 0 ? true : false
+    if(state.movesLeft <= 1) {
+        return true
+    }
+    return false
 }
 
 export function checkGameOver(state) {
