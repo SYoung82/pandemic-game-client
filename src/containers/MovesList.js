@@ -81,7 +81,7 @@ class MovesList extends Component {
                 <h4>Adjacent Cities:</h4>
                 <h5>Move to: </h5>
                     <ul>{moveToCities}</ul>
-                <h5>Fly to: </h5>
+                <h5>Fly to: (Costs that city card)</h5>
                     <ul>{flyToCities}</ul>
             </div>
         )
