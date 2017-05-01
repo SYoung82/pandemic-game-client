@@ -2,15 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class MovesList extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            adjacentCities: this.props.adjacentCities,
-            currentPlayer: this.props.currentPlayer
-        }
-    }
-
     handleAdjacentCityClick(e) {
         e.preventDefault();
         console.log('City ' + e.target.innerText + ' clicked in AdjacentCities list' );
