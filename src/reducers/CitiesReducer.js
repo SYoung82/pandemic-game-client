@@ -17,13 +17,13 @@ export function citiesReducer( state = cities, action){
 
         case 'MOVE_PLAYER':
             newState = state;
-            newState.forEach( city => {
+            state.forEach( (city, index) => {
                 if (city.name === action.currentCity) {
-                    update(city, {players: {$splice: [[city.players.indexOf(action.currentPlayer.id), 1]]}})
+                    newState[index].players = state[index].players.filter( player => player !== action.currentPlayer.id)
                 }
                 if (city.name === action.city) {
-                    if (city.players) { city.players.push(action.currentPlayer.id) }
-                    else { city.players = [action.currentPlayer.id]}
+                    if (city.players) { newState[index].players.push(action.currentPlayer.id) }
+                    else { newState[index].players = [action.currentPlayer.id]}
                 }
             })
             return newState
