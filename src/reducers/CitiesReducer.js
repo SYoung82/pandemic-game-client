@@ -1,6 +1,5 @@
 
 import { cities } from '../constants/Cities'
-import update from 'react-addons-update';
 
 export function citiesReducer( state = cities, action){
 
