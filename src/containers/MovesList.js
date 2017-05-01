@@ -44,7 +44,8 @@ class MovesList extends Component {
         return (
             <div>
                 <h2>Current City: {this.props.currentPlayer.currentCity}</h2>
-                <h3>Adjacent Cities:</h3>
+                <h3>Moves Left: {this.props.currentPlayer.movesLeft}</h3>
+                <h4>Adjacent Cities:</h4>
                 <h5>Move to: </h5>
                     <ul>{moveToCities}</ul>
                 <h5>Fly to: </h5>
