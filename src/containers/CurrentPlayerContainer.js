@@ -19,8 +19,7 @@ class CurrentPlayerContainer extends Component{
 
 function mapStateToProps(state) {
     return {
-        player: state.currentPlayerReducer,
-        hand: state.currentHandReducer
+        player: state.currentPlayerReducer
     }
 }
 
