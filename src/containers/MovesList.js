@@ -32,7 +32,7 @@ class MovesList extends Component {
             card: e.target.innerText
         })
         
-        if(checkTurnOver()){
+        if(checkTurnOver(this.props.currentPlayer)){
             this.props.dispatch({
                 type: 'RESET_TURN_COUNT',
                 currentPlayer: this.props.currentPlayer
@@ -40,6 +40,11 @@ class MovesList extends Component {
 
             this.props.dispatch({
                 type: 'NEXT_PLAYER',
+            })
+        } else {
+            this.props.dispatch({
+                type: 'DECREMENT_TURN_COUNT',
+                currentPlayer: this.props.currentPlayer
             })
         }
     }
