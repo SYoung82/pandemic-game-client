@@ -16,7 +16,6 @@ class Player extends Component{
             <div style={{display: 'inline-flex'}}>
                 <div style={{width: '25%', lineHeight: '15px'}}>
                     <h3>Current Player: {this.props.player.role}</h3>
-                    <p>{this.props.player.currentCity}</p>
                     <button onClick={this.onEndTurnClick.bind(this)}>End Turn</button>
                 </div>
                 <div className={'hand'} style={{width: '100%'}}>
@@ -27,10 +26,4 @@ class Player extends Component{
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        player: state.currentPlayerReducer
-    }
-}
-
-export default connect(mapStateToProps)(Player)
+export default connect()(Player)

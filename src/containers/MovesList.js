@@ -21,6 +21,7 @@ class MovesList extends Component {
 
         return (
             <div>
+                <h2>Current City: {this.props.currentPlayer.currentCity}</h2>
                 <h3>Adjacent Cities:</h3>
                 <h5>Move to: </h5>
                 <ul>
