@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import Player from '../components/Player';
 import { connect } from 'react-redux';
 
-class CurrentPlayerContainer extends Component{
-    constructor(props){
-        super(props);
-
-        this.state = {
-            player: props.players.find(p => p.currentPlayer === true),
-            hand: props.players.find(p => p.currentPlayer === true).hand
-        }
-    }
-    
+class CurrentPlayerContainer extends Component{ 
     render() {
         const style = {
             border: '0',
@@ -20,7 +11,7 @@ class CurrentPlayerContainer extends Component{
         }
         return (
             <div style={style}>
-                <Player player={this.state.player} />
+                <Player player={this.props.player} />
             </div>
         );
     }

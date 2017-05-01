@@ -20,7 +20,7 @@ class Player extends Component{
                     <button onClick={this.onEndTurnClick.bind(this)}>End Turn</button>
                 </div>
                 <div className={'hand'} style={{width: '100%'}}>
-                    <Hand hand={this.props.player.hand}/>
+                    <Hand hand={this.props.hand}/>
                 </div>
             </div>
         )
