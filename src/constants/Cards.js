@@ -24,7 +24,7 @@ export const cityCards = [
     {name: 'Taipei', color: 'red', population: 8338000, type: 'city'},
     {name: 'Hong Kong', color: 'red', population: 7106000, type: 'city'},
     {name: 'Bangkok', color: 'red', population: 7151000, type: 'city'},
-    {name: 'Mumbai', color: 'black', population: 1691000, type: 'city'0},
+    {name: 'Mumbai', color: 'black', population: 1691000, type: 'city'},
     {name: 'London', color: 'blue', population: 8586000, type: 'city'},
     {name: 'San Francisco', color: 'blue', population: 5864000, type: 'city'},
     {name: 'Johannesburg', color: 'yellow', population: 3888000, type: 'city'},
