@@ -1,7 +1,7 @@
 export const cities = [
     {name: 'San Francisco', color: 'blue', lat: 37.77, lng: -122.419, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Chicago', 'Los Angeles', 'Tokyo', 'Manila']},
     {name: 'Chicago', color: 'blue', lat: 41.878, lng: -87.6298, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['San Francisco', 'Montreal', 'Atlanta', 'Mexico City', 'Los Angeles']},
-    {name: 'Atlanta', color: 'blue', lat: 33.749, lng: -84.388, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Chicago', 'Washington', 'Miami'], players: [1, 2]},
+    {name: 'Atlanta', color: 'blue', lat: 33.749, lng: -84.388, researchStation: true, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Chicago', 'Washington', 'Miami'], players: [1, 2]},
     {name: 'Montreal', color: 'blue', lat: 45.5, lng: -73.567, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Chicago', 'New York', 'Washington']},
     {name: 'New York', color: 'blue', lat: 40.713, lng: -74.006, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Montreal', 'London', 'Madrid', 'Washington']},
     {name: 'Washington', color: 'blue', lat: 38.907, lng: -77.037, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Atlanta', 'Montreal', 'New York', 'Miami']},
