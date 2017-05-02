@@ -1,13 +1,14 @@
-import { cityCards } from '../constants/Cards'
+export function prepInfectionDeck(cards) {
+    var currentIndex = cards.length, temporaryValue, randomIndex
 
-export function prepInfectionDeck() {
-    let deck = cityCards
-    var shuffledDeck = []
-    for(let i=0; k<deck.length - 1, i++) {
-        shuffledDeck.push(arr.splice(Math.floor(Math.random()*deck.length),1)[0])
+    while( 0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex -= 1
+        temporaryValue = cards[currentIndex]
+        cards[currentIndex] = cards[randomIndex]
+        cards[randomIndex] = temporaryValue
     }
-    shuffledDeck.push(deck[0])
-    return shuffledDeck
+    return cards
 }
 
 export function prepPlayerDeck() {
