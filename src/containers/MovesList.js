@@ -72,11 +72,53 @@ class MovesList extends Component {
             currentCity: this.props.currentPlayer.currentCity,
             color: e.target.id
         })
+
+        if(checkTurnOver(this.props.currentPlayer)){
+            this.props.dispatch({
+                type: 'RESET_TURN_COUNT',
+                currentPlayer: this.props.currentPlayer
+            })
+
+            this.props.dispatch({
+                type: 'NEXT_PLAYER',
+            })
+        } else {
+            this.props.dispatch({
+                type: 'DECREMENT_TURN_COUNT',
+                currentPlayer: this.props.currentPlayer
+            })
+        }
+    }
+
+    handleOtherStationsClick(e) {
+        e.preventDefault()
+        debugger
+        this.props.dispatch({
+            type: 'MOVE_PLAYER',
+            city: e.target.innerText,
+            currentPlayer: this.props.currentPlayer,
+            currentCity: this.props.currentPlayer.currentCity
+        })
+
+        if(checkTurnOver(this.props.currentPlayer)){
+            this.props.dispatch({
+                type: 'RESET_TURN_COUNT',
+                currentPlayer: this.props.currentPlayer
+            })
+
+            this.props.dispatch({
+                type: 'NEXT_PLAYER',
+            })
+        } else {
+            this.props.dispatch({
+                type: 'DECREMENT_TURN_COUNT',
+                currentPlayer: this.props.currentPlayer
+            })
+        }
     }
 
 
     render() {
-        const CITIES = cities
         const moveToCities = this.props.adjacentCities.map( city => 
             <li key={city}><a key={city} style={{color: 'white'}} href='#' onClick={this.handleAdjacentCityClick.bind(this)}>{city}</a></li>
         )
@@ -85,16 +127,16 @@ class MovesList extends Component {
             <li key={card.name}><a key={card.name} style={{color: 'white'}} href='#' onClick={this.handleFlyToCityClick.bind(this)}>{card.name}</a></li>  
         )
 
-        const cubeCount = CITIES.find( city => city.name === this.props.currentPlayer.currentCity ).cubes
+        const cubeCount = this.props.currentCity.cubes
         const blackCubeLink = cubeCount.black > 0 ? <li key={'black'}><a key={'black'} id={'black'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Black: Remove 1 of {cubeCount.black}</a></li> : null
         const blueCubeLink = cubeCount.blue > 0 ? <li key={'blue'}><a key={'blue'} id={'blue'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Blue: Remove 1 of {cubeCount.blue}</a></li> : null
         const redCubeLink = cubeCount.red > 0 ? <li key={'red'}><a key={'red'} id={'red'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Red: Remove 1 of {cubeCount.red}</a></li> : null
         const yellowCubeLink = cubeCount.yellow > 0 ? <li key={'yellow'}><a key={'yellow'} id={'yellow'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Yellow: Remove 1 of {cubeCount.yellow}</a></li> : null
         
-        const researchStation = cities.find( city => city.name === this.props.currentPlayer.currentCity ).researchStation
-        const otherResearchStations = cities.find( city => city.researchStation === true )
-        debugger
-        var researchStationLinks = null
+        const isResearchStation = cities.find( city => city.name === this.props.currentPlayer.currentCity ).researchStation
+        const researchStationLinks = this.props.researchStationCities.filter( city => city.name !== this.props.currentPlayer.currentCity ).map( city => 
+            <li key={city.name}><a key={city.name} style={{color: 'white'}} href='#' onClick={this.handleOtherStationsClick.bind(this)}>{city.name}</a></li>
+        ) 
         
 
         return (
@@ -113,9 +155,10 @@ class MovesList extends Component {
                 { redCubeLink && redCubeLink ? <ul>{redCubeLink}</ul> : null }
                 { yellowCubeLink && yellowCubeLink ? <ul>{yellowCubeLink}</ul> : null }
                 
-                {researchStation && 
+                {isResearchStation && 
                     <div>
                         <h5>Fly to another research station:</h5>
+                        <ul>{researchStationLinks}</ul>
                     </div>
                 }
             </div>
@@ -128,7 +171,8 @@ function mapStateToProps(state) {
         adjacentCities: state.adjacentCitiesReducer,
         currentPlayer: state.currentPlayerReducer,
         hand: state.currentHandReducer.filter( card => card.type === 'city'),
-        researchStationCities: state.researchStationCitiesReducer
+        researchStationCities: state.researchStationCitiesReducer,
+        currentCity: state.citiesReducer.find( city => city.name === state.currentPlayerReducer.currentCity)
     }
 }
 
