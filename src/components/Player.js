@@ -7,6 +7,11 @@ class Player extends Component{
         this.props.dispatch({
             type: 'NEXT_PLAYER'
         })
+
+        this.props.dispatch({
+            type: 'RESET_TURN_COUNT',
+            currentPlayer: this.props.player
+        })
     }
 
     render() {
