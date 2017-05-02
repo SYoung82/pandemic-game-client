@@ -92,7 +92,11 @@ class MovesList extends Component {
         const yellowCubeLink = cubeCount.yellow > 0 ? <li key={'yellow'}><a key={'yellow'} id={'yellow'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Yellow: Remove 1 of {cubeCount.yellow}</a></li> : null
         
         const researchStation = cities.find( city => city.name === this.props.currentPlayer.currentCity ).researchStation
+        const otherResearchStations = cities.find( city => city.researchStation === true )
+        debugger
+        var researchStationLinks = null
         
+
         return (
             <div>
                 <h2>Current City: {this.props.currentPlayer.currentCity}</h2>
@@ -101,14 +105,18 @@ class MovesList extends Component {
                     <ul>{moveToCities}</ul>
                 <h5>Fly to: (Costs that city card)</h5>
                     <ul>{flyToCities}</ul>
-                <h5>Cure disease cubes:</h5>
-                    {blackCubeLink ? <ul>{blackCubeLink}</ul> : null}
-                    {blueCubeLink ? <ul>{blueCubeLink}</ul> : null}
-                    {redCubeLink ? <ul>{redCubeLink}</ul> : null}
-                    {yellowCubeLink ? <ul>{yellowCubeLink}</ul> : null}
-                    {!blackCubeLink && !blueCubeLink && !redCubeLink && !yellowCubeLink ? <ul>No curable disease cubes</ul> : null}
+                {(blackCubeLink || blueCubeLink || redCubeLink || yellowCubeLink) &&    
+                    <h5>Cure disease cubes:</h5>
+                }
+                { blackCubeLink && blackCubeLink ? <ul>{blackCubeLink}</ul> : null }
+                { blueCubeLink && blueCubeLink ? <ul>{blueCubeLink}</ul> : null }
+                { redCubeLink && redCubeLink ? <ul>{redCubeLink}</ul> : null }
+                { yellowCubeLink && yellowCubeLink ? <ul>{yellowCubeLink}</ul> : null }
+                
                 {researchStation && 
-                    <h5>researchStation here!</h5>
+                    <div>
+                        <h5>Fly to another research station:</h5>
+                    </div>
                 }
             </div>
         )
@@ -119,7 +127,8 @@ function mapStateToProps(state) {
     return {
         adjacentCities: state.adjacentCitiesReducer,
         currentPlayer: state.currentPlayerReducer,
-        hand: state.currentHandReducer.filter( card => card.type === 'city')
+        hand: state.currentHandReducer.filter( card => card.type === 'city'),
+        researchStationCities: state.researchStationCitiesReducer
     }
 }
 
