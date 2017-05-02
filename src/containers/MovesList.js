@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkTurnOver } from '../Game/Logic'
+import { cities } from '../constants/Cities'
 
 class MovesList extends Component {
     handleAdjacentCityClick(e) {
@@ -63,7 +64,17 @@ class MovesList extends Component {
         }
     }
 
+    handleCureCubeClick(e) {
+        e.preventDefault()
+        debugger
+        this.props.dispatch({
+            type: 'REMOVE_CUBE'
+        })
+    }
+
+
     render() {
+        const CITIES = cities
         const moveToCities = this.props.adjacentCities.map( city => 
             <li key={city}><a key={city} style={{color: 'white'}} href='#' onClick={this.handleAdjacentCityClick.bind(this)}>{city}</a></li>
         )
@@ -71,7 +82,13 @@ class MovesList extends Component {
         const flyToCities = this.props.hand.map( card => 
             <li key={card.name}><a key={card.name} style={{color: 'white'}} href='#' onClick={this.handleFlyToCityClick.bind(this)}>{card.name}</a></li>  
         )
-        
+
+        const cubeCount = CITIES.find( city => city.name === this.props.currentPlayer.currentCity ).cubes
+        const blackCubeLink = cubeCount.black > 0 ? <li key={'black'}><a key={'black'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Black: Remove 1 of {cubeCount.black}</a></li> : null
+        const blueCubeLink = cubeCount.blue > 0 ? <li key={'blue'}><a key={'blue'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Blue: Remove 1 of {cubeCount.blue}</a></li> : null
+        const redCubeLink = cubeCount.red > 0 ? <li key={'red'}><a key={'red'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Red: Remove 1 of {cubeCount.red}</a></li> : null
+        const yellowCubeLink = cubeCount.yellow > 0 ? <li key={'yellow'}><a key={'yellow'} style={{color: 'yellow'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Yellow: Remove 1 of {cubeCount.yellow}</a></li> : null
+
         return (
             <div>
                 <h2>Current City: {this.props.currentPlayer.currentCity}</h2>
@@ -81,6 +98,12 @@ class MovesList extends Component {
                     <ul>{moveToCities}</ul>
                 <h5>Fly to: (Costs that city card)</h5>
                     <ul>{flyToCities}</ul>
+                <h5>Cure disease cubes:</h5>
+                    {blackCubeLink ? <ul>{blackCubeLink}</ul> : null}
+                    {blueCubeLink ? <ul>{blueCubeLink}</ul> : null}
+                    {redCubeLink ? <ul>{redCubeLink}</ul> : null}
+                    {yellowCubeLink ? <ul>{yellowCubeLink}</ul> : null}
+                    {!blackCubeLink && !blueCubeLink && !redCubeLink && !yellowCubeLink ? <ul>No curable disease cubes</ul> : null}
             </div>
         )
     }
