@@ -5,7 +5,6 @@ import { checkTurnOver } from '../Game/Logic'
 class MovesList extends Component {
     handleAdjacentCityClick(e) {
         e.preventDefault();
-        console.log('City ' + e.target.innerText + ' clicked in AdjacentCities list' );
 
         this.props.dispatch({
             type: 'MOVE_PLAYER',
@@ -33,7 +32,6 @@ class MovesList extends Component {
 
     handleFlyToCityClick(e) {
         e.preventDefault();
-        console.log('City ' + e.target.innderText + ' clicked in FlyTo list' )
 
         this.props.dispatch({
             type: 'MOVE_PLAYER',

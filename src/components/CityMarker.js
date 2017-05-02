@@ -46,7 +46,6 @@ class CityMarker extends Component{
     }
 
     render(){
-        console.log(this.props.city.cubes.black)
         return(
             <div>
                 <Marker position={[this.props.city.lat, this.props.city.lng]} 

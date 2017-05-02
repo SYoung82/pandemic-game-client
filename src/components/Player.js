@@ -3,9 +3,7 @@ import Hand from '../components/Hand';
 import { connect } from 'react-redux';
 
 class Player extends Component{
-    onEndTurnClick(e) {
-        console.log('End Turn Clicked');
-        
+    onEndTurnClick(e) {        
         this.props.dispatch({
             type: 'NEXT_PLAYER'
         })
