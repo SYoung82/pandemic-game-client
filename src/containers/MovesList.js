@@ -66,9 +66,11 @@ class MovesList extends Component {
 
     handleCureCubeClick(e) {
         e.preventDefault()
-        debugger
+
         this.props.dispatch({
-            type: 'REMOVE_CUBE'
+            type: 'REMOVE_CUBE',
+            currentCity: this.props.currentPlayer.currentCity,
+            color: e.target.id
         })
     }
 
@@ -84,17 +86,18 @@ class MovesList extends Component {
         )
 
         const cubeCount = CITIES.find( city => city.name === this.props.currentPlayer.currentCity ).cubes
-        const blackCubeLink = cubeCount.black > 0 ? <li key={'black'}><a key={'black'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Black: Remove 1 of {cubeCount.black}</a></li> : null
-        const blueCubeLink = cubeCount.blue > 0 ? <li key={'blue'}><a key={'blue'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Blue: Remove 1 of {cubeCount.blue}</a></li> : null
-        const redCubeLink = cubeCount.red > 0 ? <li key={'red'}><a key={'red'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Red: Remove 1 of {cubeCount.red}</a></li> : null
-        const yellowCubeLink = cubeCount.yellow > 0 ? <li key={'yellow'}><a key={'yellow'} style={{color: 'yellow'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Yellow: Remove 1 of {cubeCount.yellow}</a></li> : null
-
+        const blackCubeLink = cubeCount.black > 0 ? <li key={'black'}><a key={'black'} id={'black'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Black: Remove 1 of {cubeCount.black}</a></li> : null
+        const blueCubeLink = cubeCount.blue > 0 ? <li key={'blue'}><a key={'blue'} id={'blue'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Blue: Remove 1 of {cubeCount.blue}</a></li> : null
+        const redCubeLink = cubeCount.red > 0 ? <li key={'red'}><a key={'red'} id={'red'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Red: Remove 1 of {cubeCount.red}</a></li> : null
+        const yellowCubeLink = cubeCount.yellow > 0 ? <li key={'yellow'}><a key={'yellow'} id={'yellow'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Yellow: Remove 1 of {cubeCount.yellow}</a></li> : null
+        
+        const researchStation = cities.find( city => city.name === this.props.currentPlayer.currentCity ).researchStation
+        
         return (
             <div>
                 <h2>Current City: {this.props.currentPlayer.currentCity}</h2>
                 <h3>Moves Left: {this.props.currentPlayer.movesLeft}</h3>
-                <h4>Adjacent Cities:</h4>
-                <h5>Move to: </h5>
+                <h5>Move to adjacent city: </h5>
                     <ul>{moveToCities}</ul>
                 <h5>Fly to: (Costs that city card)</h5>
                     <ul>{flyToCities}</ul>
@@ -104,6 +107,9 @@ class MovesList extends Component {
                     {redCubeLink ? <ul>{redCubeLink}</ul> : null}
                     {yellowCubeLink ? <ul>{yellowCubeLink}</ul> : null}
                     {!blackCubeLink && !blueCubeLink && !redCubeLink && !yellowCubeLink ? <ul>No curable disease cubes</ul> : null}
+                {researchStation && 
+                    <h5>researchStation here!</h5>
+                }
             </div>
         )
     }

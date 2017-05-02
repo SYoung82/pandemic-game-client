@@ -1,5 +1,6 @@
 
 import { cities } from '../constants/Cities'
+import update from 'react-addons-update';
 
 export function citiesReducer( state = cities, action){
 
@@ -26,6 +27,20 @@ export function citiesReducer( state = cities, action){
                 }
             })
             return newState
+
+        case 'REMOVE_CUBE':
+            console.log('Removing cube ', action.color)
+            debugger
+            newState = state
+            return newState.map( (city, index) => {
+                if(city.name !== action.currentCity) {
+                    return city
+                }
+                return update(city, {
+                        cubes: {[action.color]: {$set: city.cubes[action.color]- 1}}
+                    })
+                }
+            )
 
         default:
             return state
