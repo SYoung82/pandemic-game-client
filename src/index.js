@@ -8,9 +8,11 @@ import { citiesReducer } from './reducers/CitiesReducer'
 import { currentHandReducer } from './reducers/CurrentHandReducer'
 import { currentPlayerReducer} from './reducers/CurrentPlayerReducer'
 import { adjacentCitiesReducer } from './reducers/AdjacentCitiesReducer'
+import { infectionDeckReducer } from './reducers/InfectionDeckReducer'
 import { Provider } from 'react-redux'
 
 const rootReducer = combineReducers({
+  infectionDeckReducer,
   playersReducer,
   citiesReducer,
   currentPlayerReducer,
