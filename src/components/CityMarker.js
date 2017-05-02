@@ -72,10 +72,4 @@ class CityMarker extends Component{
     }
 }
 
-function mapStateToProps(state, wrapperProps) {
-    return {
-        city: state.citiesReducer.find(city => city.name === wrapperProps.city.name)
-    }
-}
-
-export default connect(mapStateToProps)(CityMarker)
+export default connect()(CityMarker)
