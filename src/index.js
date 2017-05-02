@@ -10,6 +10,7 @@ import { currentPlayerReducer} from './reducers/CurrentPlayerReducer'
 import { adjacentCitiesReducer } from './reducers/AdjacentCitiesReducer'
 import { infectionDeckReducer } from './reducers/InfectionDeckReducer'
 import { playerDeckReducer } from './reducers/PlayerDeckReducer'
+import { researchStationCitiesReducer } from './reducers/ResearchStationCitiesReducer.js'
 import { Provider } from 'react-redux'
 
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   currentHandReducer,
   adjacentCitiesReducer,
   playerDeckReducer,
+  researchStationCitiesReducer
 })
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
