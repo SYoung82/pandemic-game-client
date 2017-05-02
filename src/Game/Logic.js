@@ -1,4 +1,5 @@
 import { players } from '../constants/Players'
+import { cities } from '../constants/Cities'
 
 export function prepInfectionDeck(cards) {
     var currentIndex = cards.length, temporaryValue, randomIndex
@@ -11,6 +12,7 @@ export function prepInfectionDeck(cards) {
             cards[randomIndex] = temporaryValue
         }
         cards.prepped = true
+        dealInfectionCards(cards)
         return cards
     }
     return cards
@@ -82,6 +84,15 @@ function dealPlayerCards(deck) {
     for(let i=0; i<numCardsPerPlayer; i++) {
         for(let j=0; j<numPlayers; j++) {
             players[j].hand.push(deck.shift())
+        }
+    }
+}
+
+function dealInfectionCards(deck) {
+    for(let cubeCount=3; cubeCount>0; cubeCount--) {
+        for(let city=0; city<3; city++) {
+            let card = deck.shift()
+            cities.find( (city) => city.name === card.name ).cubes[card.color] = cubeCount
         }
     }
 }
