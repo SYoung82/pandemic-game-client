@@ -46,5 +46,5 @@ export const cities = [
     {name: 'Tokyo', color: 'red', lat: 35.6895, lng: 139.6917, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Osaka', 'Shanghai', 'Seoul', 'San Francisco']},
     {name: 'Seoul', color: 'red', lat: 37.5665, lng: 126.9780, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Beijing', 'Tokyo', 'Shanghai']},
     {name: 'Beijing', color: 'red', lat: 39.9042, lng: 116.4074, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Shanghai', 'Seoul']},
-    {name: 'Shanghai', color: 'red', lat: 31.2304, lng: 121.4737, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Beijing', 'Seoul', 'Tokyo', 'Taipei', 'Hong Kong']},
+    {name: 'Shanghai', color: 'red', lat: 31.2304, lng: 121.4737, researchStation: true, cubes:{black: 0, blue: 0, red: 0, yellow: 0}, adjacentCities: ['Beijing', 'Seoul', 'Tokyo', 'Taipei', 'Hong Kong']},
 ]
