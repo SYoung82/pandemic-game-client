@@ -30,7 +30,6 @@ export function citiesReducer( state = cities, action){
 
         case 'REMOVE_CUBE':
             console.log('Removing cube ', action.color)
-            debugger
             newState = state
             return newState.map( (city, index) => {
                 if(city.name !== action.currentCity) {
