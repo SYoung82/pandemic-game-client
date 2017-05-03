@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkTurnOver } from '../Game/Logic'
-import { cities } from '../constants/Cities'
 
 class MovesList extends Component {
     handleAdjacentCityClick(e) {
@@ -92,7 +91,7 @@ class MovesList extends Component {
 
     handleOtherStationsClick(e) {
         e.preventDefault()
-        debugger
+
         this.props.dispatch({
             type: 'MOVE_PLAYER',
             city: e.target.innerText,
@@ -133,29 +132,27 @@ class MovesList extends Component {
         const redCubeLink = cubeCount.red > 0 ? <li key={'red'}><a key={'red'} id={'red'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Red: Remove 1 of {cubeCount.red}</a></li> : null
         const yellowCubeLink = cubeCount.yellow > 0 ? <li key={'yellow'}><a key={'yellow'} id={'yellow'} style={{color: 'white'}} href='#' onClick={this.handleCureCubeClick.bind(this)}>Yellow: Remove 1 of {cubeCount.yellow}</a></li> : null
         
-        const isResearchStation = cities.find( city => city.name === this.props.currentPlayer.currentCity ).researchStation
         const researchStationLinks = this.props.researchStationCities.filter( city => city.name !== this.props.currentPlayer.currentCity ).map( city => 
             <li key={city.name}><a key={city.name} style={{color: 'white'}} href='#' onClick={this.handleOtherStationsClick.bind(this)}>{city.name}</a></li>
         ) 
-        
 
         return (
             <div>
                 <h2>Current City: {this.props.currentPlayer.currentCity}</h2>
+                {this.props.currentCity.researchStation ? <h4>{"Research Station: ✓"}</h4> : null}
                 <h3>Moves Left: {this.props.currentPlayer.movesLeft}</h3>
+                {(blackCubeLink || blueCubeLink || redCubeLink || yellowCubeLink) &&    
+                    <h5>Cure disease cubes:</h5>
+                }
+                    { blackCubeLink && blackCubeLink ? <ul>{blackCubeLink}</ul> : null }
+                    { blueCubeLink && blueCubeLink ? <ul>{blueCubeLink}</ul> : null }
+                    { redCubeLink && redCubeLink ? <ul>{redCubeLink}</ul> : null }
+                    { yellowCubeLink && yellowCubeLink ? <ul>{yellowCubeLink}</ul> : null }
                 <h5>Move to adjacent city: </h5>
                     <ul>{moveToCities}</ul>
                 <h5>Fly to: (Costs that city card)</h5>
                     <ul>{flyToCities}</ul>
-                {(blackCubeLink || blueCubeLink || redCubeLink || yellowCubeLink) &&    
-                    <h5>Cure disease cubes:</h5>
-                }
-                { blackCubeLink && blackCubeLink ? <ul>{blackCubeLink}</ul> : null }
-                { blueCubeLink && blueCubeLink ? <ul>{blueCubeLink}</ul> : null }
-                { redCubeLink && redCubeLink ? <ul>{redCubeLink}</ul> : null }
-                { yellowCubeLink && yellowCubeLink ? <ul>{yellowCubeLink}</ul> : null }
-                
-                {isResearchStation && 
+                {(researchStationLinks.length > 0 && this.props.currentCity.researchStation) && 
                     <div>
                         <h5>Fly to another research station:</h5>
                         <ul>{researchStationLinks}</ul>
