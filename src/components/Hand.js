@@ -32,7 +32,7 @@ class Hand extends Component{
 
 function mapStateToProps(state) {
     return {
-        hand: state.currentHandReducer
+        hand: state.playersReducer.find(p => p.currentPlayer === true).hand
     }
 }
 
