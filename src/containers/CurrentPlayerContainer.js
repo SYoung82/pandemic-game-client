@@ -19,7 +19,7 @@ class CurrentPlayerContainer extends Component{
 
 function mapStateToProps(state) {
     return {
-        player: state.currentPlayerReducer
+        player: state.playersReducer.find(player => player.currentPlayer === true)
     }
 }
 

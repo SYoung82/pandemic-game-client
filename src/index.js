@@ -6,7 +6,6 @@ import { createStore, combineReducers } from 'redux'
 import { playersReducer } from './reducers/PlayersReducer'
 import { citiesReducer } from './reducers/CitiesReducer'
 import { currentHandReducer } from './reducers/CurrentHandReducer'
-import { currentPlayerReducer} from './reducers/CurrentPlayerReducer'
 import { adjacentCitiesReducer } from './reducers/AdjacentCitiesReducer'
 import { infectionDeckReducer } from './reducers/InfectionDeckReducer'
 import { playerDeckReducer } from './reducers/PlayerDeckReducer'
@@ -17,7 +16,6 @@ const rootReducer = combineReducers({
   infectionDeckReducer,
   playersReducer,
   citiesReducer,
-  currentPlayerReducer,
   currentHandReducer,
   adjacentCitiesReducer,
   playerDeckReducer,

@@ -23,10 +23,10 @@ class MovesList extends Component {
 
 function mapStateToProps(state) {
     return {
-        adjacentCities: state.citiesReducer.find( city => city.name === state.currentPlayerReducer.currentCity).adjacentCities,
-        currentPlayer: state.currentPlayerReducer,
+        adjacentCities: state.citiesReducer.find( city => city.name === state.playersReducer.find( player => player.currentPlayer === true).currentCity).adjacentCities,
+        currentPlayer: state.playersReducer.find( player => player.currentPlayer === true),
         researchStationCities: state.researchStationCitiesReducer,
-        currentCity: state.citiesReducer.find( city => city.name === state.currentPlayerReducer.currentCity),
+        currentCity: state.citiesReducer.find( city => city.name === state.playersReducer.find(player => player.currentPlayer === true).currentCity),
         playerDeck: state.playerDeckReducer
     }
 }
