@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { checkTurnOver } from '../Game/Logic'
 import { connect } from 'react-redux'
 
-class CureCubeLink extends Component {
+class CureCubeLinks extends Component {
     handleCureCubeClick(e) {
         e.preventDefault()
 
@@ -49,4 +49,4 @@ class CureCubeLink extends Component {
     }
 }
 
-export default connect()(CureCubeLink)
+export default connect()(CureCubeLinks)
