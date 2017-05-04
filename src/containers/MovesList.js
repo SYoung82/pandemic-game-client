@@ -1,36 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkTurnOver } from '../Game/Logic'
-import CureCubeLink from '../components/CureCubeLinks'
+import CureCubeLinks from '../components/CureCubeLinks'
+import AdjacentCityLinks from '../components/AdjacentCityLinks'
 
 class MovesList extends Component {
-    handleAdjacentCityClick(e) {
-        e.preventDefault();
-
-        this.props.dispatch({
-            type: 'MOVE_PLAYER',
-            city: e.target.innerText,
-            currentPlayer: this.props.currentPlayer,
-            currentCity: this.props.currentPlayer.currentCity
-        })
-
-        if(checkTurnOver(this.props.currentPlayer)){
-            this.props.dispatch({
-                type: 'RESET_TURN_COUNT',
-                currentPlayer: this.props.currentPlayer
-            })
-
-            this.props.dispatch({
-                type: 'NEXT_PLAYER',
-            })
-        } else {
-            this.props.dispatch({
-                type: 'DECREMENT_TURN_COUNT',
-                currentPlayer: this.props.currentPlayer
-            })
-        }
-    }
-
     handleFlyToCityClick(e) {
         e.preventDefault();
 
@@ -93,10 +67,6 @@ class MovesList extends Component {
 
 
     render() {
-        const moveToCities = this.props.adjacentCities.map( city => 
-            <li key={city}><a key={city} style={{color: 'white'}} href='#' onClick={this.handleAdjacentCityClick.bind(this)}>{city}</a></li>
-        )
-
         const flyToCities = this.props.hand.map( card => 
             <li key={card.name}><a key={card.name} style={{color: 'white'}} href='#' onClick={this.handleFlyToCityClick.bind(this)}>{card.name}</a></li>  
         )
@@ -111,9 +81,8 @@ class MovesList extends Component {
                 <h2>Current City: {this.props.currentPlayer.currentCity}</h2>
                 {this.props.currentCity.researchStation ? <h4>{"Research Station: ✓"}</h4> : null}
                 <h3>Moves Left: {this.props.currentPlayer.movesLeft}</h3>
-                <CureCubeLink cubes={this.props.currentCity.cubes} currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} />
-                <h5>Move to adjacent city: </h5>
-                    <ul>{moveToCities}</ul>
+                <CureCubeLinks cubes={this.props.currentCity.cubes} currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} />
+                <AdjacentCityLinks adjacentCities={this.props.adjacentCities} currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} />
                 <h5>Fly to: (Costs that city card)</h5>
                     <ul>{flyToCities}</ul>
                 {(researchStationLinks.length > 0 && this.props.currentCity.researchStation) && 
