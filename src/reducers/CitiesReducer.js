@@ -40,8 +40,18 @@ export function citiesReducer( state = cities, action){
                             cubes: {[action.color]: {$set: city.cubes[action.color]- 1}}
                         })
                     }
-            }
-            )
+            })
+
+        case 'BUILD_RESEARCH_STATION':
+            return state.map( city => {
+                if( city !== action.city ) {
+                    return city
+                } else {
+                    return update(city, {
+                        researchStation: {$set: true}
+                    })
+                }
+            })
 
         default:
             return state
