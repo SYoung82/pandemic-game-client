@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Marker, CircleMarker } from 'react-leaflet';
-import { divIcon } from 'leaflet'
+import { divIcon, Icon } from 'leaflet'
 import { Popup } from 'react-leaflet';
 import update from 'react-addons-update';
 import { connect } from 'react-redux';
@@ -53,12 +53,21 @@ class CityMarker extends Component{
                 playersPresent.push(player.role)
             }
         })
+        
+        var icon
+        if(this.props.city.researchStation){
+            icon = new Icon({iconUrl: 'https://images.vexels.com/media/users/3/140527/isolated/preview/449b95d58f554656b159dd3ca21ab123-home-round-icon-by-vexels.png',
+                             iconSize: [20,20]   
+                        })  
+        } else {
+            icon = new divIcon({className: `${this.props.city.color}`})
+        }
 
         return(
             <div>
                 <Marker position={[this.props.city.lat, this.props.city.lng]} 
                         key={this.props.city.name} 
-                        icon={divIcon({className: `${this.props.city.color}`})}
+                        icon={icon}
                         dragging={false}
                         onClick={this.handleClick.bind(this)}>
                     <Popup className={this.props.city.color}>
