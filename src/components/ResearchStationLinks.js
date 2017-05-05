@@ -21,6 +21,7 @@ class ResearchStationLinks extends Component {
 
             this.props.dispatch({
                 type: 'NEXT_PLAYER',
+                currentPlayer: this.props.currentPlayer
             })
         } else {
             this.props.dispatch({
