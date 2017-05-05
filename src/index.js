@@ -11,7 +11,9 @@ import { playerDeckReducer } from './reducers/PlayerDeckReducer'
 import { researchStationCitiesReducer } from './reducers/ResearchStationCitiesReducer.js'
 import { Provider } from 'react-redux'
 import { loadState, saveState } from './localStorage'
-const persistedState = loadState();
+import throttle from 'lodash/throttle'
+
+
 
 const rootReducer = combineReducers({
   infectionDeckReducer,
@@ -22,10 +24,13 @@ const rootReducer = combineReducers({
   researchStationCitiesReducer
 })
 
+const persistedState = loadState();
 const store = createStore(rootReducer, persistedState ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-store.subscribe(() => {
+store.subscribe(throttle(() => {
   saveState(store.getState());
-})
+}, 3000))
+
+
 
 console.log(store.getState())
 const render = () => {
