@@ -72,7 +72,8 @@ class Board extends Component{
 function mapStateToProps(state) {
     return {
         cities: state.citiesReducer,
-        players: state.playersReducer
+        players: state.playersReducer,
+        adjacentCities: state.adjacentCitiesReducer
     }
 }
 
