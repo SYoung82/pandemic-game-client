@@ -23,7 +23,7 @@ class Hand extends Component{
         return(
             <ul style={ulStyle} className={'card'}>
                 {currentHand.map( (card, index) => {
-                    return <li style={liStyle} key={card.name}><Card card={card} /></li> 
+                    return <li style={liStyle} key={index}><Card card={card} /></li> 
                 })}
             </ul>
         )
