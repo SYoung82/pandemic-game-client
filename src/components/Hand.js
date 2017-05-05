@@ -30,10 +30,4 @@ class Hand extends Component{
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        hand: state.playersReducer.find(p => p.currentPlayer === true).hand
-    }
-}
-
-export default connect(mapStateToProps)(Hand)
+export default connect()(Hand)
