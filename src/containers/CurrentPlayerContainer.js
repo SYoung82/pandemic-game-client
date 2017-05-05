@@ -9,9 +9,10 @@ class CurrentPlayerContainer extends Component{
             padding: '0',
             backgroundColor: 'black' 
         }
+        
         return (
             <div style={style}>
-                <Player player={this.props.player} />
+                <Player player={this.props.player} playerDeck={this.props.playerDeck} hand={this.props.player.hand} />
             </div>
         );
     }
@@ -19,7 +20,8 @@ class CurrentPlayerContainer extends Component{
 
 function mapStateToProps(state) {
     return {
-        player: state.playersReducer.find(player => player.currentPlayer === true)
+        player: state.playersReducer.find(player => player.currentPlayer === true),
+        playerDeck: state.playerDeckReducer
     }
 }
 
