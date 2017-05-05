@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { checkTurnOver } from '../Game/Logic'
 
 class BuildResearchStationLink extends Component {
     handleBuildResearchStationLinkClick(e) {
         e.preventDefault()
-        
+        var player = this.props.currentPlayer
+
         this.props.dispatch({
             type: 'BUILD_RESEARCH_STATION',
             city: this.props.currentCity,
@@ -16,6 +18,29 @@ class BuildResearchStationLink extends Component {
             currentPlayer: this.props.currentPlayer,
             card: e.target.innerText
         })
+
+        if(checkTurnOver(this.props.currentPlayer)){
+            this.props.dispatch({
+                type: 'RESET_TURN_COUNT',
+                currentPlayer: this.props.currentPlayer
+            })
+
+            this.props.dispatch({
+                type: 'NEXT_PLAYER',
+                currentPlayer: this.props.currentPlayer
+            })
+
+            this.props.dispatch({
+                type: 'DRAW_PLAYER_CARDS',
+                currentPlayer: player,
+                cards: this.props.playerDeck.slice(0,2)
+            })
+        } else {
+            this.props.dispatch({
+                type: 'DECREMENT_TURN_COUNT',
+                currentPlayer: this.props.currentPlayer
+            })
+        }
     }
 
     render() {

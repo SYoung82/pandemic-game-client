@@ -6,6 +6,7 @@ class ResearchStationLinks extends Component {
     handleOtherStationsClick(e) {
         e.preventDefault()
         var player = this.props.currentPlayer
+        
         this.props.dispatch({
             type: 'MOVE_PLAYER',
             city: e.target.innerText,
