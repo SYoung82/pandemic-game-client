@@ -76,7 +76,6 @@ class CityMarker extends Component{
                             Red Cubes: {this.props.city.cubes.red}<br />
                             Blue Cubes: {this.props.city.cubes.blue}<br />
                             Yellow Cubes: {this.props.city.cubes.yellow}<br />
-                            Players: {playersPresent ? playersPresent.join(", ") : 'None'}
                         </span>
                     </Popup>
                 </Marker>
