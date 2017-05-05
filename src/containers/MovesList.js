@@ -12,10 +12,10 @@ class MovesList extends Component {
                 <h2>Current City: {this.props.currentPlayer.currentCity}</h2>
                 {this.props.currentCity.researchStation ? <h4>{"Research Station: ✓"}</h4> : null}
                 <h3>Moves Left: {this.props.currentPlayer.movesLeft}</h3>
-                <CureCubeLinks cubes={this.props.currentCity.cubes} currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} />
+                <CureCubeLinks cubes={this.props.currentCity.cubes} currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
                 <AdjacentCityLinks adjacentCities={this.props.adjacentCities} currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
-                <FlyToCityLinks currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} />
-                <ResearchStationLinks researchStationCities={this.props.researchStationCities} currentPlayer={this.props.currentPlayer} currentCity={this.props.currentCity} />
+                <FlyToCityLinks currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
+                <ResearchStationLinks researchStationCities={this.props.researchStationCities} currentPlayer={this.props.currentPlayer} currentCity={this.props.currentCity} playerDeck={this.props.playerDeck} />
             </div>
         )
     }
@@ -23,7 +23,8 @@ class MovesList extends Component {
 
 function mapStateToProps(state) {
     return {
-        adjacentCities: state.citiesReducer.find( city => city.name === state.playersReducer.find( player => player.currentPlayer === true).currentCity).adjacentCities,
+        //adjacentCites: state.citiesReducer.find( city => city.name === state.playersReducer.find( player => player.currentPlayer === true).currentCity).adjacentCities,
+        adjacentCities: state.adjacentCitiesReducer,
         currentPlayer: state.playersReducer.find( player => player.currentPlayer === true),
         researchStationCities: state.researchStationCitiesReducer,
         currentCity: state.citiesReducer.find( city => city.name === state.playersReducer.find(player => player.currentPlayer === true).currentCity),
