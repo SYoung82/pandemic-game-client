@@ -9,7 +9,6 @@ export function adjacentCitiesReducer(state = adjCitiesList.find( city => city.n
     switch(action.type) {
         case 'NEXT_PLAYER':
             var currentPlayer = players.find(player => player.name !== action.currentPlayer.name)
-            debugger
             return update(state, {$set: adjCitiesList.find( city => city.name === currentPlayer.currentCity).adjacentCities})
 
         case 'MOVE_PLAYER':
