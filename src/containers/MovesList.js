@@ -4,6 +4,7 @@ import CureCubeLinks from '../components/CureCubeLinks'
 import AdjacentCityLinks from '../components/AdjacentCityLinks'
 import FlyToCityLinks from '../components/FlyToCityLinks'
 import ResearchStationLinks from '../components/ResearchStationLinks'
+import BuildResearchStationLink from '../components/BuildResearchStationLink'
 
 class MovesList extends Component {
     render() {
@@ -16,6 +17,7 @@ class MovesList extends Component {
                 <AdjacentCityLinks adjacentCities={this.props.adjacentCities} currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
                 <FlyToCityLinks currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
                 <ResearchStationLinks researchStationCities={this.props.researchStationCities} currentPlayer={this.props.currentPlayer} currentCity={this.props.currentCity} playerDeck={this.props.playerDeck} />
+                <BuildResearchStationLink currentPlayer={this.props.currentPlayer} currentCity={this.props.currentCity} playerDeck={this.props.playerDeck} />
             </div>
         )
     }
