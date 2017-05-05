@@ -46,6 +46,14 @@ class CityMarker extends Component{
     }
 
     render(){
+        var playersPresent = []
+
+        this.props.players.forEach( player => {
+            if(this.props.city.name === player.currentCity) {
+                playersPresent.push(player.role)
+            }
+        })
+
         return(
             <div>
                 <Marker position={[this.props.city.lat, this.props.city.lng]} 
@@ -59,7 +67,7 @@ class CityMarker extends Component{
                             Red Cubes: {this.props.city.cubes.red}<br />
                             Blue Cubes: {this.props.city.cubes.blue}<br />
                             Yellow Cubes: {this.props.city.cubes.yellow}<br />
-                            Players: {this.props.city.players ? this.props.city.players.join(", ") : 'None'}
+                            Players: {playersPresent ? playersPresent.join(", ") : 'None'}
                         </span>
                     </Popup>
                 </Marker>

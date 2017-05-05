@@ -27,7 +27,7 @@ class Board extends Component{
                 />
                 {this.props.cities.map( (city) => {
                     return (
-                        <CityMarker city={city} key={city.name} />
+                        <CityMarker city={city} players={this.props.players} key={city.name} />
                     )
                 })}
                 {paths.map( (path, index) => {
@@ -42,7 +42,8 @@ class Board extends Component{
 
 function mapStateToProps(state) {
     return {
-        cities: state.citiesReducer
+        cities: state.citiesReducer,
+        players: state.playersReducer
     }
 }
 
