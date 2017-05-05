@@ -10,6 +10,8 @@ import { infectionDeckReducer } from './reducers/InfectionDeckReducer'
 import { playerDeckReducer } from './reducers/PlayerDeckReducer'
 import { researchStationCitiesReducer } from './reducers/ResearchStationCitiesReducer.js'
 import { Provider } from 'react-redux'
+import { loadState, saveState } from './localStorage'
+const persistedState = loadState();
 
 const rootReducer = combineReducers({
   infectionDeckReducer,
@@ -20,7 +22,11 @@ const rootReducer = combineReducers({
   researchStationCitiesReducer
 })
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(rootReducer, persistedState ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+store.subscribe(() => {
+  saveState(store.getState());
+})
+
 console.log(store.getState())
 const render = () => {
   ReactDOM.render(
