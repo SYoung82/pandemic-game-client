@@ -4,15 +4,19 @@ import { connect } from 'react-redux'
 class BuildResearchStationLink extends Component {
     handleBuildResearchStationLinkClick(e) {
         e.preventDefault()
-
+        
         console.log(e.target.innerText)
+        this.props.dispatch({
+            type: 'BUILD_RESEARCH_STATION',
+            city: this.props.currentCity,
+            currentPlayer: this.props.currentPlayer
+        })
     }
 
     render() {
         var cityLink = null
         this.props.currentPlayer.hand.forEach( card => {
             if(card.name === this.props.currentCity.name && this.props.currentCity.researchStation === false) {
-                debugger
                 cityLink = <li key={card.name}><a key={card.name} style={{color: 'white'}} href='#' onClick={this.handleBuildResearchStationLinkClick.bind(this)}>{card.name}</a></li>
             }
         })
