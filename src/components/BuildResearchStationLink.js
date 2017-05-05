@@ -5,7 +5,6 @@ class BuildResearchStationLink extends Component {
     handleBuildResearchStationLinkClick(e) {
         e.preventDefault()
         
-        console.log(e.target.innerText)
         this.props.dispatch({
             type: 'BUILD_RESEARCH_STATION',
             city: this.props.currentCity,
