@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 class ResearchStationLinks extends Component {
     handleOtherStationsClick(e) {
         e.preventDefault()
-
+        var player = this.props.currentPlayer
         this.props.dispatch({
             type: 'MOVE_PLAYER',
             city: e.target.innerText,
@@ -22,6 +22,12 @@ class ResearchStationLinks extends Component {
             this.props.dispatch({
                 type: 'NEXT_PLAYER',
                 currentPlayer: this.props.currentPlayer
+            })
+
+            this.props.dispatch({
+                type: 'DRAW_PLAYER_CARDS',
+                currentPlayer: player,
+                cards: this.props.playerDeck.slice(0,2)
             })
         } else {
             this.props.dispatch({
