@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 class FlyToCityLinks extends Component {
     handleFlyToCityClick(e) {
         e.preventDefault();
-
+        var player = this.props.currentPlayer
+        
         this.props.dispatch({
             type: 'MOVE_PLAYER',
             city: e.target.innerText,
@@ -27,7 +28,15 @@ class FlyToCityLinks extends Component {
 
             this.props.dispatch({
                 type: 'NEXT_PLAYER',
+                currentPlayer: this.props.currentPlayer
             })
+
+            this.props.dispatch({
+                type: 'DRAW_PLAYER_CARDS',
+                currentPlayer: player,
+                cards: this.props.playerDeck.slice(0,2)
+            })
+
         } else {
             this.props.dispatch({
                 type: 'DECREMENT_TURN_COUNT',

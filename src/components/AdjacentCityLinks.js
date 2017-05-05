@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 class AdjacentCityLinks extends Component {
     handleAdjacentCityClick(e) {
         e.preventDefault();
+        var player = this.props.currentPlayer
 
         this.props.dispatch({
             type: 'MOVE_PLAYER',
             city: e.target.innerText,
             currentPlayer: this.props.currentPlayer,
-            currentCity: this.props.currentPlayer.currentCity
         })
 
         if(checkTurnOver(this.props.currentPlayer)){
@@ -21,6 +21,13 @@ class AdjacentCityLinks extends Component {
 
             this.props.dispatch({
                 type: 'NEXT_PLAYER',
+                currentPlayer: this.props.currentPlayer
+            })
+
+            this.props.dispatch({
+                type: 'DRAW_PLAYER_CARDS',
+                currentPlayer: player,
+                cards: this.props.playerDeck.slice(0,2)
             })
         } else {
             this.props.dispatch({

@@ -3,15 +3,23 @@ import Hand from '../components/Hand';
 import { connect } from 'react-redux';
 
 class Player extends Component{
-    onEndTurnClick(e) {        
+    onEndTurnClick(e) {
+        var player = this.props.player        
         this.props.dispatch({
-            type: 'NEXT_PLAYER'
+            type: 'NEXT_PLAYER',
+            currentPlayer: this.props.player
         })
 
         this.props.dispatch({
             type: 'RESET_TURN_COUNT',
             currentPlayer: this.props.player
         })
+
+        this.props.dispatch({
+                type: 'DRAW_PLAYER_CARDS',
+                currentPlayer: player,
+                cards: this.props.playerDeck.slice(0,2)
+            })
     }
 
     render() {

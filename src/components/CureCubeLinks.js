@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 class CureCubeLinks extends Component {
     handleCureCubeClick(e) {
         e.preventDefault()
-
+        var player = this.props.currentPlayer
+        
         this.props.dispatch({
             type: 'REMOVE_CUBE',
             currentCity: this.props.currentCity,
@@ -20,6 +21,13 @@ class CureCubeLinks extends Component {
 
             this.props.dispatch({
                 type: 'NEXT_PLAYER',
+                currentPlayer: this.props.currentPlayer
+            })
+
+            this.props.dispatch({
+                type: 'DRAW_PLAYER_CARDS',
+                currentPlayer: player,
+                cards: this.props.playerDeck.slice(0,2)
             })
         } else {
             this.props.dispatch({
