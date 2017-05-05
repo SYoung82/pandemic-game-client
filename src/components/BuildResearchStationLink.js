@@ -11,6 +11,12 @@ class BuildResearchStationLink extends Component {
             city: this.props.currentCity,
             currentPlayer: this.props.currentPlayer
         })
+
+        this.props.dispatch({
+            type: 'DISCARD',
+            currentPlayer: this.props.currentPlayer,
+            card: e.target.innerText
+        })
     }
 
     render() {
