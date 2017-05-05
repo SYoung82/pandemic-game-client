@@ -1,4 +1,5 @@
 import { players } from '../constants/Players'
+import update from 'react-addons-update';
 
 export function playersReducer(state=players, action){
     switch(action.type){
@@ -7,7 +8,7 @@ export function playersReducer(state=players, action){
             var newState = state
 
             newState.map( (player,index) => {
-                if(player.currentPlayer) {
+                if(player.currentPlayer === true) {
                     player.currentCity = action.city
                     return self  
                 } else {
@@ -47,8 +48,19 @@ export function playersReducer(state=players, action){
                 if(player === action.currentPlayer) {
                     stateToReturn[index].movesLeft--
                 }
-        })
-        return stateToReturn
+            })
+            return stateToReturn
+
+         case 'DRAW_PLAYER_CARDS':
+            const index = state.findIndex( player => player === action.currentPlayer )
+            
+            return update(state, {
+                [index]: {
+                    hand: {$set: state[index].hand.concat(action.cards)}
+                }
+            })
+
+
 
         default:
             return state;
