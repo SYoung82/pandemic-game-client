@@ -15,7 +15,8 @@ class Hand extends Component{
             padding: 5,
             float: 'left',
             position: 'static',
-            width: '10%'
+            width: '100px',
+            whiteSpace: 'pre-line'
         }
         var currentHand = this.props.hand
 

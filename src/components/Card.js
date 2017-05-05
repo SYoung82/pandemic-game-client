@@ -41,7 +41,7 @@ class Card extends Component{
             <div>
                 <ul style={style} onClick={this.handleClick.bind(this)}>
                     <li><h3>{this.props.card.name}</h3></li>
-                    {pop && <li>Population: {pop}</li>}
+                    {pop && <li>Pop: {pop}</li>}
                     {this.props.card.description && <li><a style={{color: 'white'}} href='#' onClick={this.handleDescriptionClick.bind(this)}>Description</a></li>}
                 </ul>
             </div>
