@@ -18,7 +18,11 @@ class Card extends Component{
             lineHeight: '15px',
             listStyleType: 'none',
             padding: '0.2em',
-            margin: '0'    
+            margin: '0',
+            borderRadius: '15px',
+            wordWrap: 'break-word',
+            borderStyle: 'solid',
+            borderColor: 'white'    
         }
         if(style.backgroundColor === 'yellow'){
             style.backgroundColor = '#c6b900'

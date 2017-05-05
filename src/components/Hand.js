@@ -12,11 +12,10 @@ class Hand extends Component{
             width: "100%"
         }
         var liStyle = {
-            border: 'solid',
-            padding: 0,
-            width: '10%',
+            padding: 5,
             float: 'left',
-            position: 'static'
+            position: 'static',
+            width: '10%'
         }
         var currentHand = this.props.hand
 
