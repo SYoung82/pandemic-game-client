@@ -12,6 +12,8 @@ import { researchStationCitiesReducer } from './reducers/ResearchStationCitiesRe
 import { Provider } from 'react-redux'
 import { loadState, saveState } from './localStorage'
 import throttle from 'lodash/throttle'
+import { BrowserRouter, Route } from 'react-router-dom'
+import About from './containers/About'
 
 
 
@@ -36,7 +38,12 @@ console.log(store.getState())
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <div>
+          <Route exact path='/' component={App} />
+          <Route path='/about' component={About} />
+        </div>
+      </BrowserRouter>
     </Provider>,
     document.getElementById('root')
   );
