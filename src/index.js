@@ -38,7 +38,7 @@ console.log(store.getState())
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter history={history}>
         <div>
           <Route exact path='/' component={App} />
           <Route path='/about' component={About} />
