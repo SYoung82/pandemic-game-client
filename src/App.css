@@ -49,8 +49,10 @@ body {
 
 #header {
     height: 15px;
-    background: red;
+    background: black;
     top: 0;
+    text-align: center;
+    font-weight: bold;
 }
 #board {
     background: #000;
