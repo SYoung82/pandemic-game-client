@@ -1,29 +1,68 @@
-import { UPDATE_CITY, CREATE_CITY, UPDATE_PLAYER, CREATE_PLAYER } from '../actions/Actions'
-
-export function updateCity(city){
+export function resetTurnCount(player) {
     return {
-        type: UPDATE_CITY,
-        city
+        type: 'RESET_TURN_COUNT',
+        currentPlayer: player
     }
 }
 
-export function createCity(city){
+export function decrementTurnCount(player) {
     return {
-        type: CREATE_CITY,
-        city
+        type: 'DECREMENT_TURN_COUNT',
+        currentPlayer: player
     }
 }
 
-export function updatePlayer(player){
+export function nextPlayer(player) {
     return {
-        type: UPDATE_PLAYER,
-        player
+        type: 'NEXT_PLAYER',
+        currentPlayer: player
     }
 }
 
-export function createPlayer(player){
+export function removeCube(city, color) {
     return {
-        type: CREATE_PLAYER,
-        player
+        type: 'REMOVE_CUBE',
+        currentCity: city,
+        color: color
+    }
+}
+
+export function discard(player, card) {
+    return {
+        type: 'DISCARD',
+        currentPlayer: player,
+        card: card
+    }
+}
+
+export function drawPlayerCards(player, playerDeck) {
+    return {
+        type: 'DRAW_PLAYER_CARDS',
+        currentPlayer: player,
+        cards: playerDeck.slice(0,2)
+    }
+}
+
+export function movePlayer(city, player) {
+    return {
+        type: 'MOVE_PLAYER',
+        city: city,
+        currentPlayer: player
+    }
+}
+
+export function buildResearchStation(city, player) {
+    return {
+        type: 'BUILD_RESEARCH_STATION',
+        city: city,
+        currentPlayer: player
+    }
+}
+
+export function cureDisease(color, player) {
+    return {
+        type: 'CURE_DISEASE',
+        color: color,
+        currentPlayer: player
     }
 }
