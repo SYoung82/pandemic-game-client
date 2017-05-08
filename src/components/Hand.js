@@ -18,7 +18,12 @@ class Hand extends Component{
             width: '100px',
             whiteSpace: 'pre-line'
         }
-        var currentHand = this.props.hand
+        var currentHand = this.props.hand.sort( (a,b) => {
+            if(a.color === 'green' || b.color === 'green') return 1;
+            if(a.color < b.color) return -1;
+            if(a.color > b.color) return 1;
+            return 0
+        })
 
         return(
             <ul style={ulStyle} className={'card'}>
