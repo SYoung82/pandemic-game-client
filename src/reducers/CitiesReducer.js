@@ -1,6 +1,6 @@
 
 import { cities } from '../constants/Cities'
-import update from 'react-addons-update';
+import update from 'react-addons-update'
 
 export function citiesReducer( state = cities, action){
 
@@ -9,8 +9,8 @@ export function citiesReducer( state = cities, action){
         case 'UPDATE_CITY':
             var newState = state;
             state.forEach( (city, index) => {
-                if(city.name === action.city.name) {;
-                    newState[index] = action.city;
+                if(city.name === action.city.name) {
+                    newState[index] = action.city
                 }
             })
             return newState;

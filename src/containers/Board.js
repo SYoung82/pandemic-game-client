@@ -1,6 +1,6 @@
 
-import React, { Component } from 'react';
-import { Map, TileLayer, Polyline, Marker } from 'react-leaflet';
+import React, { Component } from 'react'
+import { Map, TileLayer, Polyline, Marker } from 'react-leaflet'
 import { Icon } from 'leaflet'
 import { paths } from '../constants/Paths'
 import CityMarker from '../components/CityMarker'

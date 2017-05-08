@@ -1,5 +1,5 @@
 import { players } from '../constants/Players'
-import update from 'react-addons-update';
+import update from 'react-addons-update'
 
 export function playersReducer(state=players, action){
     switch(action.type){
@@ -51,7 +51,7 @@ export function playersReducer(state=players, action){
             })
             return stateToReturn
 
-         case 'DRAW_PLAYER_CARDS':
+        case 'DRAW_PLAYER_CARDS':
             const index = state.findIndex( player => player === action.currentPlayer )
             
             return update(state, {
@@ -60,9 +60,7 @@ export function playersReducer(state=players, action){
                 }
             })
 
-
-
         default:
-            return state;
+            return state
     }
 }

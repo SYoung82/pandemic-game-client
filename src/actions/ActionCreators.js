@@ -1,3 +1,18 @@
+
+//getTurnOverActions, returns an array of the actions necessary for all components
+//to run when an end of turn is detected, you can then dispatch the actions in array order
+export function getTurnOverActions(currentPlayer, playerDeck, gamePhase) {
+    const player = currentPlayer
+    let dispatchesArray = []
+    
+    dispatchesArray.push(resetTurnCount(currentPlayer))
+    dispatchesArray.push(nextPlayer(currentPlayer))
+    dispatchesArray.push(drawPlayerCards(player, playerDeck))
+    dispatchesArray.push(setGamePhase('Draw'))
+    
+    return dispatchesArray
+}
+
 export function resetTurnCount(player) {
     return {
         type: 'RESET_TURN_COUNT',
@@ -72,18 +87,4 @@ export function cureDisease(color, player) {
         color: color,
         currentPlayer: player
     }
-}
-
-// Begin grouping above functions into arrays for
-// easier access from inside components
-export function getTurnOverActions(currentPlayer, playerDeck, gamePhase) {
-    const player = currentPlayer
-    let dispatchesArray = []
-    
-    dispatchesArray.push(resetTurnCount(currentPlayer))
-    dispatchesArray.push(nextPlayer(currentPlayer))
-    dispatchesArray.push(drawPlayerCards(player, playerDeck))
-    dispatchesArray.push(setGamePhase('Draw'))
-    
-    return dispatchesArray
 }

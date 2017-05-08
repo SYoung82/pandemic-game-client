@@ -1,8 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { createStore, combineReducers } from 'redux'
+import { Provider } from 'react-redux'
+import { BrowserRouter, Route } from 'react-router-dom'
+import App from './App'
+import About from './containers/About'
+import './index.css'
+import { loadState, saveState } from './localStorage'
+import throttle from 'lodash/throttle'
+
 import { playersReducer } from './reducers/PlayersReducer'
 import { citiesReducer } from './reducers/CitiesReducer'
 import { adjacentCitiesReducer } from './reducers/AdjacentCitiesReducer'
@@ -10,13 +16,6 @@ import { infectionDeckReducer } from './reducers/InfectionDeckReducer'
 import { playerDeckReducer } from './reducers/PlayerDeckReducer'
 import { researchStationCitiesReducer } from './reducers/ResearchStationCitiesReducer'
 import { gameStatusReducer } from './reducers/GameStatusReducer'
-import { Provider } from 'react-redux'
-import { loadState, saveState } from './localStorage'
-import throttle from 'lodash/throttle'
-import { BrowserRouter, Route } from 'react-router-dom'
-import About from './containers/About'
-
-
 
 const rootReducer = combineReducers({
   infectionDeckReducer,
@@ -28,15 +27,13 @@ const rootReducer = combineReducers({
   gameStatusReducer
 })
 
-const persistedState = loadState();
+const persistedState = loadState()
 const store = createStore(rootReducer, persistedState ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 store.subscribe(throttle(() => {
-  saveState(store.getState());
+  saveState(store.getState())
 }, 3000))
-
-
-
 console.log(store.getState())
+
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
@@ -51,5 +48,5 @@ const render = () => {
   );
 }
 
-store.subscribe(render);
-render();
+store.subscribe(render)
+render()

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Hand from '../components/Hand';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import Hand from '../components/Hand'
+import { connect } from 'react-redux'
 import { getTurnOverActions } from '../actions/ActionCreators'
 
 class Player extends Component{

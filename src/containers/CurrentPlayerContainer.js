@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Player from '../components/Player';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import Player from '../components/Player'
+import { connect } from 'react-redux'
 
 class CurrentPlayerContainer extends Component{ 
     render() {
@@ -14,7 +14,7 @@ class CurrentPlayerContainer extends Component{
             <div style={style}>
                 <Player player={this.props.player} playerDeck={this.props.playerDeck} hand={this.props.player.hand} />
             </div>
-        );
+        )
     }
 }
 

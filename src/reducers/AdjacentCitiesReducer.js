@@ -1,6 +1,6 @@
 import { players } from '../constants/Players'
 import { adjacentCities } from '../constants/AdjacentCities'
-import update from 'react-addons-update';
+import update from 'react-addons-update'
 
 var initialPlayer = players.find(p => p.currentPlayer === true)
 const adjCitiesList = adjacentCities
@@ -16,6 +16,6 @@ export function adjacentCitiesReducer(state = adjCitiesList.find( city => city.n
             return adjCitiesList.find( city => city.name === currentPlayer.currentCity ).adjacentCities
 
         default:
-            return state;
+            return state
     }
 }

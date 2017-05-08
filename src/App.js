@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import Board from './containers/Board'
 import CurrentPlayerContainer from './containers/CurrentPlayerContainer'
 import MovesList from './containers/MovesList'
@@ -46,8 +46,8 @@ class App extends Component {
                                              ]}/>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
