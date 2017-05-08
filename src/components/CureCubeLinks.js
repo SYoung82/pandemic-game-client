@@ -1,39 +1,21 @@
 import React, { Component } from 'react'
 import { checkTurnOver } from '../Game/Logic'
 import { connect } from 'react-redux'
+import { removeCube, resetTurnCount, nextPlayer, drawPlayerCards, decrementTurnCount } from '../actions/ActionCreators'
 
 class CureCubeLinks extends Component {
     handleCureCubeClick(e) {
         e.preventDefault()
         var player = this.props.currentPlayer
         
-        this.props.dispatch({
-            type: 'REMOVE_CUBE',
-            currentCity: this.props.currentCity,
-            color: e.target.id
-        })
+        this.props.dispatch(removeCube(this.props.currentCity, e.target.id))
 
         if(checkTurnOver(this.props.currentPlayer)){
-            this.props.dispatch({
-                type: 'RESET_TURN_COUNT',
-                currentPlayer: this.props.currentPlayer
-            })
-
-            this.props.dispatch({
-                type: 'NEXT_PLAYER',
-                currentPlayer: this.props.currentPlayer
-            })
-
-            this.props.dispatch({
-                type: 'DRAW_PLAYER_CARDS',
-                currentPlayer: player,
-                cards: this.props.playerDeck.slice(0,2)
-            })
+            this.props.dispatch(resetTurnCount(this.props.currentPlayer))
+            this.props.dispatch(nextPlayer(this.props.currentPlayer))
+            this.props.dispatch(drawPlayerCards(player, this.props.playerDeck))
         } else {
-            this.props.dispatch({
-                type: 'DECREMENT_TURN_COUNT',
-                currentPlayer: this.props.currentPlayer
-            })
+            this.props.dispatch(decrementTurnCount(this.props.currentPlayer))
         }
     }
 

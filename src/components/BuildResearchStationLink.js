@@ -1,45 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkTurnOver } from '../Game/Logic'
+import { buildResearchStation,
+         discard,
+         resetTurnCount,
+         nextPlayer,
+         drawPlayerCards,
+         decrementTurnCount } from '../actions/ActionCreators'
 
 class BuildResearchStationLink extends Component {
     handleBuildResearchStationLinkClick(e) {
         e.preventDefault()
         var player = this.props.currentPlayer
 
-        this.props.dispatch({
-            type: 'BUILD_RESEARCH_STATION',
-            city: this.props.currentCity,
-            currentPlayer: this.props.currentPlayer
-        })
-
-        this.props.dispatch({
-            type: 'DISCARD',
-            currentPlayer: this.props.currentPlayer,
-            card: e.target.innerText
-        })
+        this.props.dispatch(buildResearchStation(this.props.currentCity, this.props.currentPlayer))
+        this.props.dispatch(discard(this.props.currentPlayer, e.target.innerText))
 
         if(checkTurnOver(this.props.currentPlayer)){
-            this.props.dispatch({
-                type: 'RESET_TURN_COUNT',
-                currentPlayer: this.props.currentPlayer
-            })
-
-            this.props.dispatch({
-                type: 'NEXT_PLAYER',
-                currentPlayer: this.props.currentPlayer
-            })
-
-            this.props.dispatch({
-                type: 'DRAW_PLAYER_CARDS',
-                currentPlayer: player,
-                cards: this.props.playerDeck.slice(0,2)
-            })
+            this.props.dispatch(resetTurnCount(this.props.currentPlayer))
+            this.props.dispatch(nextPlayer(this.props.currentPlayer))
+            this.props.dispatch(drawPlayerCards(player, this.props.playerDeck))
         } else {
-            this.props.dispatch({
-                type: 'DECREMENT_TURN_COUNT',
-                currentPlayer: this.props.currentPlayer
-            })
+            this.props.dispatch(decrementTurnCount(this.props.currentPlayer))
         }
     }
 

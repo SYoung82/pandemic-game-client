@@ -1,40 +1,25 @@
 import React, { Component } from 'react'
 import { checkTurnOver } from '../Game/Logic'
 import { connect } from 'react-redux'
+import { movePlayer, 
+         resetTurnCount, 
+         nextPlayer, 
+         drawPlayerCards, 
+         decrementTurnCount } from '../actions/ActionCreators'
 
 class ResearchStationLinks extends Component {
     handleOtherStationsClick(e) {
         e.preventDefault()
         var player = this.props.currentPlayer
         
-        this.props.dispatch({
-            type: 'MOVE_PLAYER',
-            city: e.target.innerText,
-            currentPlayer: this.props.currentPlayer,
-            currentCity: this.props.currentPlayer.currentCity
-        })
+        this.props.dispatch(movePlayer(e.target.innerText, this.props.currentPlayer))
 
         if(checkTurnOver(this.props.currentPlayer)){
-            this.props.dispatch({
-                type: 'RESET_TURN_COUNT',
-                currentPlayer: this.props.currentPlayer
-            })
-
-            this.props.dispatch({
-                type: 'NEXT_PLAYER',
-                currentPlayer: this.props.currentPlayer
-            })
-
-            this.props.dispatch({
-                type: 'DRAW_PLAYER_CARDS',
-                currentPlayer: player,
-                cards: this.props.playerDeck.slice(0,2)
-            })
+            this.props.dispatch(resetTurnCount(this.props.currentPlayer))
+            this.props.dispatch(nextPlayer(this.props.currentPlayer))
+            this.props.dispatch(drawPlayerCards(player, this.props.playerDeck))
         } else {
-            this.props.dispatch({
-                type: 'DECREMENT_TURN_COUNT',
-                currentPlayer: this.props.currentPlayer
-            })
+            this.props.dispatch(decrementTurnCount(this.props.currentPlayer))
         }
     }
 

@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkTurnOver } from '../Game/Logic'
+import { cureDisease,
+         discard,
+         resetTurnCount, 
+         nextPlayer, 
+         drawPlayerCards,
+         decrementTurnCount } from '../actions/ActionCreators'
 
 class CureDiseaseLinks extends Component {
     onCureDiseaseClick(e) {
@@ -9,42 +15,19 @@ class CureDiseaseLinks extends Component {
         const color = e.target.innerText.toLowerCase()
         const player = this.props.currentPlayer
 
-        this.props.dispatch({
-            type: 'CURE_DISEASE',
-            color: color,
-            currentPlayer: this.props.currentPlayer
-        })
+        this.props.dispatch(cureDisease(color, this.props.currentPlayer))
 
         for(let i=0; i<5; i++) {
-            debugger
-            this.props.dispatch({
-                type: 'DISCARD',
-                currentPlayer: this.props.currentPlayer,
-                card: this.props.currentPlayer.hand.find( card => card.color === color).name
-            })
+            this.props.dispatch(discard(this.props.currentPlayer, 
+                                        this.props.currentPlayer.hand.find( card => card.color === color).name))
         }
 
         if(checkTurnOver(this.props.currentPlayer)){
-            this.props.dispatch({
-                type: 'RESET_TURN_COUNT',
-                currentPlayer: this.props.currentPlayer
-            })
-
-            this.props.dispatch({
-                type: 'NEXT_PLAYER',
-                currentPlayer: this.props.currentPlayer
-            })
-
-            this.props.dispatch({
-                type: 'DRAW_PLAYER_CARDS',
-                currentPlayer: player,
-                cards: this.props.playerDeck.slice(0,2)
-            })
+            this.props.dispatch(resetTurnCount(this.props.currentPlayer))
+            this.props.dispatch(nextPlayer(this.props.currentPlayer))
+            this.props.dispatch(drawPlayerCards(player, this.props.playerDeck))
         } else {
-            this.props.dispatch({
-                type: 'DECREMENT_TURN_COUNT',
-                currentPlayer: this.props.currentPlayer
-            })
+            this.props.dispatch(decrementTurnCount(this.props.currentPlayer))
         }
 
     }
