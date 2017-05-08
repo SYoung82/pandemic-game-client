@@ -1,53 +1,17 @@
-import React, { Component } from 'react';
-import { Marker, CircleMarker } from 'react-leaflet';
+import React, { Component } from 'react'
+import { Marker, CircleMarker } from 'react-leaflet'
 import { divIcon, Icon } from 'leaflet'
-import { Popup } from 'react-leaflet';
-import update from 'react-addons-update';
-import { connect } from 'react-redux';
+import { Popup } from 'react-leaflet'
+import { connect } from 'react-redux'
+import researchStationIcon from '../images/research-station.png'
 
 class CityMarker extends Component{
     handleClick(e) {
         console.log(`Clicked ${this.props.city.name}`);
     }
 
-    dispatchUpdate() {
-        this.props.dispatch({
-            type: 'UPDATE_CITY',
-            city: this.props.city
-        })
-    }
-
-    addRedCube(){
-        this.setState(update(this.props.city, {
-            cubes: {red: {$set: this.props.city.cubes.red+1}}
-        }))
-        this.dispatchUpdate();
-    }
-
-    addBlackCube(){
-        this.setState(update(this.props.city, {
-            cubes: {black: {$set: this.props.city.cubes.black+1}}
-        }))
-        this.dispatchUpdate();
-    }
-
-    addYellowCube(){
-        this.setState(update(this.props.city, {
-            cubes: {yellow: {$set: this.props.city.cubes.yellow+1}}
-        }))
-        this.dispatchUpdate();
-    }
-
-    addBlueCube(){
-        this.setState(update(this.props.city, {
-            cubes: {blue: {$set: this.props.city.cubes.blue+1}}
-        }))
-        this.dispatchUpdate();
-    }
-
     render(){
         var playersPresent = []
-
         this.props.players.forEach( player => {
             if(this.props.city.name === player.currentCity) {
                 playersPresent.push(player.role)
@@ -56,7 +20,7 @@ class CityMarker extends Component{
         
         var icon
         if(this.props.city.researchStation){
-            icon = new Icon({iconUrl: 'https://images.vexels.com/media/users/3/140527/isolated/preview/449b95d58f554656b159dd3ca21ab123-home-round-icon-by-vexels.png',
+            icon = new Icon({iconUrl: researchStationIcon,
                              iconSize: [20,20]   
                         })  
         } else {
