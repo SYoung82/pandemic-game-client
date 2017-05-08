@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import DiseaseStatus from '../components/DiseaseStatus'
+import GamePhase from '../components/GamePhase'
 
 class Status extends Component {
     render() {
         return(
             <div>
-                <DiseaseStatus gameStatus={this.props.gameStatus} />
+                <GamePhase gameStatus={this.props.gameStatus} />
             </div>
         )
     }
