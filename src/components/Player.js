@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import Hand from '../components/Hand';
 import { connect } from 'react-redux';
-import { nextPlayer, resetTurnCount, drawPlayerCards, setGamePhase } from '../actions/ActionCreators'
+import { getTurnOverActions } from '../actions/ActionCreators'
 
 class Player extends Component{
     onEndTurnClick(e) {
-        var player = this.props.player
-                
-        this.props.dispatch(resetTurnCount(this.props.player))
-        this.props.dispatch(nextPlayer(this.props.player))
-        this.props.dispatch(drawPlayerCards(player, this.props.playerDeck)) 
-        this.props.dispatch(setGamePhase('Draw'))       
+        const actions = getTurnOverActions(this.props.player, this.props.playerDeck, 'Draw')
+            actions.forEach( action => {
+                this.props.dispatch(action)
+            })       
     }
 
     render() {

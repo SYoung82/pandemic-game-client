@@ -1,25 +1,19 @@
 import React, { Component } from 'react'
 import { checkTurnOver } from '../Game/Logic'
 import { connect } from 'react-redux'
-import { removeCube, 
-         resetTurnCount, 
-         nextPlayer, 
-         drawPlayerCards, 
-         setGamePhase,
-         decrementTurnCount } from '../actions/ActionCreators'
+import { removeCube, getTurnOverActions, decrementTurnCount } from '../actions/ActionCreators'
 
 class CureCubeLinks extends Component {
     handleCureCubeClick(e) {
         e.preventDefault()
-        var player = this.props.currentPlayer
         
         this.props.dispatch(removeCube(this.props.currentCity, e.target.id))
 
         if(checkTurnOver(this.props.currentPlayer)){
-            this.props.dispatch(resetTurnCount(this.props.currentPlayer))
-            this.props.dispatch(nextPlayer(this.props.currentPlayer))
-            this.props.dispatch(drawPlayerCards(player, this.props.playerDeck))
-            this.props.dispatch(setGamePhase('Draw'))
+            const actions = getTurnOverActions(this.props.currentPlayer, this.props.playerDeck, 'Draw')
+            actions.forEach( action => {
+                this.props.dispatch(action)
+            })
         } else {
             this.props.dispatch(decrementTurnCount(this.props.currentPlayer))
         }
