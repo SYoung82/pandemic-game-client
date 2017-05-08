@@ -73,3 +73,17 @@ export function cureDisease(color, player) {
         currentPlayer: player
     }
 }
+
+// Begin grouping above functions into arrays for
+// easier access from inside components
+export function getTurnOverActions(currentPlayer, playerDeck, gamePhase) {
+    const player = currentPlayer
+    let dispatchesArray = []
+    
+    dispatchesArray.push(resetTurnCount(currentPlayer))
+    dispatchesArray.push(nextPlayer(currentPlayer))
+    dispatchesArray.push(drawPlayerCards(player, playerDeck))
+    dispatchesArray.push(setGamePhase('Draw'))
+    
+    return dispatchesArray
+}
