@@ -55,7 +55,7 @@ class CureDiseaseLinks extends Component {
         const numBlueCards = this.props.currentPlayer.hand.filter(card => card.color === 'blue').length
         const numYellowCards = this.props.currentPlayer.hand.filter(card => card.color === 'yellow').length 
 
-        if(numBlackCards >= 5 && this.props.currentCity.researchStation) {
+        if(numBlackCards >= 5 && this.props.currentCity.researchStation && this.props.diseaseStatus.black === 'uncured') {
             return (
                 <div>
                     <h5>Cure disease: (Costs 5 cards of disease color)</h5>
@@ -67,7 +67,7 @@ class CureDiseaseLinks extends Component {
                 </div>
             )        
         }
-        if(numRedCards >= 5 && this.props.currentCity.researchStation) {
+        if(numRedCards >= 5 && this.props.currentCity.researchStation && this.props.diseaseStatus.red === 'uncured') {
             return (
                 <div>
                     <h5>Cure disease: (Costs 5 cards of disease color)</h5>
@@ -79,7 +79,7 @@ class CureDiseaseLinks extends Component {
                 </div>
             )
         }
-        if(numBlueCards >= 5 && this.props.currentCity.researchStation) {
+        if(numBlueCards >= 5 && this.props.currentCity.researchStation && this.props.diseaseStatus.blue === 'uncured') {
             return (
                 <div>
                     <h5>Cure disease: (Costs 5 cards of disease color)</h5>
@@ -91,7 +91,7 @@ class CureDiseaseLinks extends Component {
                 </div>
             )
         }
-        if(numYellowCards >= 5 && this.props.currentCity.researchStation) {
+        if(numYellowCards >= 5 && this.props.currentCity.researchStation && this.props.diseaseStatus.yellow === 'uncured') {
             return (
                 <div>
                     <h5>Cure disease: (Costs 5 cards of disease color)</h5>
