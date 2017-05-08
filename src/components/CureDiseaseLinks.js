@@ -103,6 +103,12 @@ class CureDiseaseLinks extends Component {
                 </div>
             )
         }
+        if(!this.props.currentCity.researchStation && (numBlackCards >= 5 ||
+                                                      numBlueCards >= 5 ||
+                                                      numRedCards >= 5 ||
+                                                      numYellowCards >= 5)){
+                                                        return<div style={{color: 'red'}}>You have enough cards to cure a disease. Find a research station!</div>
+        }
         return null
     }
 }
