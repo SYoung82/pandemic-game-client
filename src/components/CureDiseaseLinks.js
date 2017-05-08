@@ -38,7 +38,7 @@ class CureDiseaseLinks extends Component {
         const numBlueCards = this.props.currentPlayer.hand.filter(card => card.color === 'blue').length
         const numYellowCards = this.props.currentPlayer.hand.filter(card => card.color === 'yellow').length 
 
-        if(numBlackCards >= 5 && this.props.currentCity.researchStation && this.props.gameStatus.black === 'uncured') {
+        if(numBlackCards >= 5 && this.props.currentCity.researchStation && this.props.gameStatus.black === 'Uncured') {
             return (
                 <div>
                     <h5>Cure disease: (Costs 5 cards of disease color)</h5>
@@ -50,7 +50,7 @@ class CureDiseaseLinks extends Component {
                 </div>
             )        
         }
-        if(numRedCards >= 5 && this.props.currentCity.researchStation && this.props.gameStatus.red === 'uncured') {
+        if(numRedCards >= 5 && this.props.currentCity.researchStation && this.props.gameStatus.red === 'Uncured') {
             return (
                 <div>
                     <h5>Cure disease: (Costs 5 cards of disease color)</h5>
@@ -62,7 +62,7 @@ class CureDiseaseLinks extends Component {
                 </div>
             )
         }
-        if(numBlueCards >= 5 && this.props.currentCity.researchStation && this.props.gameStatus.blue === 'uncured') {
+        if(numBlueCards >= 5 && this.props.currentCity.researchStation && this.props.gameStatus.blue === 'Uncured') {
             return (
                 <div>
                     <h5>Cure disease: (Costs 5 cards of disease color)</h5>
@@ -74,7 +74,7 @@ class CureDiseaseLinks extends Component {
                 </div>
             )
         }
-        if(numYellowCards >= 5 && this.props.currentCity.researchStation && this.props.gameStatus.yellow === 'uncured') {
+        if(numYellowCards >= 5 && this.props.currentCity.researchStation && this.props.gameStatus.yellow === 'Uncured') {
             return (
                 <div>
                     <h5>Cure disease: (Costs 5 cards of disease color)</h5>
