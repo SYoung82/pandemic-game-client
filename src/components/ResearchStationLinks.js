@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { movePlayer, 
          resetTurnCount, 
          nextPlayer, 
-         drawPlayerCards, 
+         drawPlayerCards,
+         setGamePhase, 
          decrementTurnCount } from '../actions/ActionCreators'
 
 class ResearchStationLinks extends Component {
@@ -18,6 +19,7 @@ class ResearchStationLinks extends Component {
             this.props.dispatch(resetTurnCount(this.props.currentPlayer))
             this.props.dispatch(nextPlayer(this.props.currentPlayer))
             this.props.dispatch(drawPlayerCards(player, this.props.playerDeck))
+            this.props.dispatch(setGamePhase('Draw'))
         } else {
             this.props.dispatch(decrementTurnCount(this.props.currentPlayer))
         }

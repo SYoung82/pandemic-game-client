@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Hand from '../components/Hand';
 import { connect } from 'react-redux';
-import { nextPlayer, resetTurnCount, drawPlayerCards } from '../actions/ActionCreators'
+import { nextPlayer, resetTurnCount, drawPlayerCards, setGamePhase } from '../actions/ActionCreators'
 
 class Player extends Component{
     onEndTurnClick(e) {
@@ -9,7 +9,8 @@ class Player extends Component{
                 
         this.props.dispatch(resetTurnCount(this.props.player))
         this.props.dispatch(nextPlayer(this.props.player))
-        this.props.dispatch(drawPlayerCards(player, this.props.playerDeck))        
+        this.props.dispatch(drawPlayerCards(player, this.props.playerDeck)) 
+        this.props.dispatch(setGamePhase('Draw'))       
     }
 
     render() {

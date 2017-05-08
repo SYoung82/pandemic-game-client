@@ -6,6 +6,7 @@ import { cureDisease,
          resetTurnCount, 
          nextPlayer, 
          drawPlayerCards,
+         setGamePhase,
          decrementTurnCount } from '../actions/ActionCreators'
 
 class CureDiseaseLinks extends Component {
@@ -26,6 +27,7 @@ class CureDiseaseLinks extends Component {
             this.props.dispatch(resetTurnCount(this.props.currentPlayer))
             this.props.dispatch(nextPlayer(this.props.currentPlayer))
             this.props.dispatch(drawPlayerCards(player, this.props.playerDeck))
+            this.props.dispatch(setGamePhase('Draw'))
         } else {
             this.props.dispatch(decrementTurnCount(this.props.currentPlayer))
         }
