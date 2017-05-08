@@ -19,6 +19,13 @@ export function nextPlayer(player) {
     }
 }
 
+export function setGamePhase(phase) {
+    return {
+        type: 'SET_GAME_PHASE',
+        phase: phase
+    }
+}
+
 export function removeCube(city, color) {
     return {
         type: 'REMOVE_CUBE',
