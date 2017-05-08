@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Marker, CircleMarker } from 'react-leaflet'
+import { Marker, CircleMarker, Popup } from 'react-leaflet'
 import { divIcon, Icon } from 'leaflet'
-import { Popup } from 'react-leaflet'
 import { connect } from 'react-redux'
 import researchStationIcon from '../images/research-station.png'
 
