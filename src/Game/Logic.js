@@ -40,8 +40,8 @@ export function prepPlayerDeck(cards, difficulty=4) {
     return cards
 }
 
-export function checkTurnOver(state) {
-    if(state.movesLeft <= 1) {
+export function checkTurnOver(player) {
+    if(player.movesLeft <= 1) {
         return true
     }
     return false
@@ -51,8 +51,9 @@ export function checkGameOver(state) {
     return false
 }
 
-export function checkEpidemicCard(state) {
-    if(state.hand.filter( card => card.type === 'epidemic').length > 0) {
+export function checkEpidemicCard(player) {
+    if(player.hand.filter( card => card.type === 'epidemic').length > 0) {
+        console.log('Epidemic card in hand, begin epidemic phase')
         return true
      }
     return false
