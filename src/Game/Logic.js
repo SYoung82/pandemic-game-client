@@ -51,6 +51,13 @@ export function checkGameOver(state) {
     return false
 }
 
+export function checkEpidemicCard(state) {
+    if(state.hand.filter( card => card.type === 'epidemic').length > 0) {
+        return true
+     }
+    return false
+}
+
 function randomIntFromInterval(min,max) {
     return Math.floor(Math.random()*(max-min+1)+min)
 }
