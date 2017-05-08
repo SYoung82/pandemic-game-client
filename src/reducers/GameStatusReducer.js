@@ -5,6 +5,9 @@ export function gameStatusReducer(state={red: 'Uncured', black: 'Uncured', blue:
     switch(action.type) {
         case 'CURE_DISEASE':
             return update(state, {[action.color]: {$set: 'Cured'}})
+
+        case 'SET_GAME_PHASE':
+            return update(state, {phase: {$set: action.phase}})
         
         default:
             return state
