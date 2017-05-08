@@ -14,7 +14,7 @@ class MovesList extends Component {
                 <h2>Current City: {this.props.currentPlayer.currentCity}</h2>
                 {this.props.currentCity.researchStation ? <h4>{"Research Station: ✓"}</h4> : null}
                 <h3>Moves Left: {this.props.currentPlayer.movesLeft}</h3>
-                <CureDiseaseLinks currentPlayer={this.props.currentPlayer} currentCity={this.props.currentCity} playerDeck={this.props.playerDeck} />
+                <CureDiseaseLinks currentPlayer={this.props.currentPlayer} currentCity={this.props.currentCity} diseaseStatus={this.props.diseaseStatus} playerDeck={this.props.playerDeck} />
                 <CureCubeLinks cubes={this.props.currentCity.cubes} currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
                 <AdjacentCityLinks adjacentCities={this.props.currentCity.adjacentCities} currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
                 <FlyToCityLinks currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
@@ -31,7 +31,8 @@ function mapStateToProps(state) {
         currentPlayer: state.playersReducer.find( player => player.currentPlayer === true),
         researchStationCities: state.researchStationCitiesReducer,
         currentCity: state.citiesReducer.find( city => city.name === state.playersReducer.find(player => player.currentPlayer === true).currentCity),
-        playerDeck: state.playerDeckReducer
+        playerDeck: state.playerDeckReducer,
+        diseaseStatus: state.diseaseStatusReducer
     }
 }
 
