@@ -46,7 +46,7 @@ class FlyToCityLinks extends Component {
     }
 
     render(){
-        const flyToCities = this.props.currentPlayer.hand.map( card => 
+        const flyToCities = this.props.hand.map( card => 
             card.type !== 'city' ? null : <li key={card.name}><a key={card.name} style={{color: 'white'}} href='#' onClick={this.handleFlyToCityClick.bind(this)}>{card.name}</a></li>  
         )
 

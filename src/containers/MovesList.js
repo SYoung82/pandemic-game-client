@@ -17,7 +17,7 @@ class MovesList extends Component {
                 <CureDiseaseLinks currentPlayer={this.props.currentPlayer} currentCity={this.props.currentCity} diseaseStatus={this.props.diseaseStatus} playerDeck={this.props.playerDeck} />
                 <CureCubeLinks cubes={this.props.currentCity.cubes} currentCity={this.props.currentCity} currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
                 <AdjacentCityLinks adjacentCities={this.props.currentCity.adjacentCities} currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
-                <FlyToCityLinks currentPlayer={this.props.currentPlayer} playerDeck={this.props.playerDeck} />
+                <FlyToCityLinks currentPlayer={this.props.currentPlayer} hand={this.props.currentPlayer.hand} playerDeck={this.props.playerDeck} />
                 <ResearchStationLinks researchStationCities={this.props.researchStationCities} currentPlayer={this.props.currentPlayer} currentCity={this.props.currentCity} playerDeck={this.props.playerDeck} />
                 <BuildResearchStationLink currentPlayer={this.props.currentPlayer} currentCity={this.props.currentCity} playerDeck={this.props.playerDeck} />
             </div>
