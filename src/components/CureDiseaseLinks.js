@@ -1,11 +1,51 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { checkTurnOver } from '../Game/Logic'
 
 class CureDiseaseLinks extends Component {
     onCureDiseaseClick(e) {
         e.preventDefault()
 
         const color = e.target.innerText.toLowerCase()
+        const player = this.props.currentPlayer
+
+        this.props.dispatch({
+            type: 'CURE_DISEASE',
+            color: color,
+            currentPlayer: this.props.currentPlayer
+        })
+
+        for(let i=0; i<5; i++) {
+            debugger
+            this.props.dispatch({
+                type: 'DISCARD',
+                currentPlayer: this.props.currentPlayer,
+                card: this.props.currentPlayer.hand.find( card => card.color === color).name
+            })
+        }
+
+        if(checkTurnOver(this.props.currentPlayer)){
+            this.props.dispatch({
+                type: 'RESET_TURN_COUNT',
+                currentPlayer: this.props.currentPlayer
+            })
+
+            this.props.dispatch({
+                type: 'NEXT_PLAYER',
+                currentPlayer: this.props.currentPlayer
+            })
+
+            this.props.dispatch({
+                type: 'DRAW_PLAYER_CARDS',
+                currentPlayer: player,
+                cards: this.props.playerDeck.slice(0,2)
+            })
+        } else {
+            this.props.dispatch({
+                type: 'DECREMENT_TURN_COUNT',
+                currentPlayer: this.props.currentPlayer
+            })
+        }
 
     }
 
