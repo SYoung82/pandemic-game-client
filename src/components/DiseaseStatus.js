@@ -5,7 +5,7 @@ class DiseaseStatus extends Component {
     render() {
         return(
             <div>
-                Black: {this.props.diseaseStatus.black}, Blue: {this.props.diseaseStatus.blue}, Red: {this.props.diseaseStatus.red}, Yellow: {this.props.diseaseStatus.yellow}
+                Black: {this.props.gameStatus.black}, Blue: {this.props.gameStatus.blue}, Red: {this.props.gameStatus.red}, Yellow: {this.props.gameStatus.yellow}
             </div>
         )
     }

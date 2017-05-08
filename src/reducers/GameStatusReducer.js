@@ -1,6 +1,6 @@
 import update from 'react-addons-update'
 
-export function diseaseStatusReducer(state={red: 'uncured', black: 'uncured', blue: 'uncured', yellow: 'uncured'}, action) {
+export function gameStatusReducer(state={red: 'uncured', black: 'uncured', blue: 'uncured', yellow: 'uncured', gamePhase: 'Move'}, action) {
 
     switch(action.type) {
         case 'CURE_DISEASE':

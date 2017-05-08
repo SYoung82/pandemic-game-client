@@ -6,7 +6,7 @@ class Status extends Component {
     render() {
         return(
             <div>
-                <DiseaseStatus diseaseStatus={this.props.diseaseStatus} />
+                <DiseaseStatus gameStatus={this.props.gameStatus} />
             </div>
         )
     }
@@ -14,7 +14,7 @@ class Status extends Component {
 
 function mapStateToProps(state) {
     return{
-        diseaseStatus: state.diseaseStatusReducer
+        gameStatus: state.gameStatusReducer
     }
 }
 

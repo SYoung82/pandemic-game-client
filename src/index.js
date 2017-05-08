@@ -9,7 +9,7 @@ import { adjacentCitiesReducer } from './reducers/AdjacentCitiesReducer'
 import { infectionDeckReducer } from './reducers/InfectionDeckReducer'
 import { playerDeckReducer } from './reducers/PlayerDeckReducer'
 import { researchStationCitiesReducer } from './reducers/ResearchStationCitiesReducer'
-import { diseaseStatusReducer } from './reducers/DiseaseStatusReducer'
+import { gameStatusReducer } from './reducers/GameStatusReducer'
 import { Provider } from 'react-redux'
 import { loadState, saveState } from './localStorage'
 import throttle from 'lodash/throttle'
@@ -25,7 +25,7 @@ const rootReducer = combineReducers({
   adjacentCitiesReducer,
   playerDeckReducer,
   researchStationCitiesReducer,
-  diseaseStatusReducer
+  gameStatusReducer
 })
 
 const persistedState = loadState();
