@@ -52,11 +52,7 @@ export function checkGameOver(state) {
 }
 
 export function checkEpidemicCard(player) {
-    if(player.hand.filter( card => card.type === 'epidemic').length > 0) {
-        console.log('Epidemic card in hand, begin epidemic phase')
-        return true
-     }
-    return false
+    return player.hand.filter( card => card.type === 'epidemic').length
 }
 
 function randomIntFromInterval(min,max) {
