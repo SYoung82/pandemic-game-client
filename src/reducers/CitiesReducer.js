@@ -44,15 +44,13 @@ export function citiesReducer( state = cities, action){
             newState = state
 
             return newState.map( (city, index) => {
-                debugger
-                if(city.name !== action.currentCity) {
+                if(city.name !== action.currentCity.name) {
                     return city
-                } else {
-                    debugger
+                } else if(city.name === action.currentCity.name && city.cubes[action.color] < 3) {
                     return update(city, {
                         cubes: {[action.color]: {$set: city.cubes[action.color] + 1}}
                     })
-                }
+                } else return state
             })
 
         case 'BUILD_RESEARCH_STATION':
