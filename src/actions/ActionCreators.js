@@ -5,14 +5,27 @@ export function getBeginTurnOverActions(currentPlayer, playerDeck) {
     let actionsArray = []
     
     actionsArray.push(drawPlayerCards(currentPlayer, playerDeck))
-    actionsArray.push(setGamePhase('Epidemic'))
+    if(currentPlayer.hand.filter(card => card.name === 'Epidemic').length > 0 || 
+       playerDeck.slice(0,2).filter(card => card.name === 'Epidemic').length > 0) {
+        actionsArray.push(setGamePhase('Epidemic'))
+    } 
+     else if((currentPlayer.hand.filter(card => card.name !== 'Epidemic').length + 
+        playerDeck.slice(0,2).filter(card => card.name !== 'Epidemic').length) > 7 ) {
+        actionsArray.push(setGamePhase('Discard'))    
+     } else {
+        actionsArray.push(setGamePhase('Move'))
+        actionsArray.push(resetTurnCount(currentPlayer))
+        actionsArray.push(nextPlayer(currentPlayer))
+     }
 
     return actionsArray
 }
+
 export function getEpidemicActions(currentPlayer, infectionDeck) {
     let actionsArray = []
     
     const numEpidemicCards = checkEpidemicCard(currentPlayer)
+
     for(let i=0; i<numEpidemicCards; i++) {
         //Grab the bottom card fro the infection deck for our reference
         const bottomInfectionDeckCard = infectionDeck[infectionDeck.length - 1];
@@ -24,7 +37,21 @@ export function getEpidemicActions(currentPlayer, infectionDeck) {
         }
         actionsArray.push(discard(currentPlayer, 'Epidemic'))
     }
-    actionsArray.push(setGamePhase('Discard'))
+    
+    return actionsArray
+}
+
+export function getAfterEpidemicActions(currentPlayer) {
+    let actionsArray = []
+
+    if(currentPlayer.hand.filter(card => card.name !== 'Epidemic').length > 5) {
+        actionsArray.push(setGamePhase('Discard'))
+    } else {
+        actionsArray.push(setGamePhase('Move'))
+        actionsArray.push(resetTurnCount(currentPlayer))
+        actionsArray.push(nextPlayer(currentPlayer))
+    }
+
     return actionsArray
 }
 
