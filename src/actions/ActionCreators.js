@@ -10,6 +10,10 @@ export function getTurnOverActions(currentPlayer, playerDeck, infectionDeck, gam
         dispatchesArray.push(discard(currentPlayer, 'Epidemic'))
         const bottomInfectionDeckCard = infectionDeck[infectionDeck.length - 1];
         dispatchesArray.push(drawBottomInfectionCard(currentPlayer, infectionDeck))
+        for(let j=0; j<3; j++) {
+            console.log("placing epidemic cube on: ", bottomInfectionDeckCard.name)
+            dispatchesArray.push(placeCube(bottomInfectionDeckCard, bottomInfectionDeckCard.color))
+        }
     }
 
     dispatchesArray.push(resetTurnCount(currentPlayer))
