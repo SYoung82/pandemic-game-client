@@ -5,7 +5,7 @@ import { getBeginTurnOverActions } from '../actions/ActionCreators'
 
 class Player extends Component{
     onEndTurnClick(e) {
-        var actions = getBeginTurnOverActions(this.props.currentPlayer, this.props.playerDeck)
+        var actions = getBeginTurnOverActions(this.props.player, this.props.playerDeck)
         actions.forEach( action => this.props.dispatch(action) )      
     }
 
@@ -17,7 +17,7 @@ class Player extends Component{
                     <button onClick={this.onEndTurnClick.bind(this)}>End Turn</button>
                 </div>
                 <div className={'hand'} style={{width: '100%'}}>
-                    <Hand hand={this.props.hand} player={this.props.player} infectionDeck={this.props.infectionDeck} gameStatus={this.props.gameStatus} />
+                    <Hand hand={this.props.hand} player={this.props.player} playerDeck={this.props.playerDeck} infectionDeck={this.props.infectionDeck} gameStatus={this.props.gameStatus} />
                 </div>
             </div>
         )

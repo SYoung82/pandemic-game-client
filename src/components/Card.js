@@ -16,7 +16,7 @@ class Card extends Component{
         if(this.props.gameStatus.phase === 'Epidemic' && this.props.card.name === 'Epidemic') {
             var actions = getEpidemicActions(this.props.player, this.props.infectionDeck)
             actions.forEach( action => this.props.dispatch(action) )
-            actions = getAfterEpidemicActions(this.props.player)
+            actions = getAfterEpidemicActions(this.props.player, this.props.playerDeck)
             actions.forEach( action => this.props.dispatch(action) )
         }
         
@@ -38,7 +38,8 @@ class Card extends Component{
             borderRadius: '15px',
             wordWrap: 'break-word',
             borderStyle: 'solid',
-            borderColor: 'white'    
+            borderColor: 'white',
+            cursor: 'pointer'   
         }
         if(style.backgroundColor === 'yellow'){
             style.backgroundColor = '#c6b900'
