@@ -4,8 +4,8 @@ import { checkEpidemicCard, checkHandLimit } from '../Game/Logic'
 export function getBeginTurnOverActions(currentPlayer, playerDeck) {
     let actionsArray = []
     
-    actionsArray.push(resetTurnCount(currentPlayer))
     actionsArray.push(drawPlayerCards(currentPlayer, playerDeck))
+    actionsArray.push(setGamePhase('Epidemic'))
 
     return actionsArray
 }
@@ -24,7 +24,17 @@ export function getEpidemicActions(currentPlayer, infectionDeck) {
         }
         actionsArray.push(discard(currentPlayer, 'Epidemic'))
     }
+    actionsArray.push(setGamePhase('Discard'))
+    return actionsArray
+}
 
+export function getDiscardActions(currentPlayer) {
+    let actionsArray = []
+
+    for(let i=0; i<checkHandLimit(currentPlayer); i++) {
+        console.log("You have too many cards time to discard.");
+    }
+    actionsArray.push(setGamePhase('Move'))
     return actionsArray
 }
 
