@@ -18,36 +18,48 @@ class MovesList extends Component {
                     <CureDiseaseLinks 
                         currentPlayer={this.props.currentPlayer} 
                         currentCity={this.props.currentCity} 
-                        hand={this.props.currentPlayer.hand} 
-                        gameStatus={this.props.gameStatus} 
-                        playerDeck={this.props.playerDeck} />
+                        hand={this.props.currentPlayer.hand}  
+                        playerDeck={this.props.playerDeck}
+                        infectionDeck={this.props.infectionDeck}
+                        gameStatus={this.props.gameStatus} />
                     <CureCubeLinks 
                         cubes={this.props.currentCity.cubes} 
                         currentCity={this.props.currentCity} 
                         currentPlayer={this.props.currentPlayer} 
-                        playerDeck={this.props.playerDeck} />
+                        playerDeck={this.props.playerDeck}
+                        infectionDeck={this.props.infectionDeck}
+                        gameStatus={this.props.gameStatus} />
                     <AdjacentCityLinks 
                         adjacentCities={this.props.currentCity.adjacentCities} 
                         currentPlayer={this.props.currentPlayer} 
                         playerDeck={this.props.playerDeck} 
-                        infectionDeck={this.props.infectionDeck} />
+                        infectionDeck={this.props.infectionDeck}
+                        gameStatus={this.props.gameStatus} />
                     <FlyToCityLinks 
                         currentPlayer={this.props.currentPlayer} 
                         hand={this.props.currentPlayer.hand} 
-                        playerDeck={this.props.playerDeck} />
+                        playerDeck={this.props.playerDeck}
+                        infectionDeck={this.props.infectionDeck}
+                        gameStatus={this.props.gameStatus} />
                     <ResearchStationLinks 
                         researchStationCities={this.props.researchStationCities} 
                         currentPlayer={this.props.currentPlayer}
                         currentCity={this.props.currentCity} 
-                        playerDeck={this.props.playerDeck} />
+                        playerDeck={this.props.playerDeck}
+                        infectionDeck={this.props.infectionDeck}
+                        gameStatus={this.props.gameStatus} />
                     <BuildResearchStationLink 
                         currentPlayer={this.props.currentPlayer} 
                         currentCity={this.props.currentCity} 
-                        playerDeck={this.props.playerDeck} />
+                        playerDeck={this.props.playerDeck}
+                        infectionDeck={this.props.infectionDeck}
+                        gameStatus={this.props.gameStatus} />
                 </div>
             )
         } else if(this.props.gameStatus.phase === 'Discard') {
-            return <div>Choose cards to discard!</div>
+            return <div><h2>Click {this.props.currentPlayer.hand.length - 7} card(s) to discard!</h2></div>
+        } else if(this.props.gameStatus.phase === 'Epidemic' ) {
+            return <div><h2>Click epidemic card(s) to continue with epidemic phase</h2></div>
         } else {
             return null
         }
