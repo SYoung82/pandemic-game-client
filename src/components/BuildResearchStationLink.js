@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { checkTurnOver } from '../Game/Logic'
-import { buildResearchStation, discard, getTurnOverActions, decrementTurnCount } from '../actions/ActionCreators'
+import { buildResearchStation, discard, getBeginTurnOverActions, decrementTurnCount } from '../actions/ActionCreators'
 
 class BuildResearchStationLink extends Component {
     handleBuildResearchStationLinkClick(e) {
@@ -11,10 +11,8 @@ class BuildResearchStationLink extends Component {
         this.props.dispatch(discard(this.props.currentPlayer, e.target.innerText))
 
         if(checkTurnOver(this.props.currentPlayer)){
-            const actions = getTurnOverActions(this.props.currentPlayer, this.props.playerDeck, 'Draw')
-            actions.forEach( action => {
-                this.props.dispatch(action)
-            })
+            var actions = getBeginTurnOverActions(this.props.currentPlayer, this.props.playerDeck)
+            actions.forEach( action => this.props.dispatch(action) )
         } else {
             this.props.dispatch(decrementTurnCount(this.props.currentPlayer))
         }
