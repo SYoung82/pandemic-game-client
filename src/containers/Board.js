@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react'
-import { Map, TileLayer, Polyline, Marker, ImageOverlay } from 'react-leaflet'
+import { Map, Marker, ImageOverlay } from 'react-leaflet'
 import { Icon } from 'leaflet'
-import { paths } from '../constants/Paths'
+// import { paths } from '../constants/Paths'
 import CityMarker from '../components/CityMarker'
 import { connect } from 'react-redux'
 import darkGreenPawn from '../images/dark-green-pawn.png'
