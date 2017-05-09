@@ -28,7 +28,7 @@ class Board extends Component{
         })
 
         return(
-            <Map center={position} zoom={this.state.zoom} zoomControl={false} dragging={false} onClick={(e) => console.log(e.latlng)}>
+            <Map center={position} zoom={this.state.zoom} zoomControl={false} scrollWheelZoom={false} dragging={false} onClick={(e) => console.log(e.latlng)}>
                 <ImageOverlay
                     bounds={[[-75,-160],[81,200]]}
                     url={board}
