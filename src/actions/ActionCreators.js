@@ -5,10 +5,11 @@ export function getTurnOverActions(currentPlayer, playerDeck, gamePhase) {
     const player = currentPlayer
     let dispatchesArray = []
     
+    dispatchesArray.push(placeCube(currentPlayer.currentCity, 'blue'))
     dispatchesArray.push(resetTurnCount(currentPlayer))
     dispatchesArray.push(nextPlayer(currentPlayer))
     dispatchesArray.push(drawPlayerCards(player, playerDeck))
-    dispatchesArray.push(setGamePhase('Draw'))
+    // dispatchesArray.push(setGamePhase('Draw'))
     
     return dispatchesArray
 }
@@ -44,6 +45,14 @@ export function setGamePhase(phase) {
 export function removeCube(city, color) {
     return {
         type: 'REMOVE_CUBE',
+        currentCity: city,
+        color: color
+    }
+}
+
+export function placeCube(city, color) {
+    return {
+        type: 'PLACE_CUBE',
         currentCity: city,
         color: color
     }
