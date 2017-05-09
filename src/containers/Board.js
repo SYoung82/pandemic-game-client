@@ -1,12 +1,13 @@
 
 import React, { Component } from 'react'
-import { Map, TileLayer, Polyline, Marker } from 'react-leaflet'
+import { Map, TileLayer, Polyline, Marker, ImageOverlay } from 'react-leaflet'
 import { Icon } from 'leaflet'
 import { paths } from '../constants/Paths'
 import CityMarker from '../components/CityMarker'
 import { connect } from 'react-redux'
 import darkGreenPawn from '../images/dark-green-pawn.png'
 import orangePawn from '../images/orange-pawn.png'
+import board from '../images/board.jpg'
 
 class Board extends Component{
     state = {
@@ -27,12 +28,10 @@ class Board extends Component{
         })
 
         return(
-            <Map center={position} zoom={this.state.zoom} zoomControl={false} dragging={false}>
-                <TileLayer
-                    attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-                    url='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
-                    tileSize={512}
-                    zoomOffset={-1}
+            <Map center={position} zoom={this.state.zoom} zoomControl={false} dragging={false} onClick={(e) => console.log(e.latlng)}>
+                <ImageOverlay
+                    bounds={[[-75,-160],[81,200]]}
+                    url={board}
                     minZoom={this.state.zoom}
                     maxZoom={this.state.zoom}
                 />
@@ -59,11 +58,11 @@ class Board extends Component{
                 })
                 }
 
-                {paths.map( (path, index) => {
+                {/*{paths.map( (path, index) => {
                     return (
                         <Polyline key={index} color='black' positions={path} />
                     )
-                })}    
+                })}    */}
             </Map>
         )
     }
