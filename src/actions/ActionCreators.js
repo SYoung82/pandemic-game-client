@@ -1,25 +1,31 @@
-import { checkEpidemicCard } from '../Game/Logic'
+import { checkEpidemicCard, checkHandLimit } from '../Game/Logic'
 //getTurnOverActions, returns an array of the actions necessary for all components
 //to run when an end of turn is detected, you can then dispatch the actions in array order
-export function getTurnOverActions(currentPlayer, playerDeck, infectionDeck, gamePhase) {
-    let dispatchesArray = []
+export function getBeginTurnOverActions(currentPlayer, playerDeck) {
+    let actionsArray = []
+    
+    actionsArray.push(resetTurnCount(currentPlayer))
+    actionsArray.push(drawPlayerCards(currentPlayer, playerDeck))
+
+    return actionsArray
+}
+export function getEpidemicActions(currentPlayer, infectionDeck) {
+    let actionsArray = []
     
     const numEpidemicCards = checkEpidemicCard(currentPlayer)
     for(let i=0; i<numEpidemicCards; i++) {
+        //Grab the bottom card fro the infection deck for our reference
         const bottomInfectionDeckCard = infectionDeck[infectionDeck.length - 1];
-        dispatchesArray.push(drawBottomInfectionCard(currentPlayer, infectionDeck))
+        //Then push the action to actually draw it and discard
+        actionsArray.push(drawBottomInfectionCard(currentPlayer, infectionDeck))
         for(let j=0; j<3; j++) {
             console.log("placing epidemic cube on: ", bottomInfectionDeckCard.name)
-            dispatchesArray.push(placeCube(bottomInfectionDeckCard, bottomInfectionDeckCard.color))
+            actionsArray.push(placeCube(bottomInfectionDeckCard, bottomInfectionDeckCard.color))
         }
-        dispatchesArray.push(discard(currentPlayer, 'Epidemic'))
+        actionsArray.push(discard(currentPlayer, 'Epidemic'))
     }
 
-    
-    dispatchesArray.push(nextPlayer(currentPlayer))
-    dispatchesArray.push(setGamePhase('Move'))
-    
-    return dispatchesArray
+    return actionsArray
 }
 
 export function resetTurnCount(player) {
