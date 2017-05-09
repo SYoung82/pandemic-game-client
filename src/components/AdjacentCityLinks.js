@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { checkTurnOver } from '../Game/Logic'
 import { connect } from 'react-redux'
-import { movePlayer, getTurnOverActions, resetTurnCount, drawPlayerCards, decrementTurnCount } from '../actions/ActionCreators'
+import { movePlayer, decrementTurnCount, getBeginTurnOverActions, getEpidemicActions } from '../actions/ActionCreators'
 
 class AdjacentCityLinks extends Component {
     handleAdjacentCityClick(e) {
@@ -10,12 +10,10 @@ class AdjacentCityLinks extends Component {
         this.props.dispatch(movePlayer(e.target.innerText, this.props.currentPlayer))
 
         if(checkTurnOver(this.props.currentPlayer)){
-            this.props.dispatch(resetTurnCount(this.props.currentPlayer))
-            this.props.dispatch(drawPlayerCards(this.props.currentPlayer, this.props.playerDeck))
-            const actions = getTurnOverActions(this.props.currentPlayer, this.props.playerDeck, this.props.infectionDeck, 'Draw')
-            actions.forEach( action => {
-                this.props.dispatch(action)
-            })
+            var actions = getBeginTurnOverActions(this.props.currentPlayer, this.props.playerDeck)
+            actions.forEach( action => this.props.dispatch(action) )
+            actions = getEpidemicActions(this.props.currentPlayer, this.props.infectionDeck)
+            actions.forEach( action => this.props.dispatch(action) )
         } else {
             this.props.dispatch(decrementTurnCount(this.props.currentPlayer))
         }
