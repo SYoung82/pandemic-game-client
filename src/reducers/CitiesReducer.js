@@ -31,13 +31,28 @@ export function citiesReducer( state = cities, action){
         case 'REMOVE_CUBE':
             newState = state
             return newState.map( (city, index) => {
-                if(city !== action.currentCity) {
+                if(city.name !== action.currentPlayer.currentCity) {
                     return city
                 } else {
                     return update(city, {
                             cubes: {[action.color]: {$set: city.cubes[action.color]- 1}}
                         })
                     }
+            })
+
+        case 'PLACE_CUBE':
+            newState = state
+
+            return newState.map( (city, index) => {
+                debugger
+                if(city.name !== action.currentCity) {
+                    return city
+                } else {
+                    debugger
+                    return update(city, {
+                        cubes: {[action.color]: {$set: city.cubes[action.color] + 1}}
+                    })
+                }
             })
 
         case 'BUILD_RESEARCH_STATION':
