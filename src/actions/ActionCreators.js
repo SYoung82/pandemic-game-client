@@ -1,13 +1,15 @@
 import { checkEpidemicCard } from '../Game/Logic'
 //getTurnOverActions, returns an array of the actions necessary for all components
 //to run when an end of turn is detected, you can then dispatch the actions in array order
-export function getTurnOverActions(currentPlayer, playerDeck, gamePhase) {
+export function getTurnOverActions(currentPlayer, playerDeck, infectionDeck, gamePhase) {
     const player = currentPlayer
     let dispatchesArray = []
     
     const numEpidemicCards = checkEpidemicCard(currentPlayer)
     for(let i=0; i<numEpidemicCards; i++) {
         dispatchesArray.push(discard(currentPlayer, 'Epidemic'))
+        const bottomInfectionDeckCard = infectionDeck[infectionDeck.length - 1];
+        dispatchesArray.push(drawBottomInfectionCard(currentPlayer, infectionDeck))
     }
 
     dispatchesArray.push(resetTurnCount(currentPlayer))
@@ -75,6 +77,14 @@ export function drawPlayerCards(player, playerDeck) {
         type: 'DRAW_PLAYER_CARDS',
         currentPlayer: player,
         cards: playerDeck.slice(0,2)
+    }
+}
+
+export function drawBottomInfectionCard(player, infectionDeck) {
+    return {
+        type: 'DRAW_BOTTOM_INFECTION_CARD',
+        currentPlayer: player,
+        infectionDeck: infectionDeck
     }
 }
 
