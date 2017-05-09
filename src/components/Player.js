@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import Hand from '../components/Hand'
 import { connect } from 'react-redux'
-import { getTurnOverActions } from '../actions/ActionCreators'
+import { getBeginTurnOverActions } from '../actions/ActionCreators'
 
 class Player extends Component{
     onEndTurnClick(e) {
-        const actions = getTurnOverActions(this.props.player, this.props.playerDeck, 'Draw')
-            actions.forEach( action => {
-                this.props.dispatch(action)
-            })       
+        var actions = getBeginTurnOverActions(this.props.currentPlayer, this.props.playerDeck)
+        actions.forEach( action => this.props.dispatch(action) )      
     }
 
     render() {
@@ -19,7 +17,7 @@ class Player extends Component{
                     <button onClick={this.onEndTurnClick.bind(this)}>End Turn</button>
                 </div>
                 <div className={'hand'} style={{width: '100%'}}>
-                    <Hand hand={this.props.hand}/>
+                    <Hand hand={this.props.hand} player={this.props.player} infectionDeck={this.props.infectionDeck} gameStatus={this.props.gameStatus} />
                 </div>
             </div>
         )
