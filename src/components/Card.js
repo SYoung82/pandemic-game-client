@@ -1,9 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { discard, setGamePhase, resetTurnCount, nextPlayer, getEpidemicActions, getAfterEpidemicActions } from '../actions/ActionCreators'
 
 class Card extends Component{
     handleClick(e){
-        console.log(`Clicked ${this.props.card.name} card. Color is ${this.props.card.color}`)
+        if(this.props.gameStatus.phase === 'Discard') {
+            this.props.dispatch(discard(this.props.player, this.props.card.name))
+            if(this.props.player.hand.length <= 7) {
+                this.props.dispatch(setGamePhase('Move'))
+                this.props.dispatch(resetTurnCount(this.props.player))
+                this.props.dispatch(nextPlayer(this.props.player))
+            }
+        }
+
+        if(this.props.gameStatus.phase === 'Epidemic' && this.props.card.name === 'Epidemic') {
+            var actions = getEpidemicActions(this.props.player, this.props.infectionDeck)
+            actions.forEach( action => this.props.dispatch(action) )
+            actions = getAfterEpidemicActions(this.props.player)
+            actions.forEach( action => this.props.dispatch(action) )
+        }
+        
     }
 
     handleDescriptionClick(e){
