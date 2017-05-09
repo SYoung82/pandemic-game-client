@@ -10,7 +10,7 @@ class AdjacentCityLinks extends Component {
         this.props.dispatch(movePlayer(e.target.innerText, this.props.currentPlayer))
 
         if(checkTurnOver(this.props.currentPlayer)){
-            const actions = getTurnOverActions(this.props.currentPlayer, this.props.playerDeck, 'Draw')
+            const actions = getTurnOverActions(this.props.currentPlayer, this.props.playerDeck, this.props.infectionDeck, 'Draw')
             actions.forEach( action => {
                 this.props.dispatch(action)
             })
