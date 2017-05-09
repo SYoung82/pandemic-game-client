@@ -51,8 +51,15 @@ export function checkGameOver(state) {
     return false
 }
 
+//Returns the number of epidemic cards in players hand. Usually 0 or 1
+//but could very rarely be 2.
 export function checkEpidemicCard(player) {
     return player.hand.filter( card => card.type === 'epidemic').length
+}
+
+//Returns number of cards over or under the limit (7) the players hand is
+export function checkHandLimit(player) {
+    return player.hand.length - 7
 }
 
 function randomIntFromInterval(min,max) {
