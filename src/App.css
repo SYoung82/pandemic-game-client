@@ -10,24 +10,28 @@
     background-color: blue;
     font-weight: bold;
     color: white;
+    border-radius: 25px;
 }
 
 .black {
     background-color: black;
     font-weight: bold;
     color: white;
+    border-radius: 25px;
 }
 
 .yellow {
     background-color: #c6b900;
     font-weight: bold;
     color: white;
+    border-radius: 25px;
 }
 
 .red {
     background-color: red;
     font-weight: bold;
     color: white;
+    border-radius: 25px;
 }
 
 html, body {

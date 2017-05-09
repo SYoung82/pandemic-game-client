@@ -23,7 +23,7 @@ class CityMarker extends Component{
                              iconSize: [20,20]   
                         })  
         } else {
-            icon = new divIcon({className: `${this.props.city.color}`})
+            icon = new divIcon({className: `${this.props.city.color}`, iconSize: [20,20]})
         }
 
         return(
