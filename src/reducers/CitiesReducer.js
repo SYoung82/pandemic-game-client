@@ -31,7 +31,7 @@ export function citiesReducer( state = cities, action){
         case 'REMOVE_CUBE':
             newState = state
             return newState.map( (city, index) => {
-                if(city.name !== action.currentPlayer.currentCity) {
+                if(city.name !== action.currentCity) {
                     return city
                 } else {
                     return update(city, {

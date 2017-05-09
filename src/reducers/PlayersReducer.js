@@ -53,7 +53,7 @@ export function playersReducer(state=players, action){
             return stateToReturn
 
         case 'DRAW_PLAYER_CARDS':
-            const index = state.findIndex( player => player === action.currentPlayer )
+            const index = state.findIndex( player => player.name === action.currentPlayer.name )
             
             return update(state, {
                 [index]: {
