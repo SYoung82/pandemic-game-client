@@ -26,8 +26,9 @@ export function playersReducer(state=players, action){
 
         case 'DISCARD':
             var stateToReturn = state
+            
             stateToReturn.forEach( (player, index) => {
-                if(player === action.currentPlayer) {
+                if(player.name === action.currentPlayer.name) {
                     stateToReturn[index].hand = state[index].hand.filter( card => card.name !== action.card)
                 }
             })
