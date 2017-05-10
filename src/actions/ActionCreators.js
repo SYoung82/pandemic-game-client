@@ -23,8 +23,7 @@ export function getEpidemicActions(currentPlayer, infectionDeck) {
 export function getAfterEpidemicActions(currentPlayer, playerDeck) {
     let actionsArray = []
  
-    if((currentPlayer.hand.filter(card => card.name !== 'Epidemic').length +
-       playerDeck.slice(0,2).filter(card => card.name !== 'Epidemic').length) > 7) {
+    if((currentPlayer.hand.filter(card => card.name !== 'Epidemic').length) > 7) {
         actionsArray.push(setGamePhase('Discard'))
     } else {
         actionsArray.push(setGamePhase('Move'))
