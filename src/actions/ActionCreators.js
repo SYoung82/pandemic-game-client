@@ -1,4 +1,4 @@
-import { checkEpidemicCard, checkHandLimit } from '../Game/Logic'
+import { checkEpidemicCard } from '../Game/Logic'
 
 export function getEpidemicActions(currentPlayer, infectionDeck) {
     let actionsArray = []
@@ -31,16 +31,6 @@ export function getAfterEpidemicActions(currentPlayer, playerDeck) {
         actionsArray.push(nextPlayer(currentPlayer))
     }
 
-    return actionsArray
-}
-
-export function getDiscardActions(currentPlayer) {
-    let actionsArray = []
-
-    for(let i=0; i<checkHandLimit(currentPlayer); i++) {
-        console.log("You have too many cards time to discard.");
-    }
-    actionsArray.push(setGamePhase('Move'))
     return actionsArray
 }
 
