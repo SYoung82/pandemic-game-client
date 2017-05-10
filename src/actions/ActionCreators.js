@@ -1,25 +1,4 @@
 import { checkEpidemicCard, checkHandLimit } from '../Game/Logic'
-//getTurnOverActions, returns an array of the actions necessary for all components
-//to run when an end of turn is detected, you can then dispatch the actions in array order
-export function getBeginTurnOverActions(currentPlayer, playerDeck) {
-    let actionsArray = []
-    
-    actionsArray.push(drawPlayerCards(currentPlayer, playerDeck))
-    if(currentPlayer.hand.filter(card => card.name === 'Epidemic').length > 0 || 
-       playerDeck.slice(0,2).filter(card => card.name === 'Epidemic').length > 0) {
-        actionsArray.push(setGamePhase('Epidemic'))
-    } 
-     else if((currentPlayer.hand.filter(card => card.name !== 'Epidemic').length + 
-        playerDeck.slice(0,2).filter(card => card.name !== 'Epidemic').length) > 7 ) {
-        actionsArray.push(setGamePhase('Discard'))    
-     } else {
-        actionsArray.push(setGamePhase('Move'))
-        actionsArray.push(resetTurnCount(currentPlayer))
-        actionsArray.push(nextPlayer(currentPlayer))
-     }
-
-    return actionsArray
-}
 
 export function getEpidemicActions(currentPlayer, infectionDeck) {
     let actionsArray = []
