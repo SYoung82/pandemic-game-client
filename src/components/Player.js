@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import Hand from '../components/Hand'
 import { connect } from 'react-redux'
-import { getBeginTurnOverActions } from '../actions/ActionCreators'
+import { drawPlayerCards } from '../actions/ActionCreators'
 
 class Player extends Component{
     onEndTurnClick(e) {
-        var actions = getBeginTurnOverActions(this.props.player, this.props.playerDeck)
-        actions.forEach( action => this.props.dispatch(action) )      
+        this.props.dispatch(drawPlayerCards(this.props.player, this.props.playerDeck))      
     }
 
     render() {
