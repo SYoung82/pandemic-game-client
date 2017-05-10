@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
+import createSagaMiddleware from 'redux-saga'
 import App from './App'
 import About from './containers/About'
 import './index.css'
@@ -17,6 +18,10 @@ import { playerDeckReducer } from './reducers/PlayerDeckReducer'
 import { researchStationCitiesReducer } from './reducers/ResearchStationCitiesReducer'
 import { gameStatusReducer } from './reducers/GameStatusReducer'
 
+import { nextPhaseSaga } from './sagas/Sagas'
+
+const sagaMiddleWare = createSagaMiddleware()
+
 const rootReducer = combineReducers({
   infectionDeckReducer,
   playersReducer,
@@ -28,7 +33,9 @@ const rootReducer = combineReducers({
 })
 
 const persistedState = loadState()
-const store = createStore(rootReducer, persistedState ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(rootReducer, persistedState ,applyMiddleware(sagaMiddleWare))
+sagaMiddleWare.run(nextPhaseSaga)
+
 store.subscribe(throttle(() => {
   saveState(store.getState())
 }, 3000))
