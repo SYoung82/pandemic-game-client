@@ -1,4 +1,5 @@
 import { checkEpidemicCard } from '../Game/Logic'
+import Alert from 'react-s-alert'
 
 export function getEpidemicActions(currentPlayer, infectionDeck) {
     let actionsArray = []
@@ -10,8 +11,10 @@ export function getEpidemicActions(currentPlayer, infectionDeck) {
         const bottomInfectionDeckCard = infectionDeck[infectionDeck.length - 1];
         //Then push the action to actually draw it and discard
         actionsArray.push(drawBottomInfectionCard(currentPlayer, infectionDeck))
+        Alert.info(`Epidemic Phase: Placing cubes in ${bottomInfectionDeckCard.name}`,{
+                position: 'bottom-left'
+            })
         for(let j=0; j<3; j++) {
-            console.log("placing epidemic cube on: ", bottomInfectionDeckCard.name)
             actionsArray.push(placeCube(bottomInfectionDeckCard, bottomInfectionDeckCard.color))
         }
         actionsArray.push(discard(currentPlayer, 'Epidemic'))

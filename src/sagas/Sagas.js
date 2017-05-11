@@ -1,5 +1,6 @@
 import { select, takeEvery, put } from 'redux-saga/effects'
 import { setGamePhase, resetTurnCount, nextPlayer, endGame, drawInfectionCards, placeCube } from '../actions/ActionCreators'
+import Alert from 'react-s-alert'
 
 const getCurrentPlayer = state => state.playersReducer.find(player => player.currentPlayer === true)
 const getPlayerDeck = state => state.playerDeckReducer
@@ -53,7 +54,9 @@ export function* infect(action) {
             let name = infectionCards[i].name
             let color = infectionCards[i].color
 
-            console.log('Placing ', name, 'cube to ', color)
+            Alert.info(`Infection Phase: Placing ${color} cube in ${name}`,{
+                position: 'bottom-left'
+            })
             yield put(placeCube(city, color))
         }
         yield [
