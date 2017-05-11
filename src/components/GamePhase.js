@@ -5,11 +5,11 @@ class GamePhase extends Component {
     render() {
         return(
             <div>
-                Current Phase: {this.props.gameStatus.phase},
-                     Black: {this.props.gameStatus.black},
-                  Red: {this.props.gameStatus.red},
-                   Blue: {this.props.gameStatus.blue},
-                    Yellow: {this.props.gameStatus.yellow}
+                <h3>Current Phase: {this.props.gameStatus.phase}</h3>
+                <h3>Black: {this.props.gameStatus.black}</h3>
+                <h3>Red: {this.props.gameStatus.red}</h3>
+                <h3>Blue: {this.props.gameStatus.blue}</h3>
+                <h3>Yellow: {this.props.gameStatus.yellow}</h3>
             </div>
         )
     }

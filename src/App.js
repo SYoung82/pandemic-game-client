@@ -10,10 +10,15 @@ class App extends Component {
     return ( 
       <div id='app'>
         <div id='header'>
-          <Status />
+          Fandemic
         </div>
-        <div id='board'>
-          <Board />
+        <div id='main'>
+          <div id='status'>
+            <Status />
+          </div>
+          <div id='board'>
+            <Board />
+          </div>
           <div id='moves' >
             <MovesList />
           </div>
