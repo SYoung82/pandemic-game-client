@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import Alert from 'react-s-alert'
+import 'react-s-alert/dist/s-alert-css-effects/jelly.css';
+import './Alerts.css'
 import './App.css'
 import Board from './containers/Board'
 import CurrentPlayerContainer from './containers/CurrentPlayerContainer'
@@ -50,6 +53,7 @@ class App extends Component {
                                              }
                                              ]}/>
         </div>
+        <Alert stack={{limit: 5}} effect={'jelly'} timeout={5000} />
       </div>
     )
   }
