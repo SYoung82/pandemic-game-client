@@ -21,7 +21,7 @@
         }
 
         #root {
-            min-height: 100%; 
+            min-height: 100%;
         }
     </style>
     <!--
@@ -47,5 +47,13 @@
       To begin the development, run `npm start`.
       To create a production bundle, use `npm run build`.
     -->
+    <script language="javascript">
+        function autoResizeDiv()
+        {
+            document.getElementById('root').style.height = window.innerHeight +'px';
+        }
+        window.onresize = autoResizeDiv;
+        autoResizeDiv();
+    </script>
   </body>
 </html>

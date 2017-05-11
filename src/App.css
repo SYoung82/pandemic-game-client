@@ -64,6 +64,7 @@ body {
 #main {
     padding-top: 40px
 }
+
 #board {
     background: #000;
     background-size: contain;
@@ -75,13 +76,15 @@ body {
     width: 70%;
     display: inline;
 }
+
 #footer {
     height: 200px;
     background: black;
     text-align: center;
     vertical-align: middle;
     line-height: 100px;
-    bottom: 0
+    bottom: 0;
+    padding-bottom: 20px;
 }
 
 #moves {
@@ -89,6 +92,7 @@ body {
     width: 13%;
     display: inline;
     padding-right: 20px;
+    overflow: auto;
 }
 
 #status {
