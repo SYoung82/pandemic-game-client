@@ -125,3 +125,10 @@ export function cureDisease(color, player) {
         currentPlayer: player
     }
 }
+
+export function endGame(winner) {
+    return {
+        type: 'END_GAME',
+        winner: winner
+    }
+}
