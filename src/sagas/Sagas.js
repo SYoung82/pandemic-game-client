@@ -1,10 +1,13 @@
 import { select, takeEvery, put } from 'redux-saga/effects'
-import { setGamePhase, resetTurnCount, nextPlayer } from '../actions/ActionCreators'
+import { setGamePhase, resetTurnCount, nextPlayer, endGame } from '../actions/ActionCreators'
 
 const getCurrentPlayer = state => state.playersReducer.find(player => player.currentPlayer === true)
+const getPlayerDeck = state => state.playerDeckReducer
+const getGameStatus = state => state.gameStatusReducer
 
 export function* nextPhaseSaga() {
     yield takeEvery('DRAW_PLAYER_CARDS', nextPhase)
+    yield takeEvery('DRAW_PLAYER_CARDS', checkEndGame)
 }
 
 export function* nextPhase(action) {
@@ -22,4 +25,18 @@ export function* nextPhase(action) {
             put(nextPlayer(currentPlayer))
         ]
      }
+}
+
+export function* checkEndGame(action) {
+    const playerDeck = yield select(getPlayerDeck)
+    const gameStatus = yield select(getGameStatus)
+
+    if (playerDeck.length === 0) {
+        alert('Game over: Computer wins :(')
+        yield put(endGame({winner: 'Computer'}))
+    }
+    if (gameStatus.red === 'Cured' && gameStatus.black === 'Cured' && gameStatus.blue === 'Cured' && gameStatus.yellow === 'Cured') {
+        alert('Game over: Players win :)')
+        yield put(endGame({winner: 'Players'}))
+    }
 }
