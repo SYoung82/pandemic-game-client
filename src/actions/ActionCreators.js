@@ -26,7 +26,7 @@ export function getAfterEpidemicActions(currentPlayer, playerDeck) {
     if((currentPlayer.hand.filter(card => card.name !== 'Epidemic').length) > 7) {
         actionsArray.push(setGamePhase('Discard'))
     } else {
-        actionsArray.push(setGamePhase('Move'))
+        actionsArray.push(setGamePhase('Infect'))
         actionsArray.push(resetTurnCount(currentPlayer))
         actionsArray.push(nextPlayer(currentPlayer))
     }
@@ -99,6 +99,13 @@ export function drawBottomInfectionCard(player, infectionDeck) {
         type: 'DRAW_BOTTOM_INFECTION_CARD',
         currentPlayer: player,
         infectionDeck: infectionDeck
+    }
+}
+
+export function drawInfectionCards(number) {
+    return {
+        type: 'DRAW_INFECTION_CARDS',
+        number: number
     }
 }
 
