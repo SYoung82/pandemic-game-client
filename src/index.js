@@ -22,7 +22,7 @@ import { nextPhaseSaga } from './sagas/Sagas'
 
 const sagaMiddleWare = createSagaMiddleware()
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   infectionDeckReducer,
   playersReducer,
   citiesReducer,
@@ -31,6 +31,13 @@ const rootReducer = combineReducers({
   researchStationCitiesReducer,
   gameStatusReducer
 })
+
+const rootReducer = (state, action) => {
+  if (action.type === 'END_GAME') {
+    state = undefined
+  }
+  return appReducer(state, action)
+}
 
 const persistedState = loadState()
 const store = createStore(rootReducer, persistedState ,applyMiddleware(sagaMiddleWare))
