@@ -8,6 +8,7 @@
     "react": "^15.5.4",
     "react-addons-update": "15.5.2",
     "react-dom": "^15.5.4",
+    "react-form": "^1.2.7",
     "react-leaflet": "1.1.6",
     "react-modal": "^1.7.7",
     "react-redux": "^5.0.4",
