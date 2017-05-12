@@ -6,6 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import createSagaMiddleware from 'redux-saga'
 import App from './App'
 import About from './containers/About'
+import LoginContainer from './containers/LoginContainer'
 import './index.css'
 import { loadState, saveState } from './localStorage'
 import throttle from 'lodash/throttle'
@@ -54,6 +55,7 @@ const render = () => {
       <BrowserRouter history={history}>
         <div>
           <Route exact path='/' component={App} />
+          <Route path='/login' component={LoginContainer} />
           <Route path='/about' component={About} />
         </div>
       </BrowserRouter>
