@@ -1,6 +1,6 @@
 import update from 'react-addons-update'
 
-export function gameStatusReducer(state={red: 'Uncured', black: 'Uncured', blue: 'Uncured', yellow: 'Uncured', phase: 'Move', isGameOver: false}, action) {
+export function gameStatusReducer(state={red: 'Uncured', black: 'Uncured', blue: 'Uncured', yellow: 'Uncured', phase: 'Move', isGameOver: false, isGameEndModalOpen: false}, action) {
 
     switch(action.type) {
         case 'CURE_DISEASE':
@@ -11,6 +11,9 @@ export function gameStatusReducer(state={red: 'Uncured', black: 'Uncured', blue:
 
         case 'END_GAME':
             return update(state, {isGameOver: {$set: true}})
+
+        case 'OPEN_END_GAME_MODAL':
+            return update(state, {isGameEndModalOpen: {$set: true}})
         
         default:
             return state
