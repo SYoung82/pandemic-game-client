@@ -1,32 +1,31 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Form, Text } from 'react-form'
 
-class Login extends Component {
-    onSubmit(e) {
-        e.preventDefault()
-        console.log(e)
-    }
+const LoginForm = (
+    <Form
+        onSubmit={ values => console.log('Success!', values)}
 
-    render() {
-        const customStyle={
-            float: 'left',
-            marginLeft: '15%'
-        }
+        validate={ values => {
+            const { email, password } = values
+            
+            return {
+                email: !email ? 'An email is required' : undefined,
+                password: !password ? 'A password is required' : undefined
+            }
+        }}
+    >
 
-        return(
-            <div style={customStyle}>
-                <form id='login-form' onSubmit={this.onSubmit.bind(this)}>
-                    <h1>Login</h1>
-                    <label>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <input id='email-input' type='text' placeholder='Mail@Email.com' /><br />
-                    <label>Password:&nbsp;</label>
-                    <input id='password-input' type='password' placeholder='*********' /><br />
-                    <button id='signup-button' type='submit'>Submit</button>
-                </form>
-            </div>
-        )
-    }
-}
+    {({submitForm}) => {
+      return (
+        <form id='login-form' onSubmit={submitForm} style={{marginLeft: '15%', float: 'left'}}>
+            <h1>Login</h1>
+            <Text field='email' type='text' placeholder='Email' /><br />
+            <Text field='password' type='password' placeholder='Password' /><br />
+            <button id='signup-button' type='submit'>Submit</button>
+        </form>
+      )
+    }}
+    </Form>
+)
 
-
-
-export default Login
+export default LoginForm
