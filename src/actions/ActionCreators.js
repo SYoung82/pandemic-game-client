@@ -142,3 +142,17 @@ export function endGame(winner) {
         winner: winner
     }
 }
+
+export function openEndGameModal() {
+    return { 
+        type: 'OPEN_END_GAME_MODAL',
+        isGameEndModalOpen: true
+    }
+}
+
+export function closeEndGameModal() {
+    return {
+        type: 'CLOSE_END_GAME_MODAL',
+        isGameEndModalOpen: false
+    }
+}
