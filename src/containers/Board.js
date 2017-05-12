@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Map, Marker, ImageOverlay } from 'react-leaflet'
 import { Icon } from 'leaflet'
 // import { paths } from '../constants/Paths'
+import EndGameModal from '../components/EndGameModal'
 import CityMarker from '../components/CityMarker'
 import { connect } from 'react-redux'
 import darkGreenPawn from '../images/dark-green-pawn.png'
@@ -28,7 +29,7 @@ class Board extends Component{
         })
 
         return(
-            <Map center={position} zoom={this.state.zoom} zoomControl={false} scrollWheelZoom={false} dragging={false} onClick={(e) => console.log(e.latlng)}>
+            <Map center={position} zoom={this.state.zoom} zoomControl={false} scrollWheelZoom={false} dragging={false} onClick={(e) => console.log(e.latlng)} style={{zIndex: 1}}>
                 <ImageOverlay
                     bounds={[[-75,-160],[81,200]]}
                     url={board}
@@ -63,6 +64,7 @@ class Board extends Component{
                         <Polyline key={index} color='black' positions={path} />
                     )
                 })}    */}
+                <EndGameModal modalIsOpen={this.props.isGameEndModalOpen}/>
             </Map>
         )
     }
@@ -72,7 +74,7 @@ function mapStateToProps(state) {
     return {
         cities: state.citiesReducer,
         players: state.playersReducer,
-        adjacentCities: state.adjacentCitiesReducer
+        isGameEndModalOpen: state.gameStatusReducer.isGameEndModalOpen
     }
 }
 
