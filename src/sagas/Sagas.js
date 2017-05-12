@@ -1,5 +1,5 @@
 import { select, takeEvery, put } from 'redux-saga/effects'
-import { setGamePhase, resetTurnCount, nextPlayer, endGame, drawInfectionCards, placeCube } from '../actions/ActionCreators'
+import { setGamePhase, resetTurnCount, nextPlayer, endGame, drawInfectionCards, placeCube, openEndGameModal } from '../actions/ActionCreators'
 import Alert from 'react-s-alert'
 
 const getCurrentPlayer = state => state.playersReducer.find(player => player.currentPlayer === true)
@@ -33,12 +33,12 @@ export function* checkEndGame(action) {
     const gameStatus = yield select(getGameStatus)
 
     if (playerDeck.length === 0) {
-        alert('Game over: Computer wins :( \nInfection Deck empty. ')
-        yield put(endGame({winner: 'Computer'}))
+        yield put(endGame({winner: 'Diseases'}))
+        yield put(openEndGameModal())
     }
     if (gameStatus.red === 'Cured' && gameStatus.black === 'Cured' && gameStatus.blue === 'Cured' && gameStatus.yellow === 'Cured') {
-        alert('Game over: Players win :) \nAll disease colors cured!')
         yield put(endGame({winner: 'Players'}))
+        yield put(openEndGameModal())
     }
 }
 
@@ -53,7 +53,7 @@ export function* infect(action) {
             let city = cities.find( city => city.name === infectionCards[i].name)
             let name = infectionCards[i].name
             let color = infectionCards[i].color
-
+            console.log(`Infection Phase: Placing ${color} cube in ${name}`)
             Alert.info(`Infection Phase: Placing ${color} cube in ${name}`,{
                 position: 'bottom-left'
             })
