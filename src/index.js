@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 import createSagaMiddleware from 'redux-saga'
 import App from './App'
 import About from './containers/About'
@@ -54,7 +54,7 @@ const render = () => {
     <Provider store={store}>
       <BrowserRouter history={history}>
         <div>
-          <Route exact path='/' component={App} />
+          <PrivateRoute exact path='/' component={App} />
           <Route path='/login' component={LoginContainer} />
           <Route path='/about' component={About} />
         </div>
@@ -63,6 +63,19 @@ const render = () => {
     document.getElementById('root')
   );
 }
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    store.getState().gameStatusReducer.isLoggedIn ? (
+      <Component {...props}/>
+    ) : (
+      <Redirect to={{
+        pathname: '/login',
+        state: { from: props.location }
+      }}/>
+    )
+  )}/>
+)
 
 store.subscribe(render)
 render()
