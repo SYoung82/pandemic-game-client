@@ -111,3 +111,7 @@ body {
     background-color:rgba(0,0,0,0); 
     border-radius: 0px;
 }
+
+.ReactModal__Overlay {
+    z-index: 1;
+}
