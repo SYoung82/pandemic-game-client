@@ -7,7 +7,7 @@ class CurrentPlayerContainer extends Component{
         const style = {
             border: '0',
             padding: '0',
-            backgroundColor: 'black' 
+            backgroundColor: 'black', 
         }
         
         return (
