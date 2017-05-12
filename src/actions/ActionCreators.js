@@ -156,3 +156,25 @@ export function closeEndGameModal() {
         isGameEndModalOpen: false
     }
 }
+
+export function login(email, password) {
+    return {
+        type: 'LOGIN',
+        email: email,
+        password: password
+    }
+}
+
+export function logout() {
+    return {
+        type: 'LOGOUT'
+    }
+}
+
+export function signup(email, password) {
+    return {
+        type: 'SIGNUP',
+        email: email,
+        password: password
+    }
+}
