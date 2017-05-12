@@ -1,35 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Form, Text } from 'react-form'
 
-class Signup extends Component {
-    onSubmit(e) {
-        e.preventDefault()
-        debugger
-        console.log(e)
-    }
+const SignupForm = (
+    <Form
+        onSubmit={ values => console.log('Success!', values)}
+        validate={ values => {
+            const { email, password, passwordConfirm } = values
 
-    render() {
-        const customStyle = {
-            float: 'right',
-            marginRight: '15%'
-        }
+            return {
+                email: !email ? 'An email is required' : undefined,
+                password: !password ? 'A password is required' : undefined,
+                passwordConfirm: password !== passwordConfirm ? 'Passwords must match' : undefined
+            }
+        }}
+    >
 
+    {({submitForm}) => {
         return(
-            <div style={customStyle}>
-                <form id='signup-form' onSubmit={this.onSubmit.bind(this)}>
-                    <h1>Signup</h1>
-                    <label>Email: &nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                    <input id='email-input' type='text' placeholder='Mail@Email.com' /><br />
-                    <label>Password: &emsp;&emsp;&emsp;&emsp;&emsp;</label>
-                    <input id='password-input' type='password' placeholder='*********' /><br />
-                    <label>Confirm Password:&emsp;</label>
-                    <input id='password-confirm' type='password' /><br />
-                    <button id='signup-button' type='submit'>Submit</button>
-                </form>
-            </div>
+            <form id='signup-form' onSubmit={submitForm} style={{marginRight: '15%', float: 'right'}}>
+                <h1>Signup</h1>
+                <Text field='email' type='text' placeholder='Mail@Email.com' /><br />
+                <Text field='password' type='password' placeholder='*********' /><br />
+                <Text field='passwordConfirm' type='password' /><br />
+                <button id='signup-button' type='submit'>Submit</button>
+            </form>
         )
-    }
-}
+    }}
+    </Form>
+)
 
 
-
-export default Signup
+export default SignupForm
