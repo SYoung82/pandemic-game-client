@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { discard, setGamePhase, resetTurnCount, nextPlayer, getEpidemicActions, getAfterEpidemicActions } from '../actions/ActionCreators'
+import { discard, setGamePhase, getEpidemicActions, getAfterEpidemicActions } from '../actions/ActionCreators'
 
 class Card extends Component{
     handleClick(e){
         if(this.props.gameStatus.phase === 'Discard') {
             this.props.dispatch(discard(this.props.player, this.props.card.name))
-            if(this.props.player.hand.length <= 7) {
-                this.props.dispatch(setGamePhase('Move'))
-                this.props.dispatch(resetTurnCount(this.props.player))
-                this.props.dispatch(nextPlayer(this.props.player))
+            if(this.props.player.hand.length  <= 8) {
+                this.props.dispatch(setGamePhase('Infect'))
             }
         }
 
