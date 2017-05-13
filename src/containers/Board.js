@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import { Map, Marker, ImageOverlay } from 'react-leaflet'
 import { Icon } from 'leaflet'
-// import { paths } from '../constants/Paths'
 import EndGameModal from '../components/EndGameModal'
 import CityMarker from '../components/CityMarker'
 import { connect } from 'react-redux'
@@ -58,12 +57,6 @@ class Board extends Component{
                     )
                 })
                 }
-
-                {/*{paths.map( (path, index) => {
-                    return (
-                        <Polyline key={index} color='black' positions={path} />
-                    )
-                })}    */}
                 <EndGameModal modalIsOpen={this.props.isGameEndModalOpen}/>
             </Map>
         )
