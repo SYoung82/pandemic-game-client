@@ -13,7 +13,7 @@ export function adjacentCitiesReducer(state = adjCitiesList.find( city => city.n
 
         case 'MOVE_PLAYER':
             currentPlayer = action.currentPlayer
-            return adjCitiesList.find( city => city.name === currentPlayer.currentCity ).adjacentCities
+            return update(state, {$set: adjCitiesList.find( city => city.name === currentPlayer.currentCity ).adjacentCities})
 
         default:
             return state
