@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 import { Form, Text } from 'react-form'
 import { signup } from '../actions/ActionCreators'
@@ -8,9 +9,7 @@ class SignupFormComponent extends Component {
         const SubmitForm = 
             <Form
                 onSubmit={ values => {
-                    const { email, password, passwordConfirm } = values
-
-                    console.log('Success!', values)
+                    const { email, password } = values
                     this.props.dispatch(signup(email, password))
                 }}
                 validate={ values => {
@@ -25,15 +24,20 @@ class SignupFormComponent extends Component {
             >
 
             {({submitForm}) => {
-                return(
-                    <form id='signup-form' onSubmit={submitForm} style={{marginRight: '15%', float: 'right'}}>
-                        <h1>Signup</h1>
-                        <Text field='email' type='text' placeholder='Mail@Email.com' /><br />
-                        <Text field='password' type='password' placeholder='Password' /><br />
-                        <Text field='passwordConfirm' type='password' placeholder='Confirm' /><br />
-                        <button id='signup-button' type='submit'>Submit</button>
-                    </form>
-                )
+                if(this.props.isLoggedIn) {
+                    return <Redirect to='/' />
+                }
+                else {
+                    return(
+                        <form id='signup-form' onSubmit={submitForm} style={{marginRight: '15%', float: 'right'}}>
+                            <h1>Signup</h1>
+                            <Text field='email' type='text' placeholder='Mail@Email.com' /><br />
+                            <Text field='password' type='password' placeholder='Password' /><br />
+                            <Text field='passwordConfirm' type='password' placeholder='Confirm' /><br />
+                            <button id='signup-button' type='submit'>Submit</button>
+                        </form>
+                    )
+                }
             }}
             </Form>
         
