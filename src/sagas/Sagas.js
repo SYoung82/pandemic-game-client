@@ -1,5 +1,6 @@
-import { select, takeEvery, put } from 'redux-saga/effects'
-import { setGamePhase, resetTurnCount, nextPlayer, endGame, drawInfectionCards, placeCube, openEndGameModal } from '../actions/ActionCreators'
+import { select, takeEvery, put, call } from 'redux-saga/effects'
+import { setGamePhase, resetTurnCount, nextPlayer, endGame, drawInfectionCards, placeCube, openEndGameModal, loginSuccess } from '../actions/ActionCreators'
+import { fetchLogin } from '../api/Api'
 import Alert from 'react-s-alert'
 
 const getCurrentPlayer = state => state.playersReducer.find(player => player.currentPlayer === true)
@@ -13,6 +14,7 @@ export function* nextPhaseSaga() {
     yield takeEvery('DRAW_PLAYER_CARDS', nextPhase)
     yield takeEvery('DRAW_PLAYER_CARDS', checkEndGame)
     yield takeEvery('SET_GAME_PHASE', infect)
+    yield takeEvery('LOGIN', login)
 }
 
 export function* nextPhase(action) {
@@ -65,5 +67,12 @@ export function* infect(action) {
             put(resetTurnCount(currentPlayer)),
             put(nextPlayer(currentPlayer))
         ]
+    }
+}
+
+export function* login(action) {
+    const response = yield call(fetchLogin, action)
+    if(response.token) { 
+        yield put(loginSuccess(response)) 
     }
 }
