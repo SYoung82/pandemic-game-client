@@ -62,6 +62,7 @@ export function* infect(action) {
             })
             yield put(placeCube(city, color))
         }
+
         yield ([
             put(drawInfectionCards(2)),
             put(setGamePhase('Move')),
