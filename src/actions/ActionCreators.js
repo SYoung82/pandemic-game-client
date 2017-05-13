@@ -178,3 +178,11 @@ export function signup(email, password) {
         password: password
     }
 }
+
+export function loginSuccess(email, token) {
+    return {
+        type: 'LOGIN_SUCCESS',
+        email: email,
+        token: token
+    }
+}
