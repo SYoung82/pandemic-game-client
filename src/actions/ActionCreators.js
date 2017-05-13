@@ -143,6 +143,12 @@ export function endGame(winner) {
     }
 }
 
+export function newGame() {
+    return {
+        type: 'NEW_GAME'
+    }
+}
+
 export function openEndGameModal() {
     return { 
         type: 'OPEN_END_GAME_MODAL',

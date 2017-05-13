@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
 import { connect } from 'react-redux'
-import { closeEndGameModal } from '../actions/ActionCreators'
+import { closeEndGameModal, newGame } from '../actions/ActionCreators'
 
 const customStyles = {
   content : {
@@ -23,6 +23,7 @@ class EndGameModal extends Component {
   }
 
   closeModal() {
+    this.props.dispatch(newGame())
     this.props.dispatch(closeEndGameModal())
   }
 
@@ -38,7 +39,7 @@ class EndGameModal extends Component {
         >
 
           <h2>Game Over!</h2>
-          <button onClick={() => this.closeModal()}>close</button>
+          <button onClick={() => this.closeModal()}>Play Again!</button>
         </Modal>
       </div>
     );
