@@ -7,19 +7,23 @@ export function getEpidemicActions(currentPlayer, infectionDeck) {
     const numEpidemicCards = checkEpidemicCard(currentPlayer)
 
     for(let i=0; i<numEpidemicCards; i++) {
-        //Grab the bottom card fro the infection deck for our reference
-        const bottomInfectionDeckCard = infectionDeck[infectionDeck.length - 1];
-        //Then push the action to actually draw it and discard
-        actionsArray.push(drawBottomInfectionCard(currentPlayer, infectionDeck))
-        Alert.info(`Epidemic Phase: Placing cubes in ${bottomInfectionDeckCard.name}`,{
-                position: 'bottom-left'
-            })
-        for(let j=0; j<3; j++) {
-            actionsArray.push(placeCube(bottomInfectionDeckCard, bottomInfectionDeckCard.color))
+        if(infectionDeck.length === 0) {
+            actionsArray.push(endGame('Computer'))
         }
-        actionsArray.push(discard(currentPlayer, 'Epidemic'))
+        else {
+            //Grab the bottom card fro the infection deck for our reference
+            const bottomInfectionDeckCard = infectionDeck[infectionDeck.length - 1];
+            //Then push the action to actually draw it and discard
+            actionsArray.push(drawBottomInfectionCard(currentPlayer, infectionDeck))
+            Alert.info(`Epidemic Phase: Placing cubes in ${bottomInfectionDeckCard.name}`,{
+                    position: 'bottom-left'
+                })
+            for(let j=0; j<3; j++) {
+                actionsArray.push(placeCube(bottomInfectionDeckCard, bottomInfectionDeckCard.color))
+            }
+            actionsArray.push(discard(currentPlayer, 'Epidemic'))
+        }
     }
-    
     return actionsArray
 }
 
@@ -30,8 +34,6 @@ export function getAfterEpidemicActions(currentPlayer, playerDeck) {
         actionsArray.push(setGamePhase('Discard'))
     } else {
         actionsArray.push(setGamePhase('Infect'))
-        actionsArray.push(resetTurnCount(currentPlayer))
-        actionsArray.push(nextPlayer(currentPlayer))
     }
 
     return actionsArray
