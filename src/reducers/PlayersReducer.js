@@ -11,46 +11,42 @@ export function playersReducer(state=players, action){
                 if(player.currentPlayer === true) {
                     player.currentCity = action.city
                     return self  
-                } else {
+                }
+                else {
                     return state
                 }
             })
             return newState
         
         case 'NEXT_PLAYER':
-            var returnState = state
-            returnState.forEach( player =>
-                player.currentPlayer = !player.currentPlayer
-            )
-            return returnState
+            return update(state, {
+                0: {currentPlayer: {$set: !state[0].currentPlayer}},
+                1: {currentPlayer: {$set: !state[1].currentPlayer}}
+            })
 
         case 'DISCARD':
-            var stateToReturn = state
+            var currentPlayerIndex = state.findIndex( player => player.name === action.currentPlayer.name )
             
-            stateToReturn.forEach( (player, index) => {
-                if(player.name === action.currentPlayer.name) {
-                    stateToReturn[index].hand = state[index].hand.filter( card => card.name !== action.card)
+            return update(state, {
+                [currentPlayerIndex]: {
+                    hand: {$set: state[currentPlayerIndex].hand.filter(card => card.name !== action.card)}
                 }
             })
-            return stateToReturn
-        
+
         case 'RESET_TURN_COUNT':
-            stateToReturn = state
-            stateToReturn.forEach( (player, index) => {
-                if(player.name === action.currentPlayer.name) {
-                    stateToReturn[index].movesLeft = 4
-                }
+            return update(state, {
+                0: {movesLeft: {$set: 4}},
+                1: {movesLeft: {$set: 4}}
             })
-            return stateToReturn
 
         case 'DECREMENT_TURN_COUNT':
-            stateToReturn = state
-            stateToReturn.forEach( (player, index) => {
-                if(player === action.currentPlayer) {
-                    stateToReturn[index].movesLeft--
+            currentPlayerIndex = state.findIndex( player => player.name === action.currentPlayer.name )
+
+            return update(state, {
+                [currentPlayerIndex]: {
+                    movesLeft: {$set: state[currentPlayerIndex].movesLeft-1}
                 }
             })
-            return stateToReturn
 
         case 'DRAW_PLAYER_CARDS':
             const index = state.findIndex( player => player.name === action.currentPlayer.name )
