@@ -9,7 +9,7 @@ export function gameStatusReducer(state={
     isGameOver: false, 
     winner: null, 
     isGameEndModalOpen: false, 
-    isLoggedIn: false,
+    isLoggedIn:false,
     email: null,
     token: null
 }, action) {
@@ -30,6 +30,9 @@ export function gameStatusReducer(state={
         case 'CLOSE_END_GAME_MODAL':
             return update(state, {isGameEndModalOpen: {$set: false}})
         
+        case 'LOGIN_SUCCESS':
+            return  update(state, {isLoggedIn: {$set: true}, user: {$set: action.email}, token: {$set: action.token}})
+
         default:
             return state
     }
