@@ -35,8 +35,7 @@ const appReducer = combineReducers({
 
 const rootReducer = (state, action) => {
   if (action.type === 'NEW_GAME') {
-    let resetState = undefined
-    state = Object.assign({}, resetState, {gameStatusReducer: Object.assign({}, state.gameStatusReducer, {isGameOver: false, phase: 'Move'})})
+    state = Object.assign({}, undefined, {gameStatusReducer: Object.assign({}, state.gameStatusReducer, {isGameOver: false, phase: 'Move'})})
   }
   return appReducer(state, action)
 }
