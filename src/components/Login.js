@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 import { Form, Text } from 'react-form'
 import { login } from '../actions/ActionCreators'
 
 class LoginFormComponent extends Component {
-    render() { 
+    render() {
         const LoginForm = <Form
-            onSubmit={ values => {
+            onSubmit={ (values, state, props, instance) => {
                 const { email, password } = values
-
-                console.log('Success!', values)
                 this.props.dispatch(login(email, password))
             }}
 
@@ -18,20 +17,29 @@ class LoginFormComponent extends Component {
                         
                 return {
                     email: !email ? 'An email is required' : undefined,
-                     password: !password ? 'A password is required' : undefined
+                    password: !password ? 'A password is required' : undefined
                 }
             }}
+
+
         >
 
             {({submitForm}) => {
-            return (
-                <form id='login-form' onSubmit={submitForm} style={{marginLeft: '15%', float: 'left'}}>
-                    <h1>Login</h1>
-                    <Text field='email' type='text' placeholder='Email' /><br />
-                    <Text field='password' type='password' placeholder='Password' /><br />
-                    <button id='signup-button' type='submit'>Submit</button>
-                </form>
-            )
+                if(this.props.isLoggedIn) {
+                    return <Redirect to='/' />
+                }
+                else {
+                    return (
+                        <div>
+                            <form id='login-form' onSubmit={submitForm} style={{marginLeft: '15%', float: 'left'}}>
+                                <h1>Login</h1>
+                                <Text field='email' type='text' placeholder='Email' /><br />
+                                <Text field='password' type='password' placeholder='Password' /><br />
+                                <button id='login-button' type='submit'>Submit</button>
+                            </form>
+                        </div>
+                    )
+                }
             }}
         </Form>
 
