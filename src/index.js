@@ -34,7 +34,7 @@ const appReducer = combineReducers({
 })
 
 const rootReducer = (state, action) => {
-  if (action.type === 'END_GAME') {
+  if (action.type === 'NEW_GAME') {
     state = undefined
   }
   return appReducer(state, action)
