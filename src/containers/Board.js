@@ -57,7 +57,7 @@ class Board extends Component{
                     )
                 })
                 }
-                <EndGameModal modalIsOpen={this.props.isGameEndModalOpen}/>
+                
             </Map>
         )
     }
