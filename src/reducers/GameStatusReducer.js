@@ -10,7 +10,7 @@ export function gameStatusReducer(state={
     winner: null, 
     isGameEndModalOpen: false, 
     isLoggedIn:false,
-    email: null,
+    user: null,
     token: null
 }, action) {
 
@@ -19,19 +19,25 @@ export function gameStatusReducer(state={
             return update(state, {[action.color]: {$set: 'Cured'}})
 
         case 'SET_GAME_PHASE':
+        console.log(state)
             return update(state, {phase: {$set: action.phase}})
 
         case 'END_GAME':
+        console.log(state)
             return update(state, {isGameOver: {$set: true}})
 
         case 'OPEN_END_GAME_MODAL':
+        console.log(state)
             return update(state, {isGameEndModalOpen: {$set: true}})
 
         case 'CLOSE_END_GAME_MODAL':
             return update(state, {isGameEndModalOpen: {$set: false}})
         
         case 'LOGIN_SUCCESS':
-            return  update(state, {isLoggedIn: {$set: true}, user: {$set: action.email}, token: {$set: action.token}})
+        console.log(state)
+        debugger
+            return Object.assign({}, state, {isLoggedIn: true, user: action.email.user.email, token: action.email.token})
+            // return update(state, {isLoggedIn: {$set: true}, user: {$set: action.email}, token: {$set: action.token}})
 
         default:
             return state

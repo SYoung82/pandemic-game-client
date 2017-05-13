@@ -5,7 +5,7 @@ class GamePhase extends Component {
     render() {
         return(
             <div>
-                <h3>Logged In As: {this.props.gameStatus.user.user.email}</h3>
+                <h3>Logged In As: {this.props.gameStatus.user}</h3>
                 <h3>Current Phase: {this.props.gameStatus.phase}</h3>
                 <h3>Black: {this.props.gameStatus.black}</h3>
                 <h3>Red: {this.props.gameStatus.red}</h3>
