@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import GamePhase from '../components/GamePhase'
-import { getLatestSave, saveGame } from '../actions/ActionCreators'
+import { saveGame } from '../actions/ActionCreators'
 
 class Status extends Component {
     onSaveClick(e) {
