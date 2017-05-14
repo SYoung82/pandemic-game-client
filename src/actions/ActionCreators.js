@@ -187,10 +187,19 @@ export function signup(email, password) {
     }
 }
 
-export function loginSuccess(email, token) {
+export function loginSuccess(email, token, id) {
     return {
         type: 'LOGIN_SUCCESS',
         email: email,
+        token: token,
+        id: id
+    }
+}
+
+export function getLatestSave(id, token) {
+    return {
+        type: 'GET_LATEST_SAVE',
+        id: id,
         token: token
     }
 }

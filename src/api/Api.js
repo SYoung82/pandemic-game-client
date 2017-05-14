@@ -1,5 +1,7 @@
+const url = 'http://localhost:3000/api/v1/'
+
 export function fetchLogin(action) {
-    return fetch('http://localhost:3000/api/v1/auth', {
+    return fetch(url + 'auth', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
@@ -17,7 +19,7 @@ export function fetchLogin(action) {
 }
 
 export function fetchSignup(action) {
-    return fetch('http://localhost:3000/api/v1/users', {
+    return fetch(url + 'users', {
         method: 'post',
         headers: {
             'Accept': 'application/json',
@@ -30,4 +32,17 @@ export function fetchSignup(action) {
     })
         .then( resp => { return resp.json() })
         .catch( resp => console.log(resp) )
+}
+
+export function fetchLatestGame(action) {
+    return fetch(url + 'users/' + action.id, {
+        method: 'get',
+        headers: { 
+            'Authorization': 'Basic ' + action.token,
+            'Accept': 'application/json', 
+            'Content-Type': 'application/json'
+        }
+    })
+        .then( resp => { return resp.json() })
+        .catch( resp => console.log(resp))
 }
