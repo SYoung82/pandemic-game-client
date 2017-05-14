@@ -16,6 +16,7 @@ cd pandemic-game-client
 npm install
 npm start
 ```
+Also requires https://github.com/SYoung82/pandemic-game-server
 
 ### Contributions: 
 
