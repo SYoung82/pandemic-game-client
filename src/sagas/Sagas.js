@@ -1,6 +1,6 @@
 import { select, takeEvery, put, call } from 'redux-saga/effects'
-import { setGamePhase, resetTurnCount, nextPlayer, endGame, drawInfectionCards, placeCube, openEndGameModal, loginSuccess } from '../actions/ActionCreators'
-import { fetchLogin, fetchSignup, fetchLatestGame } from '../api/Api'
+import { setGamePhase, resetTurnCount, nextPlayer, endGame, drawInfectionCards, placeCube, openEndGameModal, loginSuccess, getSaveSuccess } from '../actions/ActionCreators'
+import { fetchLogin, fetchSignup, fetchLatestGame, fetchSaveGame } from '../api/Api'
 import Alert from 'react-s-alert'
 
 const getCurrentPlayer = state => state.playersReducer.find(player => player.currentPlayer === true)
@@ -8,6 +8,7 @@ const getPlayerDeck = state => state.playerDeckReducer
 const getInfectionDeck = state => state.infectionDeckReducer
 const getGameStatus = state => state.gameStatusReducer
 const getCities = state => state.citiesReducer
+const getState = state => state
 
 
 export function* nextPhaseSaga() {
@@ -17,6 +18,7 @@ export function* nextPhaseSaga() {
     yield takeEvery('LOGIN', login)
     yield takeEvery('SIGNUP', signup)
     yield takeEvery('GET_LATEST_SAVE', getLatestSave)
+    yield takeEvery('SAVE_GAME', saveGame)
 }
 
 export function* nextPhase(action) {
@@ -88,9 +90,13 @@ export function* signup(action) {
 }
 
 export function* getLatestSave(action) {
-    debugger
     const response = yield call(fetchLatestGame, action)
     const savedGame = response.user.last_save
-    console.log('Saga: ', savedGame)
+    yield put(getSaveSuccess(savedGame))
 }
 
+export function* saveGame(action) {
+    const stateToSave = yield select(getState)
+    const stringifiedState = JSON.stringify(stateToSave)
+    yield call(fetchSaveGame, action, stringifiedState)
+}
