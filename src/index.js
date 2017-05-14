@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 import createSagaMiddleware from 'redux-saga'
@@ -10,28 +10,12 @@ import LoginContainer from './containers/LoginContainer'
 import './index.css'
 import { loadState, saveState } from './localStorage'
 import throttle from 'lodash/throttle'
-
-import { playersReducer } from './reducers/PlayersReducer'
-import { citiesReducer } from './reducers/CitiesReducer'
-import { adjacentCitiesReducer } from './reducers/AdjacentCitiesReducer'
-import { infectionDeckReducer } from './reducers/InfectionDeckReducer'
-import { playerDeckReducer } from './reducers/PlayerDeckReducer'
-import { researchStationCitiesReducer } from './reducers/ResearchStationCitiesReducer'
-import { gameStatusReducer } from './reducers/GameStatusReducer'
-
+import combinedReducer from './reducers/index'
 import { nextPhaseSaga } from './sagas/Sagas'
 
 const sagaMiddleWare = createSagaMiddleware()
 
-const appReducer = combineReducers({
-  infectionDeckReducer,
-  playersReducer,
-  citiesReducer,
-  adjacentCitiesReducer,
-  playerDeckReducer,
-  researchStationCitiesReducer,
-  gameStatusReducer
-})
+const appReducer = combinedReducer
 
 const rootReducer = (state, action) => {
   if (action.type === 'NEW_GAME') {
