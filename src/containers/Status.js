@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import GamePhase from '../components/GamePhase'
-import { getLatestSave } from '../actions/ActionCreators'
+import { getLatestSave, saveGame } from '../actions/ActionCreators'
 
 class Status extends Component {
-    onGetLastSaveClick(e) {
-        console.log('Get save clicked')
-        this.props.dispatch(getLatestSave(this.props.gameStatus.id, this.props.gameStatus.token))      
+    onSaveClick(e) {
+        this.props.dispatch(saveGame(this.props.gameStatus.id, this.props.gameStatus.token))
     }
 
     render() {
         return(
             <div>
-                <button onClick={this.onGetLastSaveClick.bind(this)} >Get Last Save</button>
+                <button onClick={this.onSaveClick.bind(this)} >Save Game</button><br />
                 <GamePhase gameStatus={this.props.gameStatus} />
             </div>
         )
