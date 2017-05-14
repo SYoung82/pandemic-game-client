@@ -37,6 +37,9 @@ const rootReducer = (state, action) => {
   if (action.type === 'NEW_GAME') {
     state = Object.assign({}, undefined, {gameStatusReducer: Object.assign({}, state.gameStatusReducer, {isGameOver: false, phase: 'Move'})})
   }
+  if (action.type === 'GET_SAVE_SUCCESS') {
+    state = JSON.parse(action.state)
+  }
   return appReducer(state, action)
 }
 
