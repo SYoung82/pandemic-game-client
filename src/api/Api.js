@@ -46,3 +46,19 @@ export function fetchLatestGame(action) {
         .then( resp => { return resp.json() })
         .catch( resp => console.log(resp))
 }
+
+export function fetchSaveGame(action, state) {
+    return fetch(url + 'users/' + action.id + '/games', {
+        method: 'post',
+        headers: {
+            'Authorization': 'Basic ' + action.token,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+                state: {state}
+        })
+    })
+        .then( resp => { return resp.json() })
+        .catch( resp => console.log(resp))
+}
