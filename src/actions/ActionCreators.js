@@ -165,6 +165,20 @@ export function closeEndGameModal() {
     }
 }
 
+export function openLoginModal() {
+    return {
+        type: 'OPEN_LOGIN_MODAL',
+        isLoginModalOpen: true
+    }
+}
+
+export function closeLoginModal() {
+    return {
+        type: 'CLOSE_LOGIN_MODAL',
+        isLoginModalOpen: false
+    }
+}
+
 export function login(email, password) {
     return {
         type: 'LOGIN',
@@ -201,5 +215,21 @@ export function getLatestSave(id, token) {
         type: 'GET_LATEST_SAVE',
         id: id,
         token: token
+    }
+}
+
+export function saveGame(id, token, state) {
+    return {
+        type: 'SAVE_GAME',
+        id: id,
+        token: token,
+        state: state
+    }
+}
+
+export function getSaveSuccess(state) {
+    return {
+        type: 'GET_SAVE_SUCCESS',
+        state: state
     }
 }
