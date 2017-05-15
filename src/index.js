@@ -19,7 +19,12 @@ const appReducer = combinedReducer
 
 const rootReducer = (state, action) => {
   if (action.type === 'NEW_GAME') {
-    state = Object.assign({}, undefined, {gameStatusReducer: Object.assign({}, state.gameStatusReducer, {isGameOver: false, phase: 'Move'})})
+    state = Object.assign({}, undefined, {gameStatusReducer: Object.assign({}, state.gameStatusReducer, {isLoggedIn: true, 
+                                                                                                         isLoginModalOpen: false, 
+                                                                                                         user: state.gameStatusReducer.user, 
+                                                                                                         id: state.gameStatusReducer.id, 
+                                                                                                         token: state.gameStatusReducer.token,
+                                                                                                         phase: 'Move'})})
   }
   if (action.type === 'GET_SAVE_SUCCESS') {
     state = JSON.parse(action.state)
