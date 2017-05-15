@@ -1,4 +1,4 @@
-const url = 'https://safe-badlands-45374.herokuapp.com/api/v1/'
+const url = 'http://localhost:3000/api/v1/'
 
 export function fetchLogin(action) {
     return fetch(url + 'auth', {
