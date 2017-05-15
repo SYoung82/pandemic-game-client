@@ -6,7 +6,7 @@ import researchStationIcon from '../images/research-station.png'
 
 class CityMarker extends Component{
     handleClick(e) {
-        console.log(`Clicked ${this.props.city.name}`);
+
     }
 
     render(){

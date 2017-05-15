@@ -59,7 +59,7 @@ export function* infect(action) {
             let city = cities.find( city => city.name === infectionCards[i].name)
             let name = infectionCards[i].name
             let color = infectionCards[i].color
-            console.log(`Infection Phase: Placing ${color} cube in ${name}`)
+
             Alert.info(`Infection Phase: Placing ${color} cube in ${name}`,{
                 position: 'bottom-left'
             })

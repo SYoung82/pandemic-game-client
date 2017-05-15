@@ -35,7 +35,6 @@ sagaMiddleWare.run(nextPhaseSaga)
 store.subscribe(throttle(() => {
   saveState(store.getState())
 }, 3000))
-console.log(store.getState())
 
 const render = () => {
   ReactDOM.render(
