@@ -1,4 +1,4 @@
-const url = 'https://shrouded-scrubland-22047.herokuapp.com/api/v1/'
+const url = 'http://localhost:3000/api/v1/'
 
 export function fetchLogin(action) {
     return fetch(url + 'auth', {
