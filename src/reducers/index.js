@@ -10,10 +10,10 @@ import { combineReducers } from 'redux'
 
 const combinedReducer = combineReducers({
     infectionDeckReducer,
+    playerDeckReducer,
     playersReducer,
     citiesReducer,
     adjacentCitiesReducer,
-    playerDeckReducer,
     researchStationCitiesReducer,
     gameStatusReducer
 })
