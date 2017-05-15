@@ -105,6 +105,12 @@ body {
     line-height: 75px;
 }
 
+.nav-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 .leaflet-container {
     height: 100%;
     width: 1000px;
