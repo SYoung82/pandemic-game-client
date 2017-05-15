@@ -10,10 +10,11 @@ class CureDiseaseLinks extends Component {
         const color = e.target.innerText.toLowerCase()
 
         this.props.dispatch(cureDisease(color, this.props.currentPlayer))
-
+        const discardCards = this.props.currentPlayer.hand.filter( card => card.color === color)
         for(let i=0; i<5; i++) {
+            debugger
             this.props.dispatch(discard(this.props.currentPlayer, 
-                                        this.props.currentPlayer.hand.find( card => card.color === color).name))
+                                        discardCards[i].name))
         }
 
         if(checkTurnOver(this.props.currentPlayer)){
