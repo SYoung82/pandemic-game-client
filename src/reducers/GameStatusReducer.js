@@ -42,7 +42,7 @@ export function gameStatusReducer(state={
             return Object.assign({}, state, {isLoggedIn: true, user: action.email, token: action.token, id: action.id})
 
         case 'LOGOUT':
-            return Object.assign({}, state, {isLoggedIn: false, user: null, token: null, id: null})
+            return Object.assign({}, state, {isLoggedIn: false, user: null, token: null, id: null, isLoginModalOpen: true})
 
         default:
             return state
