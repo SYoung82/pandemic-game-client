@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { saveGame, newGame, logout } from '../actions/ActionCreators'
+import { saveGame,getLatestSave, newGame, logout } from '../actions/ActionCreators'
 
 class NavHeader extends Component {
     onSaveClick(e) {
         this.props.dispatch(saveGame(this.props.gameStatus.id, this.props.gameStatus.token))
+    }
+
+    onLoadClick(e) {
+        this.props.dispatch(getLatestSave(this.props.gameStatus.id, this.props.gameStatus.token))
     }
 
     onNewClick(e) {
@@ -20,6 +24,8 @@ class NavHeader extends Component {
             <div className='nav-container' >
                 <span>Welcome {this.props.gameStatus.user}&nbsp;</span>
                 <button onClick={this.onSaveClick.bind(this)} >Save Game</button>
+                <span>&nbsp;</span>
+                <button onClick={this.onLoadClick.bind(this)} >Load Last Save</button>
                 <span>&nbsp;</span>
                 <button onClick={this.onNewClick.bind(this)} >New Game</button>
                 <span>&nbsp;</span>
