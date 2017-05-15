@@ -18,7 +18,7 @@ class ResearchStationLinks extends Component {
 
     render() {
         const researchStationLinks = this.props.researchStationCities.filter( city => city.name !== this.props.currentPlayer.currentCity ).map( city => 
-            <li key={city.name}><a key={city.name} style={{color: 'white'}} href='#' onClick={this.handleOtherStationsClick.bind(this)}>{city.name}</a></li>
+            <li key={city.name}><a key={city.name} style={{color: 'white'}} href={city.name} onClick={this.handleOtherStationsClick.bind(this)}>{city.name}</a></li>
         ) 
 
         return(

@@ -18,7 +18,7 @@ class AdjacentCityLinks extends Component {
 
     render() {
         const moveToCities = this.props.adjacentCities.map( city => 
-            <li key={city}><a key={city} style={{color: 'white'}} href='#' onClick={this.handleAdjacentCityClick.bind(this)}>{city}</a></li>
+            <li key={city}><a key={city} style={{color: 'white'}} href={city} onClick={this.handleAdjacentCityClick.bind(this)}>{city}</a></li>
         )
 
         return(
