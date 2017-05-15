@@ -7,13 +7,14 @@ import Board from './containers/Board'
 import CurrentPlayerContainer from './containers/CurrentPlayerContainer'
 import MovesList from './containers/MovesList'
 import Status from './containers/Status'
+import NavHeader from './containers/NavHeader'
 
 class App extends Component {
   render() {
     return ( 
       <div id='app'>
         <div id='header'>
-          Fandemic
+          <NavHeader />
         </div>
         <div id='main'>
           <div id='status'>
