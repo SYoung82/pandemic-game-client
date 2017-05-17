@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { saveGame,getLatestSave, newGame, logout } from '../actions/ActionCreators'
+import { saveGame,getLatestSave, newGame, logout, getGames } from '../actions/ActionCreators'
 
 class NavHeader extends Component {
     onSaveClick(e) {
@@ -19,6 +19,10 @@ class NavHeader extends Component {
         this.props.dispatch(logout())
     }
 
+    onGetGamesClick(e) {
+        this.props.dispatch(getGames(this.props.gameStatus.id, this.props.gameStatus.token))
+    }
+
     render() {
         return (
             <div className='nav-container' >
@@ -30,6 +34,7 @@ class NavHeader extends Component {
                 <button onClick={this.onNewClick.bind(this)} >New Game</button>
                 <span>&nbsp;</span>
                 <button onClick={this.onLogoutClick.bind(this)} >Logout</button>
+                <button onClick={this.onGetGamesClick.bind(this)} > Get Games </button>
             </div>
         )
     }

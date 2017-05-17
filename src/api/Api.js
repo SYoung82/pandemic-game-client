@@ -43,7 +43,8 @@ export function fetchLatestGame(action) {
             'Content-Type': 'application/json'
         }
     })
-        .then( resp => { return resp.json() })
+        .then( resp => { 
+            return resp.json() })
         .catch( resp => console.log(resp))
 }
 
@@ -59,6 +60,24 @@ export function fetchSaveGame(action, state) {
                 state: {state}
         })
     })
-        .then( resp => { return resp.json() })
+        .then( resp => { 
+            return resp.json() 
+        })
+        .catch( resp => console.log(resp))
+}
+
+export function fetchGetGames(action) {
+
+    return fetch(url + 'users/' + action.id + '/games', {
+        method: 'get',
+        headers: {
+            'Authorization': 'Basic ' + action.token,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+         .then( resp => {
+            return resp.json()
+        })
         .catch( resp => console.log(resp))
 }

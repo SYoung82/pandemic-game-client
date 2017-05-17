@@ -233,3 +233,18 @@ export function getSaveSuccess(state) {
         state: state
     }
 }
+
+export function getGames(id, token) {
+    return {
+        type: 'GET_GAMES',
+        id: id,
+        token: token
+    }
+}
+
+export function getGameSuccess(games) {
+    return {
+        type: 'GET_GAME_SUCCESS',
+        games: games
+    }
+}

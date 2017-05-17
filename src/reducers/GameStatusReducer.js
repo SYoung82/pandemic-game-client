@@ -1,6 +1,7 @@
 import update from 'react-addons-update'
 
 export function gameStatusReducer(state={
+    games: null,
     red: 'Uncured', 
     black: 'Uncured', 
     blue: 'Uncured', 
@@ -43,6 +44,9 @@ export function gameStatusReducer(state={
 
         case 'LOGOUT':
             return Object.assign({}, state, {isLoggedIn: false, user: null, token: null, id: null, isLoginModalOpen: true})
+
+        case 'GET_GAME_SUCCESS':
+            return Object.assign({}, state, {games: action.games})
 
         default:
             return state
