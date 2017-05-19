@@ -34,7 +34,6 @@ class NavHeader extends Component {
                 <button onClick={this.onNewClick.bind(this)} >New Game</button>
                 <span>&nbsp;</span>
                 <button onClick={this.onLogoutClick.bind(this)} >Logout</button>
-                <button onClick={this.onGetGamesClick.bind(this)} > Get Games </button>
             </div>
         )
     }

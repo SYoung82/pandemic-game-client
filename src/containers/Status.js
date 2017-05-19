@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import GamePhase from '../components/GamePhase'
-import FetchedGames from '../components/FetchedGames'
+
 
 
 class Status extends Component {
@@ -9,8 +9,7 @@ class Status extends Component {
     render() {
         return(
             <div>
-                {/*<GamePhase gameStatus={this.props.gameStatus} />*/}
-                <FetchedGames games={this.props.gameStatus.games} />
+                <GamePhase gameStatus={this.props.gameStatus} />
             </div>
         )
     }
