@@ -5,7 +5,7 @@
   "proxy": "http://localhost:3100/",
   "dependencies": {
     "leaflet": "1.0.3",
-    "lodash": "4.17.4",
+    "lodash": "4.17.19",
     "react": "^15.5.4",
     "react-addons-update": "15.5.2",
     "react-dom": "^15.5.4",
